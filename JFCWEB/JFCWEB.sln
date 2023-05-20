@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JFCWEB", "JFCWEB\JFCWEB.csproj", "{B8993046-C7B1-40C6-B08A-A82E0BBEC697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8993046-C7B1-40C6-B08A-A82E0BBEC697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8993046-C7B1-40C6-B08A-A82E0BBEC697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8993046-C7B1-40C6-B08A-A82E0BBEC697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8993046-C7B1-40C6-B08A-A82E0BBEC697}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {351B3D2F-131C-452C-B42E-B635EFBA8A43}
+	EndGlobalSection
+EndGlobal
