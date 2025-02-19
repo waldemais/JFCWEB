@@ -268,7 +268,7 @@
                 <tr>
                     <td class="auto-style9">
                 <strong> <asp:Label ID="Label1" runat="server"
-                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
+                        Style="text-align: left; color: #006600; background-color: #FFFFFF;"></asp:Label>
                 </strong>
                     </td>
                     <td class="auto-style19">
@@ -283,7 +283,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style22">
-                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;"></asp:Label>
                     </td>
                     <td class="auto-style24">
                         <br />
