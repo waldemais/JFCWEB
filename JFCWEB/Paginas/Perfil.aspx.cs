@@ -22,7 +22,7 @@ namespace JFCWEB.Paginas
             foreach (GridViewRow row in Grid1.Rows)
             {
                 if (!String.IsNullOrEmpty(row.Cells[0].Text))
-                TxtBx2.Text = (row.Cells[1].Text).ToString();
+                    TxtBx2.Text = (row.Cells[1].Text).ToString();
                 TxtBx3.Text = (row.Cells[2].Text).ToString();
                 TxtBx4.Text = (row.Cells[4].Text).ToString();
             }
@@ -30,11 +30,23 @@ namespace JFCWEB.Paginas
 
         protected void Btt1_Click(object sender, EventArgs e)
         {
-            string senhaA, senhaB, senhaC;
+            string senhaA, senhaB, senhaC, senhaD;
             senhaA = TxtBx5.Text;
             senhaB = TxtBx6.Text;
             senhaC = TxtBx10.Text;
-            if (senhaB == senhaC)
+            senhaD = Session["serial"].ToString();
+            //**
+            if (senhaA != senhaD)
+            {
+
+                Lbl4.Text = ("Senha atual inválida.");
+                // else
+                //  {
+                //     
+                //     
+                //   }
+            }
+            if (senhaB == senhaC && senhaA == senhaD)
             {
                 strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
                 conn = new SqlConnection(strcon);
@@ -47,11 +59,18 @@ namespace JFCWEB.Paginas
                 conn.Close();
                 Lbl4.Text = ("Senha Alterada com exito.");
             }
+        
             else
             {
-                Lbl4.Text = ("Senhas não conferem. Tente novamete");
+                Lbl4.Text = ("Senhas não conferem. Tente novamente");
+               
             }
-        }
+
+    //*  string senhaA, senhaC;
+    //*   senhaA = TxtBx5.Text;
+
+} 
+        
         public string strcon { get; set; }
         public SqlConnection conn { get; set; }
 
@@ -84,25 +103,5 @@ namespace JFCWEB.Paginas
             GrdV1.DataBind();
         }
 
-        protected void TxtBx5_TextChanged(object sender, EventArgs e)
-        {
-            string senhaA, senhaC;
-            senhaA = TxtBx5.Text;
-            senhaC = Session["serial"].ToString();
-            if(senhaA != senhaC)
-            {
-            Lbl4.Text=("Senha Incorreta.");
-                TxtBx6.Enabled=false;
-                TxtBx10.Enabled=false;
-                Btt1.Enabled=false;
-            }
-                else
-                {
-                Lbl4.Text=("Senha Válida.");
-                TxtBx6.Enabled=true;
-                TxtBx10.Enabled=true;
-                Btt1.Enabled=true;
-                }
-        }
-    }
+          }
 }

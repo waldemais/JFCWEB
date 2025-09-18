@@ -33,19 +33,18 @@
             </tr>
             <tr>
                 <td>
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Paginas/CRM.aspx" Target="_top">Novo </asp:HyperLink>
+                    <asp:Button ID="Button1" runat="server" PostBackUrl="~/Paginas/CRM.aspx" Text="Cadastrar" Width="100px" />
                 </td>
                 <td>
-                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Paginas/CRM3.aspx" Target="_parent">Consultar</asp:HyperLink>
+                    <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/CRM3.aspx" Text="Consultar" Width="100px" />
                 </td>
                 <td>
-                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Paginas/CrmOcorrencias.aspx">Exportar</asp:HyperLink>
+                    <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/CrmOcorrencias.aspx" Text="PDF" Width="100px" />
                 </td>
                 <td>
-                    <asp:HyperLink ID="HyperLink5" runat="server" Visible="False">HyperLink</asp:HyperLink>
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Cliente/Menu4.aspx">Voltar</asp:HyperLink>
+                    <asp:Button ID="Button4" runat="server" PostBackUrl="~/Cliente/Menu4.aspx" Text="Voltar" Width="100px" />
                 </td>
             </tr>
             <tr>

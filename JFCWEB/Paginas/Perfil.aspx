@@ -31,15 +31,19 @@
         .auto-style7 {
             margin-left: 0px;
         }
+        .auto-style8 {
+            width: 167px;
+            text-align: left;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width: 100%; height: 267px;">
         <tr>
-            <td class="style1">
-                    <asp:ImageButton ID="ImageButton2" runat="server" ImageAlign="Left" 
-                        ImageUrl="~/Imagem/Voltar.png" PostBackUrl="~/Cliente/Menu4.aspx" 
-                        Width="50px" />
+            <td class="auto-style8">
+                <asp:ImageMap ID="ImageMap1" runat="server" ImageUrl="~/Imagem/grupo.png" 
+                    Width="60px" Height="50px">
+                </asp:ImageMap>
             </td>
             <td class="auto-style6">
                 <h2 class="titulo-pagina" 
@@ -48,15 +52,15 @@
                     Perfil do Cliente</h2>
             </td>
             <td style="text-align: right">
+                    <asp:ImageButton ID="ImageButton2" runat="server" ImageAlign="Left" 
+                        ImageUrl="~/Imagem/Voltar.png" PostBackUrl="~/Cliente/Menu4.aspx" 
+                        Width="50px" />
                 <asp:ImageButton ID="ImageButton1" runat="server" 
                     ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="50px" />
             </td>
         </tr>
         <tr>
-            <td class="style1">
-                <asp:ImageMap ID="ImageMap1" runat="server" ImageUrl="~/Imagem/grupo.png" 
-                    Width="150px">
-                </asp:ImageMap>
+            <td class="auto-style8">
                 <br />
                 <br />
             </td>
@@ -78,7 +82,7 @@
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="style1">
+            <td class="auto-style8">
                 <asp:Label ID="Label5" runat="server" Text="Email Para envio do Pedido:"></asp:Label>
                 <br />
                 <asp:TextBox ID="TxtBx4" runat="server" Width="290px" BorderStyle="None"></asp:TextBox>
@@ -88,9 +92,12 @@
                 <asp:Label ID="Label4" runat="server" Text="Alteração de senha"></asp:Label>
                 </strong>
                 <br />
-                Senha Atual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nova Senha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Confirmação da Senha<br />
-                <asp:TextBox ID="TxtBx5" runat="server" Width="130px" AutoPostBack="True" 
-                    ontextchanged="TxtBx5_TextChanged" TextMode="Password"></asp:TextBox>
+                <asp:Label ID="Label6" runat="server" Text="Senha Atual" Width="130px"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" Text="Nova Senha" Width="130px"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="Label8" runat="server" Text="Repetir Senha" Width="130px"></asp:Label>
+                <br />
+                <asp:TextBox ID="TxtBx5" runat="server" Width="130px" TextMode="Password"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TxtBx6" runat="server" Width="130px" TextMode="Password"></asp:TextBox>
 &nbsp;
@@ -100,7 +107,7 @@
             <td>
                 <br />
                 <br />
-                <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Confirmar" 
+                <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Alterar" 
                     
                     style="color: #009933; background-color: #FFFFFF; font-size: medium; font-weight: 700;" 
                     Width="85px" CssClass="auto-style7" />

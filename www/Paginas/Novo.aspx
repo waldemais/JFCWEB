@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Novo Pediso</title>
+    <title>Novo Pedido</title>
     <link type="text/css" rel="stylesheet" href="Content/bootstrap.css" />
     <style type="text/css">
         .style2
@@ -173,6 +173,10 @@
          .auto-style30 {
             font-size: large;
         }
+         .auto-style31 {
+            width: 139px;
+            text-align: left;
+        }
          </style>
     <link rel="Stylesheet""
      href=~/Imagem\Temporizador.gif />
@@ -190,12 +194,15 @@
                         <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/grupo.png" 
                             Width="30px" Height="28px" />
                     </td>
-                    <td class="auto-style29">
+                    <td class="auto-style31">
                         &nbsp;</td>
                     <td class="auto-style29">
                         &nbsp;</td>
                     <td class="auto-style27">
-                        &nbsp;</td>
+                        <strong>
+                        <asp:Label ID="Label6" runat="server" Text="Novo Pedido" Enabled="False" BorderStyle="None" CssClass="auto-style15" Height="30px" Width="200px" Font-Bold="True" Font-Italic="False"></asp:Label>
+                        </strong>
+                    </td>
                     <td class="auto-style1">
                         <asp:ImageButton ID="ImageButton1" runat="server" 
                             ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="29px" Height="30px" />
@@ -211,10 +218,7 @@
                         </asp:ScriptManager>
                     </td>
                     <td class="auto-style18">
-                        <strong>
-                        <asp:Label ID="Label6" runat="server" Text="Novo Pedido" Enabled="False" BorderStyle="None" CssClass="auto-style15" Height="30px" Width="200px" Font-Bold="True" Font-Italic="False"></asp:Label>
-                        </strong>
-                    </td>
+                        &nbsp;</td>
                     <td class="style13" style="text-align: right">
                         &nbsp;</td>
                     <td class="style13" style="text-align: right">
@@ -268,7 +272,7 @@
                 <tr>
                     <td class="auto-style9">
                 <strong> <asp:Label ID="Label1" runat="server"
-                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
+                        Style="text-align: left; color: #006600; background-color: #FFFFFF;"></asp:Label>
                 </strong>
                     </td>
                     <td class="auto-style19">
@@ -283,7 +287,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style22">
-                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;"></asp:Label>
                     </td>
                     <td class="auto-style24">
                         <br />
@@ -465,7 +469,7 @@
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
             ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
             
-                        SelectCommand="SELECT DISTINCT ENTREGA.DTENTREGA, ENTREGA.CGC_CPF, TabProg.ATIVO, TabProg.LIMDIA, TabProg.LIMHORA, ENTREGA.DIASEM, TabProg.DIA, TGFPAR.NOMEPARC, TGFPAR.UF FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1)">
+                        SelectCommand="SELECT DISTINCT ENTREGA.DTENTREGA, ENTREGA.CGC_CPF, TabProg.ATIVO, TabProg.LIMDIA, TabProg.LIMHORA, ENTREGA.DIASEM, TabProg.DIA, TGFPAR.NOMEPARC, TGFPAR.UF FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" 
                     Type="String" />
@@ -479,8 +483,7 @@
                         
                         
             
-                        SelectCommand="SELECT DISTINCT DTENTREGA, ATIVO, CGC_CPF FROM PedEntrega WHERE CGC_CPF = @CGC_CPF AND ATIVO = 'True' AND DTENTREGA NOT IN ('25/12/2024', '01/01/2025', '01/05/2025')
- ORDER BY DTENTREGA">
+                        SelectCommand="SELECT DISTINCT DTENTREGA, ATIVO, CGC_CPF FROM PedEntrega WHERE (CGC_CPF = @CGC_CPF) AND (ATIVO = 'True') AND (DTENTREGA NOT IN ('25/12/2025', '01/01/2026')) ORDER BY DTENTREGA">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" 
                                 Type="String" />

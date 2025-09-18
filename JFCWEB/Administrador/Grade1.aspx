@@ -628,6 +628,11 @@
                     <br />
                     <br />
                     <br />
+                            <strong>
+                    <asp:Button ID="Btn2" runat="server" onclick="Btn2_Click" 
+                        style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
+                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="#CCCCCC" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" />
+                                </strong>
                     <br />
                     <br />
                     <br />
@@ -645,11 +650,6 @@
                 <asp:ListItem>Terça/Quinta/Sábado</asp:ListItem>
                 <asp:ListItem>Quarta/Sábado</asp:ListItem>
             </asp:RadioButtonList>
-                            <strong>
-                    <asp:Button ID="Btn2" runat="server" onclick="Btn2_Click" 
-                        style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
-                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="Lime" BorderStyle="Solid" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" />
-                                </strong>
                     <br />
                 </td>
             </tr>

@@ -9,9 +9,9 @@
         .style1
         {
             color: #FFFFFF;
-            text-align: center;
+            text-align: left;
             background-color: #FFFFFF;
-            height: 92px;
+            height: 37px;
         }
         .style2
         {
@@ -34,18 +34,23 @@
     <form id="form1" runat="server" style="background-color: #FFFFFF">
     <div>
     
+        <div class="style2">
+            <asp:Image ID="Image1" runat="server" Height="54px" 
+                ImageUrl="~/Imagem/logojfc.png" Width="67px" />
+            <strong>
+            <br />
+            Cadastro de Produtos</strong></div>
+    
         <h1 class="style1">
             <asp:ImageButton ID="ImageButton1" runat="server" ImageAlign="Left" 
                 ImageUrl="~/Imagem/icons8-menu-48.png" 
                 PostBackUrl="~/Administrador/Menu1.aspx" />
             <asp:ImageButton ID="ImageButton2" runat="server" ImageAlign="Right" 
                 ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="48px" />
-            <asp:Image ID="Image1" runat="server" Height="90px" 
-                ImageUrl="~/Imagem/Logos _JFC.jpg" Width="100px" />
         </h1>
-    
-        <div class="style2">
-            <strong>Cadastro de Produtos</strong></div>
+        <h1 class="style1">
+            <asp:Button ID="Btnovo" runat="server" OnClick="Btnovo_Click" Text="Novo" Width="100px" />
+        </h1>
     
     </div>
     <div>
@@ -83,6 +88,8 @@
         </asp:GridView>
         <br />
     </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
@@ -92,6 +99,29 @@
             <asp:ControlParameter ControlID="ttxPesquisa" Name="CODPROSAP" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+        <br />
+        <asp:Panel ID="Panel1" runat="server" BorderColor="Gray" BorderStyle="Solid" Height="250px" Width="570px">
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Código: " Width="75px"></asp:Label>
+            <br />
+            <asp:TextBox ID="TB1" runat="server" Width="100px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Descrição: " Width="75px"></asp:Label>
+            <asp:TextBox ID="TB2" runat="server" Width="500px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Valor SAP: " Width="75px"></asp:Label>
+            <br />
+            <asp:TextBox ID="TB3" runat="server" Width="100px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Bt2" runat="server" OnClick="Bt2_Click" style="text-align: center" Text="Grava" Width="100px" />
+            <asp:Button ID="Bt3" runat="server" Text="Cancela" Width="100px" />
+            <br />
+        </asp:Panel>
+        <br />
     </form>
 </body>
 </html>

@@ -44,6 +44,7 @@ namespace JFCWEB.Administrador
         protected void dgv_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgv.PageIndex = e.NewPageIndex;
+
             this.BindGrid();
         }
         protected void btnExcel_Click(object sender, EventArgs e)
@@ -60,8 +61,7 @@ namespace JFCWEB.Administrador
                 //To Export all pages
                 dgv.AllowPaging = false;
                 this.BindGrid();
-
-                dgv.HeaderRow.BackColor = Color.White;
+             dgv.HeaderRow.BackColor = Color.White;
                 foreach (TableCell cell in dgv.HeaderRow.Cells)
                 {
                     cell.BackColor = dgv.HeaderStyle.BackColor;
@@ -239,7 +239,7 @@ namespace JFCWEB.Administrador
         {
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment;filename=BK_Exp_SAP.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=BK_SAP_RJ.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
@@ -343,5 +343,109 @@ namespace JFCWEB.Administrador
         }
         public string strconpr { get; set; }
         public SqlConnection connpr { get; set; }
-           }
+
+        protected void btnExcel4_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=BK_SAP_SP.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //Para Exportar todas as páginas
+                dgv4.AllowPaging = false;
+                this.BindGrid();
+
+                dgv4.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in dgv4.HeaderRow.Cells)
+                {
+                    cell.BackColor = dgv4.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in dgv4.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = dgv4.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = dgv4.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+
+                }
+
+                dgv4.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+            }
+            dgv4.DataBind();
+
+        }
+
+        protected void BtnExcel5_Click(object sender, EventArgs e)
+        {
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=BK_SAP_PR.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //Para Exportar todas as páginas
+                dgv5.AllowPaging = false;
+                this.BindGrid();
+
+                dgv5.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in dgv2.HeaderRow.Cells)
+                {
+                    cell.BackColor = dgv5.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in dgv5.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = dgv5.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = dgv5.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+
+                }
+
+                dgv5.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+            }
+            dgv5.DataBind();
+        }
+    }
 }

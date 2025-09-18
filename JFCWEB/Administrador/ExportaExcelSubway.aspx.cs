@@ -289,5 +289,56 @@ namespace JFCWEB.Administrador
             }
             dgv2.DataBind();
         }
+
+        protected void BtnExcel3_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Subway_SAP_SP.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //Para Exportar todas as páginas
+                dgv3.AllowPaging = false;
+                this.BindGrid();
+
+                dgv3.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in dgv3.HeaderRow.Cells)
+                {
+                    cell.BackColor = dgv3.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in dgv3.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = dgv3.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = dgv3.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+
+                }
+
+                dgv3.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+            }
+            dgv3.DataBind();
+        }
     }
 }

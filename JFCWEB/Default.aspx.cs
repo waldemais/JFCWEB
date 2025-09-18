@@ -69,7 +69,7 @@ namespace JFCWEB
                             break;
                         case "Cliente":
                       Response.Redirect("Cliente/Menu4.aspx");
-                      //Response.Redirect("Cliente/Popup.aspx");
+                   // Response.Redirect("Cliente/Popup.aspx");
                             break;
                         case "Zamp":
                             Response.Redirect("Zamp/ZampCrm1.aspx");

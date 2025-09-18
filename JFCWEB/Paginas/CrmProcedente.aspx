@@ -68,7 +68,7 @@
             <h3>
                 &nbsp;</h3>
             <div style="background-color: #E7EBEF">
-            <asp:Label ID="Label5" runat="server" Enabled="False" Font-Bold="True" Text="Justificativa Procedente: "></asp:Label>
+            <asp:Label ID="Label5" runat="server" Enabled="False" Font-Bold="True" Text="Reclamação Procedente: " style="font-size: large"></asp:Label>
                 <hr />
             </div>
             <p>
@@ -122,10 +122,10 @@
                 <td class="auto-style14"></td>
                 <td class="auto-style11"></td>
                 <td class="auto-style8">
-        <asp:Button ID="Button1" runat="server" Text="Gravar" OnClick="Button1_Click" OnClientClick="Javascript:return confirm('Confirma o as informações?');" />
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style9">
-                    <asp:Button ID="Button2" runat="server" Text="Voltar" PostBackUrl="~/Paginas/CRM1.aspx" />
+        <asp:Button ID="Button1" runat="server" Text="Gravar" OnClick="Button1_Click" OnClientClick="Javascript:return confirm('Confirma o as informações?');" Width="100px" />
+                    <asp:Button ID="Button2" runat="server" Text="Voltar" PostBackUrl="~/Paginas/CRM1.aspx" Width="100px" />
                 </td>
                 <td class="auto-style10"></td>
                 <td class="auto-style14"></td>

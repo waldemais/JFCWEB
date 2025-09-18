@@ -9,6 +9,7 @@
     <style type="text/css">
         .auto-style1 {
             text-align: left;
+            width: 782px;
         }
         .auto-style2 {
             width: 311px;
@@ -22,72 +23,100 @@
         }
         .auto-style7 {
             color: #0033CC;
+            text-align: center;
         }
         .auto-style8 {
             font-size: large;
             color: #0000FF;
         }
         .auto-style9 {
-            text-align: right;
-            width: 258px;
+            text-align: center;
+            width: 13px;
         }
         .auto-style10 {
-            width: 258px;
-        }
-        .auto-style11 {
-            text-align: center;
-            width: 166px;
-        }
-        .auto-style12 {
-            width: 166px;
-        }
-        .auto-style13 {
-            text-align: center;
-            width: 136px;
-        }
-        .auto-style14 {
-            width: 136px;
+            width: 13px;
         }
         .auto-style15 {
             font-size: large;
             color: #0033CC;
             text-align: center;
         }
+        .auto-style16 {
+            width: 782px;
+        }
+        .auto-style17 {
+            width: 151px;
+        }
+        .auto-style18 {
+            width: 574px;
+        }
+        .auto-style19 {
+            width: 151px;
+            height: 52px;
+        }
+        .auto-style20 {
+            width: 574px;
+            height: 52px;
+        }
+        .auto-style21 {
+            height: 52px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="auto-style15">
-            Exportar Pedidos &amp; Prévia de Pedidos</div>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style17">&nbsp;</td>
+                    <td class="auto-style18">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style19" style="text-align: left">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/logojfc.png" Width="60px" />
+                    </td>
+                    <td class="auto-style20">
+                        <asp:Label ID="Label4" runat="server" style="font-size: x-large; font-weight: 700" Text="Subway"></asp:Label>
+                    </td>
+                    <td class="auto-style21">
+                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="30px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">&nbsp;</td>
+                    <td class="auto-style18">&nbsp;</td>
+                    <td>
+                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Imagem/Voltar.png" OnClientClick="JavaScript:window.history.back(1); return false" Width="30px" />
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div>
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style9">
                         &nbsp;</td>
-                    <td class="auto-style11">&nbsp;</td>
-                    <td class="auto-style13">
-                        &nbsp;</td>
                     <td class="auto-style1">
-                        &nbsp;</td>
+                        <hr />
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style9">
-                        <asp:Button ID="BtnPrevia" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnPrevia_Click" Text="Prévia Subway" Width="172px" />
+                        &nbsp;</td>
+                    <td class="auto-style16"><strong>
+                        <asp:Button ID="BtnExcel" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel_Click" Text="Pedidos RJ-MG" Width="172px" />
+                        </strong>
+                        <asp:Button ID="BtnPrevia" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnPrevia_Click" Text="Prévia" Width="172px" />
+                        <asp:Button ID="BtnExcel1" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel1_Click" Text="Pedidos SP" Width="172px" />
+                        <asp:Button ID="BtnExcel2" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel2_Click" Text="Pedidos p/ SAP" Width="172px" />
                     </td>
-                    <td class="auto-style12"><strong>
-                        <asp:Button ID="BtnExcel" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel_Click" Text="Pedidos Subway RJ-MG" Width="172px" />
-                        </strong></td>
-                    <td class="auto-style14">
-                        <asp:Button ID="BtnExcel1" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel1_Click" Text="Pedidos Subway SP" Width="172px" />
-                    </td>
-                    <td>
-                        <asp:Button ID="BtnExcel2" runat="server" BorderStyle="Solid" CssClass="auto-style7" Height="27px" OnClick="BtnExcel2_Click" Text="Pedidos Subway p/ SAP" Width="172px" />
-                    </td>
+                    <td style="text-align: center">
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style10">&nbsp;</td>
-                    <td class="auto-style12">&nbsp;</td>
-                    <td class="auto-style14">&nbsp;</td>
+                    <td class="auto-style16">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
@@ -99,7 +128,7 @@
                         <asp:Label ID="Lbel01" runat="server" CssClass="auto-style8" Text="Label"></asp:Label>
                         </strong></td>
                     <td class="auto-style4"><strong>
-                        <asp:Label ID="Lbel2" runat="server" CssClass="auto-style8" Text="Prévia de Subway"></asp:Label>
+                        <asp:Label ID="Lbel2" runat="server" CssClass="auto-style8" Text="Prévia"></asp:Label>
                         </strong></td>
                 </tr>
                 <tr>
@@ -136,7 +165,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2"><strong>
-                        <asp:Label ID="Label1" runat="server" CssClass="auto-style8" Text="Pedidos Subway RJ"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" CssClass="auto-style8" Text="Pedidos Rio de Janeiro"></asp:Label>
                         </strong></td>
                     <td>&nbsp;</td>
                 </tr>
@@ -175,7 +204,7 @@
         <div>
             <div>
                 <strong>
-                <asp:Label ID="Label2" runat="server" CssClass="auto-style8" Text="Pedidos Subway SP"></asp:Label>
+                <asp:Label ID="Label2" runat="server" CssClass="auto-style8" Text="Pedidos São Paulo"></asp:Label>
                 </strong>
             </div>
             <asp:GridView ID="dgv1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource3" GridLines="Vertical" OnPageIndexChanging="dgv1_PageIndexChanging" Width="800px" Font-Size="X-Small">
@@ -210,7 +239,7 @@
         <div>
             <div>
                 <strong>
-                <asp:Label ID="Label3" runat="server" CssClass="auto-style8" Text="Exportação Subway para o SAP"></asp:Label>
+                <asp:Label ID="Label3" runat="server" CssClass="auto-style8" Text="Exportação para o SAP"></asp:Label>
                 </strong>
             </div>
             <asp:GridView ID="dgv2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource4" GridLines="Vertical" Width="800px" Font-Size="X-Small">

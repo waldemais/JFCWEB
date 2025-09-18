@@ -179,7 +179,7 @@
                         <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="CRM" Width="150px" />
             </td>
             <td class="auto-style12" style="text-align: center" align="center">
-                <asp:Button ID="Button4" runat="server" Text="Perfil Cliente" Width="150px" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" />
+                <asp:Button ID="Button4" runat="server" Text="Alterar Senha" Width="150px" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" />
             </td>
         </tr>
         <tr>
@@ -199,14 +199,14 @@
                     </td>
             <td class="auto-style20">
         <asp:Label ID="Labl5" runat="server" Font-Names="Verdana" Font-Size="Small" 
-            ForeColor="White" style="text-align: left" Width="97px" BackColor="#48C857" Enabled="False" Height="34px">Atendimento via Whatsapp</asp:Label>
+            ForeColor="White" style="text-align: left" Width="149px" BackColor="#48C857" Enabled="False" Height="34px">Fale com o Comercial pelo Whatsapp</asp:Label>
                         <br />
                         <asp:ImageButton ID="ImageButton2" runat="server" Height="40px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="40px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5521990019227" />
                     </td>
         </tr>
     </table>
         <div class="auto-style21">
-            <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Microsoft Himalaya" Font-Size="X-Large" ForeColor="#006600" Text="Desenvolvedor Waldeck Silva"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Microsoft Himalaya" Font-Size="X-Large" ForeColor="#006600" Text="Desenvolvedor Waldeck Silva | (21) 99001-9227" style="font-size: medium; color: #999999"></asp:Label>
         </div>
     <p class="auto-style21">
         &nbsp;</p>

@@ -180,6 +180,7 @@
     <Content Include="Administrador\AjudaProdParc.aspx" />
     <Content Include="Administrador\AjudaProduto.aspx" />
     <Content Include="Administrador\AjudaVerPedidos.aspx" />
+    <Content Include="Administrador\ExportaExcelMania .aspx" />
     <Content Include="Administrador\ExportaExcel.aspx" />
     <Content Include="Administrador\ExportaExcelSubway.aspx" />
     <Content Include="Administrador\Menu1.aspx" />
@@ -229,6 +230,7 @@
     <Content Include="Imagem\icons8-question-mark-filled-50.png" />
     <Content Include="Imagem\Icons_100x100 px-09.png" />
     <Content Include="Imagem\Icons_250x250px-27.png" />
+    <Content Include="Imagem\Imagem do WhatsApp de 2025-02-25 à%28s%29 16.37.54_30e628c8.jpg" />
     <Content Include="Imagem\invisivel.png" />
     <Content Include="Imagem\jfcverduras.jpg" />
     <Content Include="Imagem\logojfc.png" />
@@ -289,6 +291,28 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -482,6 +506,13 @@
     </Compile>
     <Compile Include="Administrador\AjudaVerPedidos.aspx.designer.cs">
       <DependentUpon>AjudaVerPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelMania .aspx.cs">
+      <DependentUpon>ExportaExcelMania .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelMania .aspx.designer.cs">
+      <DependentUpon>ExportaExcelMania .aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\ExportaExcel.aspx.cs">
       <DependentUpon>ExportaExcel.aspx</DependentUpon>
@@ -778,22 +809,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImagemHandler.ashx" />
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="jfcwDataSet.xsc">
       <DependentUpon>jfcwDataSet.xsd</DependentUpon>
     </None>
@@ -839,12 +854,6 @@
     <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Planilha\waldeckteste.xlsx" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>

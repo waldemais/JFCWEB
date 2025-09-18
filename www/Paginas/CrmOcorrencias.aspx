@@ -36,19 +36,19 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td class="auto-style1">
-                        <asp:Label ID="Label19" runat="server" Font-Size="Large" ForeColor="Green" Text="Exibição de Ocorrências em Aberto"></asp:Label>
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Exportar Pdf" Font-Bold="True" ForeColor="Green" Width="150px" />
+                        <asp:Label ID="Label19" runat="server" Font-Size="Large" ForeColor="Green" Text="Exibição de Reclamações em Aberto" style="font-weight: 700"></asp:Label>
+                        <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="Voltar" Width="100px" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Exportar Pdf" Font-Bold="True" ForeColor="Green" />
                         <hr />
                     </td>
                     <td>
-                        <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="#3A973A" NavigateUrl="~/Paginas/Menucrm.aspx">Voltar</asp:HyperLink>
-                    </td>
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>

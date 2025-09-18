@@ -99,6 +99,7 @@
     }
         .auto-style30 {
             height: 25px;
+            text-align: center;
         }
         .auto-style32 {
             height: 149px;
@@ -201,7 +202,8 @@
                             <td class="auto-style30">
                     <asp:Label ID="Lb1" runat="server" Font-Names="Verdana" Font-Size="Medium" 
                         style="text-align: center; color: #006600;" Font-Bold="True" ForeColor="#FF3300"></asp:Label>
-                            </td>
+                                <br />
+                                Versão 1.0408.25</td>
                             <td class="auto-style30"></td>
                         </tr>
                     </table>

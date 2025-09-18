@@ -32,10 +32,10 @@
             width: 311px;
         }
         .auto-style16 {
-            width: 441px;
+            width: 391px;
         }
         .auto-style17 {
-            width: 441px;
+            width: 391px;
             text-align: right;
         }
     </style>
@@ -47,7 +47,7 @@
                 <asp:TextBox ID="TB1" runat="server"></asp:TextBox>
             </h3>
             <div style="background-color: #E7EBEF">
-            <asp:Label ID="Label4" runat="server" Enabled="False" Font-Bold="True" Text="Justificativa Não Procedente: " ViewStateMode="Disabled" BackColor="#CCFFCC" Font-Size="Large"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Enabled="False" Font-Bold="True" Text="Reclamação Não Procedente: " ViewStateMode="Disabled" BackColor="#CCFFCC" Font-Size="Large"></asp:Label>
                 <hr />
             </div>
         </div>
@@ -103,9 +103,9 @@
                 <tr>
                     <td class="auto-style16">&nbsp;</td>
                     <td class="auto-style15">
-                        <asp:Button ID="Button1" runat="server" Text="Gravar" OnClick="Button1_Click" OnClientClick="Javascript:return confirm('Confirma o as informações?');" />
+                        <asp:Button ID="Button1" runat="server" Text="Gravar" OnClick="Button1_Click" OnClientClick="Javascript:return confirm('Confirma o as informações?');" Width="100px" />
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="Button2" runat="server" Text="Voltar" PostBackUrl="~/Paginas/CRM1.aspx" />
+                        <asp:Button ID="Button2" runat="server" Text="Voltar" PostBackUrl="~/Paginas/CRM1.aspx" Width="100px" />
                     </td>
                     <td class="auto-style15">&nbsp;</td>
                 </tr>

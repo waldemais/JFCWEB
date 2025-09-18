@@ -130,7 +130,7 @@ namespace JFCWEB
             if (x == null)
             {
                 RBList1.Enabled = false;
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Sem entrega programada, Selecione Cliente Novo!')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Não existe entrega, Selecione Cliente Novo! para cadastrar')", true);
                Btn2.Visible = true;
             }
             else
@@ -158,33 +158,46 @@ namespace JFCWEB
             comm02.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
             comm02.ExecuteNonQuery();
             //*
-            string sql1 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'dom', '12', 'True', 'Sábado', 10, 7)");
+            string sqluf = ("SELECT UF FROM TGFPAR WHERE CODPARC=@CODPARC");
+            SqlCommand comuf = new SqlCommand(sqluf, conn);
+            comuf.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            var uff = comuf.ExecuteScalar();
+
+            //*
+            string sql1 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'dom', '12', 'False', 'Sábado', 16, 7, @UFXX)");
             SqlCommand comm1 = new SqlCommand(sql1, conn);
             comm1.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm1.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm1.ExecuteNonQuery();
-            string sql2 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'seg', '12', 'True', 'Sábado', 10, 7)");
+            string sql2 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'seg', '12', 'True', 'Sexta-Feira', 16, 6, @UFXX)");
             SqlCommand comm2 = new SqlCommand(sql2, conn);
             comm2.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm2.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm2.ExecuteNonQuery();
-            string sql3 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'ter', '12', 'True', 'Segunda-Feira', 10, 2)");
+            string sql3 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'ter', '12', 'True', 'Sábado', 12, 7, @UFXX)");
             SqlCommand comm3 = new SqlCommand(sql3, conn);
             comm3.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm3.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm3.ExecuteNonQuery();
-            string sql4 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'qua', '12', 'True', 'Terça-Feira', 10, 3)");
+            string sql4 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'qua', '12', 'True', 'Segunda-Feira', 16, 2, @UFXX)");
             SqlCommand comm4 = new SqlCommand(sql4, conn);
             comm4.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm4.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm4.ExecuteNonQuery();
-            string sql5 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'qui', '12', 'True', 'Quarta-Feira', 10, 4)");
+            string sql5 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'qui', '12', 'True', 'Terça-Feira', 16, 3, @UFXX)");
             SqlCommand comm5 = new SqlCommand(sql5, conn);
             comm5.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm5.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm5.ExecuteNonQuery();
-            string sql6 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'sex', '12', 'True', 'Quinta-Feira', 10, 5)");
+            string sql6 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'sex', '12', 'True', 'Quarta-Feira', 16, 4, @UFXX)");
             SqlCommand comm6 = new SqlCommand(sql6, conn);
             comm6.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm6.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm6.ExecuteNonQuery();
-            string sql7 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA) VALUES (@CODPARC, 'sáb', '12', 'True', 'Sexta-Feira', 10, 6)");
+            string sql7 = ("INSERT INTO TabProg (CODPARC, DIASEM, TEMPO, ATIVO, LIMDIA, LIMHORA, DIA, UF) VALUES (@CODPARC, 'sáb', '12', 'True', 'Quinta-Feira', 16, 5, @UFXX)");
             SqlCommand comm7 = new SqlCommand(sql7, conn);
             comm7.Parameters.AddWithValue("@CODPARC", TxtBox1.Text);
+            comm7.Parameters.AddWithValue("@UFXX", uff.ToString());
             comm7.ExecuteNonQuery();
             conn.Close();
             Lbl01.Text = " ";

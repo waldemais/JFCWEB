@@ -12,18 +12,12 @@
         .auto-style2 {
             height: 249px;
         }
-        .auto-style3 {
-            text-align: center;
-        }
         .auto-style7 {
             width: 100%;
         }
         .auto-style15 {
             width: 98px;
             height: 23px;
-        }
-        .auto-style23 {
-            width: 935px;
         }
         .auto-style32 {
             text-align: left;
@@ -87,9 +81,6 @@
         .auto-style46 {
             height: 28px;
         }
-        .auto-style47 {
-            color: #FF0000;
-        }
         </style>
 </head>
 <body>
@@ -100,7 +91,7 @@
                 <asp:Label ID="Label18" runat="server" Font-Bold="True" Text="Cadastro de CRM" BackColor="#CCFFCC" Font-Size="Large"></asp:Label>
             </div>
             <br />
-            <h3>Informações e Reclamações</h3>
+            <h3>CADASTRO DE RECLAMAÇÕES</h3>
             <hr />
         </div>
         <div>
@@ -129,8 +120,10 @@
                         <asp:TextBox ID="TBox4" runat="server" Width="150px" Enabled="False">Aberto</asp:TextBox>
                     </td>
                     <td class="auto-style38">
-                        <asp:Label ID="Label22" runat="server" Text="Ocorrência"></asp:Label>
-                        <asp:TextBox ID="TBox" runat="server" Visible="False" Width="54px"></asp:TextBox>                      <asp:RadioButtonList ID="RBList1" runat="server" Height="44px" RepeatDirection="Horizontal" Width="244px" OnSelectedIndexChanged="RBList1_SelectedIndexChanged" BorderStyle="Solid" AutoPostBack="True">
+                        <asp:Label ID="Label22" runat="server" Text="Tipo de Ocorrência"></asp:Label>
+                        <asp:TextBox ID="TBox" runat="server" Visible="False" Width="54px"></asp:TextBox>                      
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="RBList1" Display="Dynamic" ErrorMessage="Selecione Entrega ou Pós Entrega." ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:RadioButtonList ID="RBList1" runat="server" Height="44px" RepeatDirection="Horizontal" Width="244px" OnSelectedIndexChanged="RBList1_SelectedIndexChanged" BorderStyle="Solid" AutoPostBack="True">
                             <asp:ListItem Value="0">Entrega</asp:ListItem>
                             <asp:ListItem Value="1">Pós-Entrega</asp:ListItem>
                         </asp:RadioButtonList>
@@ -141,26 +134,32 @@
                     <td class="auto-style39">
                         <asp:Label ID="Label2" runat="server" Text="Data Abertura"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TBox2" runat="server" BackColor="#CCFFCC" Width="150px" Enabled="False" ReadOnly="True"></asp:TextBox>
+                        <asp:TextBox ID="TBox2" runat="server" BackColor="#CCFFCC" Width="150px" Enabled="False" ReadOnly="True" ValidateRequestMode="Enabled"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label5" runat="server" Text="Nº da Nota"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TBox5" Display="Dynamic" ErrorMessage="N° da Nota deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox5" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                         <br />
-                        <asp:Label ID="Label15" runat="server" Text="Contato"></asp:Label>
+                        <asp:Label ID="Label15" runat="server" Text="Nome do Reclamante" ValidateRequestMode="Enabled"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TBox14" Display="Dynamic" ErrorMessage="O Nome deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox14" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label16" runat="server" Text="Telefone"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TBox15" Display="Dynamic" ErrorMessage="O Telefone deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox15" runat="server" BackColor="#CCFFCC" Width="150px" TextMode="Phone"></asp:TextBox>
                         <br />
-                        <asp:Label ID="Label20" runat="server" Text="Email para enviar resposta!"></asp:Label>
+                        <asp:Label ID="Label20" runat="server" Text="Email para enviar resposta"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TBox17" Display="Dynamic" ErrorMessage="O Email deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TBox17" Display="Dynamic" ErrorMessage="Informe o email corretamente." ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
                         <br />
                         <asp:TextBox ID="TBox17" runat="server" BackColor="#CCFFCC" TextMode="Email" Width="261px"></asp:TextBox>
                     </td>
                     <td class="auto-style40" colspan="2">
                         <asp:Label ID="Label19" runat="server" Text="BK Number"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TBox16" Display="Dynamic" ErrorMessage="O BK Number deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox16" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                         <br />
@@ -176,31 +175,35 @@
                         </asp:DropDownList>
                         <br />
                         <asp:Label ID="Label8" runat="server" Text="Qt.Entregue"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TBox6" Display="Dynamic" ErrorMessage="A Quantidade Entregue deve ser informada." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox6" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                         <br />
-                        <asp:Label ID="Label9" runat="server" Text="Qt. Reclamada"></asp:Label>
+                        <asp:Label ID="Label9" runat="server" Text="Qt. Reclamada" Width="103px"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TBox7" Display="Dynamic" ErrorMessage="A Quantidade Reclamada deve ser informada." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox7" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label10" runat="server" Text="Lote"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TBox8" Display="Dynamic" ErrorMessage="O Lote deve ser informado." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox8" runat="server" BackColor="#CCFFCC" Width="150px"></asp:TextBox>
                     </td>
                     <td class="auto-style41">
                         <asp:Label ID="Label11" runat="server" Text="Dt.Produção"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TBox9" Display="Dynamic" ErrorMessage="A Data de Produção deve ser informada." ForeColor="Red">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:TextBox ID="TBox9" runat="server" BackColor="#CCFFCC" TextMode="Date"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label12" runat="server" Text="Dt.Vencimento"></asp:Label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="TBox10" Display="Dynamic" ErrorMessage="A Data de Vencimento deve ser informada." ForeColor="Red">*</asp:RequiredFieldValidator>
                             <br />
                             <asp:TextBox ID="TBox10" runat="server" BackColor="#CCFFCC" TextMode="Date"></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label21" runat="server" ForeColor="Red" Text="(*)"></asp:Label>
             <asp:Label ID="Label14" runat="server" Text="Anexar Foto"></asp:Label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FileUp" ErrorMessage="Obrigatório Anexar uma foto." ForeColor="Red" Width="16px" Enabled="True" Display="Dynamic">*</asp:RequiredFieldValidator>
                         <br />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FileUp" ErrorMessage="Obrigatótio Anexar uma foto." ForeColor="Red" Width="200px" Enabled="True">(*) Campo Obrigatório</asp:RequiredFieldValidator>
             <asp:FileUpload ID="FileUp" runat="server" BackColor="#CCFFCC" />
                         <br />
                         <br />
@@ -232,12 +235,9 @@
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ForeColor="Red" Height="35px" Enabled="True" ShowSummary="False" />
                 <hr />
             <h3 class="auto-style46">
-                        <span class="auto-style47">(*) </span>
-            <asp:Label ID="Label6" runat="server" Text="Descrição Detalhada do CRM"></asp:Label>
-            &nbsp;</h3>
-        </div>
-        <div>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Informe a descrição detalhada." ForeColor="Red" Width="200px" ControlToValidate="TBox11" Enabled="True">(*)  Preenchimento Obrigatório</asp:RequiredFieldValidator>
+            <asp:Label ID="Label6" runat="server" Text="Descrição Detalhada"></asp:Label>
+            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Informe a descrição detalhada." ForeColor="Red" Width="16px" ControlToValidate="TBox11" Enabled="True" Display="Dynamic">*</asp:RequiredFieldValidator>
+            </h3>
         </div>
         <div class="auto-style2">
             <br />
@@ -246,6 +246,8 @@
             <div>
             </div>
             <asp:Button ID="Bton1" runat="server" BackColor="#CCFFCC" Text="Gravar" Width="114px" OnClick="Bton1_Click" Font-Bold="True" />
+            
+            <asp:Button ID="Button1" runat="server" BackColor="#CCFFCC" CausesValidation="False" EnableTheming="True" Font-Bold="True" PostBackUrl="~/Paginas/Menucrm.aspx" Text="Voltar" Width="114px" />
             
             <br />            <div>
             </div>
@@ -264,10 +266,7 @@
                 <asp:ControlParameter ControlID="TBox12" Name="CGC_CPF" PropertyName="Text" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="RBList1" ErrorMessage="Escolha uma Ocorrência"></asp:RequiredFieldValidator>
             <br />
-            <asp:RequiredFieldValidator runat="server" ErrorMessage="Qtde. Reclamada" ControlToValidate="TBox7"></asp:RequiredFieldValidator>
-            <asp:RequiredFieldValidator runat="server" ErrorMessage="Qte. Entregue" ControlToValidate="TBox6"></asp:RequiredFieldValidator>
             <br />
         </div>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [CODPROD], [DESCRPROD] FROM [VLISTPRO] WHERE ([CGC_CPF] = @CGC_CPF)">

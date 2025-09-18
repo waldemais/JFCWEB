@@ -141,7 +141,7 @@
                             <td class="style5">
                                 </td>
                             <td class="style12">
-                                </td>
+                                &nbsp;</td>
                             <td class="style3">
                                 &nbsp;</td>
                         </tr>
@@ -150,13 +150,13 @@
                                 <asp:Button ID="Button5" runat="server" PostBackUrl="~/Administrador/AdmPedidos.aspx" Text="Pedidos" Width="150px" />
                             </td>
                             <td class="style4">
-                                <asp:Button ID="Button8" runat="server" PostBackUrl="~/Paginas/CRM1.aspx" Text="Consulta CRM" Width="150px" />
+                                <asp:Button ID="Button6" runat="server" PostBackUrl="~/Administrador/ExportaExcel.aspx" Text="Burger King" Width="150px" />
                             </td>
                             <td class="style11">
-                                <asp:Button ID="Button6" runat="server" PostBackUrl="~/Administrador/ExportaExcel.aspx" Text="Planilhas BK" Width="150px" />
+                                <asp:Button ID="Button11" runat="server" PostBackUrl="~/Administrador/ExportaExcelMania .aspx" Text="Mania de Churrasco" Width="150px" />
                             </td>
                             <td class="style6">
-                                <asp:Button ID="Button10" runat="server" PostBackUrl="~/Administrador/ExportaExcelSubway.aspx" Text="Planilha Subway" Width="150px" />
+                                <asp:Button ID="Button10" runat="server" PostBackUrl="~/Administrador/ExportaExcelSubway.aspx" Text="Subway" Width="150px" />
                             </td>
                         </tr>
                         <tr>
@@ -181,12 +181,13 @@
                         </tr>
                         <tr>
                             <td class="style9">
-                                <asp:Button ID="Button7" runat="server" PostBackUrl="~/Administrador/Usuario.aspx" Text="Acessos" Width="150px" />
+                                <asp:Button ID="Button8" runat="server" PostBackUrl="~/Paginas/CRM1.aspx" Text="Consulta CRM" Width="150px" />
                             </td>
                             <td class="style4">
                                 &nbsp;</td>
                             <td class="style13" style="text-align: center">
-                                &nbsp;</td>
+                                <asp:Button ID="Button7" runat="server" PostBackUrl="~/Administrador/Usuario.aspx" Text="Acessos" Width="150px" />
+                            </td>
                             <td class="style8" style="text-align: center">
                                 <asp:Button ID="Button9" runat="server" PostBackUrl="~/Administrador/Ajudaadm.aspx" Text="Ajuda" Width="150px" />
                             </td>

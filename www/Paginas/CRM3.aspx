@@ -11,7 +11,11 @@
             width: 692px;
         }
         .auto-style2 {
-            width: 199px;
+            width: 243px;
+        }
+        .auto-style3 {
+            width: 243px;
+            font-size: large;
         }
     </style>
 </head>
@@ -31,30 +35,29 @@
             <br />
             <table style="width:100%;">
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label2" runat="server" ForeColor="Green" Text="Ocorrências:"></asp:Label>
-                    </td>
+                    <td class="auto-style3">
+                        <strong>Status das Reclamações</strong></td>
                     <td class="auto-style1">
                         &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" ForeColor="Green">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" ForeColor="Green" BorderStyle="Solid">
                             <asp:ListItem Value="1">Entrega</asp:ListItem>
                             <asp:ListItem Value="2">Pós-Entrega</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     <td class="auto-style1">
-                        &nbsp;</td>
-                    <td>
-                        <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Green" NavigateUrl="~/Paginas/Menucrm.aspx">Voltar</asp:HyperLink>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Filtrar" Width="70px" />
+                        <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="Voltar" Width="70px" />
                     </td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Filtrar" />
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style1">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
@@ -62,12 +65,6 @@
             <div>
                 <hr />
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" HorizontalAlign="Center" AllowPaging="True">
             <Columns>
