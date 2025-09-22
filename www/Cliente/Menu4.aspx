@@ -179,7 +179,7 @@
                         <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="CRM" Width="150px" />
             </td>
             <td class="auto-style12" style="text-align: center" align="center">
-                <asp:Button ID="Button4" runat="server" Text="Perfil Cliente" Width="150px" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" />
+                <asp:Button ID="Button4" runat="server" Text="Alterar Senha" Width="150px" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" />
             </td>
         </tr>
         <tr>

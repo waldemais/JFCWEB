@@ -407,21 +407,28 @@ namespace JFCWEB.Paginas
             //*****
                         var dt0 = Grid4.Rows[0].Cells[0].Text;
             var Xteste = (test2-test1);
-           Label1.Text =test1+" - "+hh1+" - "+ dtn.Substring(0,2);
-           Label2.Text =test2 + " - " + hh2 + " - "+dtu + " = "+Xteste;
+          
 
                //**************
           switch (test1)
             {
                 case 7:
-                    hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
+if (dtu!="RJ")
+                    {
+hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
+
+                    }
+                    
                     break;
 
             }
+ Label1.Text =test1+" - "+hh1+" - "+ dtn.Substring(0,2);
+           Label2.Text =test2 + " - " + hh2 + " - "+dtu + " = "+Xteste;
+
            if (test1 == test2 && hh1 > hh2)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert("+dt1+")", true);
-                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA=@ENTREGA");
+               // ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert("+dt1+")", true);
+                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                 SqlCommand comm1 = new SqlCommand(Ped1, conn);
                 comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                 comm1.Parameters.AddWithValue("@ENTREGA", dt0);
@@ -452,14 +459,14 @@ namespace JFCWEB.Paginas
                        
             if (test1 > test2 && hh1 > hh2 && test1==7)
             {
-               var dtx0 = Grid4.Rows[0].Cells[0].Text;
+               var dtx0 = Grid4.Rows[1].Cells[0].Text;
             // var dtxx0 = DateTime.Parse(dtx0).AddDays(-2) ;
                 string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                 SqlCommand comm1 = new SqlCommand(Ped1, conn);
                 comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                 comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
-               // comm1.ExecuteNonQuery();
-                Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
+                comm1.ExecuteNonQuery();
+                Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
             }
             if (test1 > test2 && hh1 < hh2 && test1 == 7)
             {
@@ -509,12 +516,13 @@ namespace JFCWEB.Paginas
             if (test1 < test2 & dt1=="domingo" & dtd=="seg")
             {
                 var dtx0 = Grid4.Rows[1].Cells[0].Text;
-                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
+                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                 SqlCommand comm1 = new SqlCommand(Ped1, conn);
                 comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                 comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
                 comm1.ExecuteNonQuery();
-                Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0 + ".";
+                Label5.Text = "DOMINGO NÃOtÉ POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0 + ".";
+                //alterado em 22/09 para atender 55532080000118
             }
             conn.Close();
         }
@@ -598,9 +606,5 @@ namespace JFCWEB.Paginas
             }
         }
 
-        protected void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+          }
 }

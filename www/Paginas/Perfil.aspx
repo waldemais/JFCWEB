@@ -97,8 +97,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label8" runat="server" Text="Repetir Senha" Width="130px"></asp:Label>
                 <br />
-                <asp:TextBox ID="TxtBx5" runat="server" Width="130px" AutoPostBack="True" 
-                    ontextchanged="TxtBx5_TextChanged" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="TxtBx5" runat="server" Width="130px" TextMode="Password"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TxtBx6" runat="server" Width="130px" TextMode="Password"></asp:TextBox>
 &nbsp;
@@ -108,7 +107,7 @@
             <td>
                 <br />
                 <br />
-                <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Confirmar" 
+                <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Alterar" 
                     
                     style="color: #009933; background-color: #FFFFFF; font-size: medium; font-weight: 700;" 
                     Width="85px" CssClass="auto-style7" />

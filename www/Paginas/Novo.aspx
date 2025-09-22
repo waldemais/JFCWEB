@@ -168,13 +168,13 @@
         }
         .auto-style29 {
             text-align: left;
-            width: 98px;
+            width: 165px;
         }
          .auto-style30 {
             font-size: large;
         }
          .auto-style31 {
-            width: 139px;
+            width: 111px;
             text-align: left;
         }
          </style>
@@ -192,7 +192,7 @@
                 <tr>
                     <td class="auto-style28">
                         <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/grupo.png" 
-                            Width="30px" Height="28px" />
+                            Width="44px" Height="43px" />
                     </td>
                     <td class="auto-style31">
                         &nbsp;</td>
@@ -200,7 +200,7 @@
                         &nbsp;</td>
                     <td class="auto-style27">
                         <strong>
-                        <asp:Label ID="Label6" runat="server" Text="Novo Pedido" Enabled="False" BorderStyle="None" CssClass="auto-style15" Height="30px" Width="200px" Font-Bold="True" Font-Italic="False"></asp:Label>
+                        <asp:Label ID="Label6" runat="server" Text="Emissão de Pedido" Enabled="False" BorderStyle="None" CssClass="auto-style15" Height="30px" Width="269px" Font-Bold="True" Font-Italic="False" ForeColor="White"></asp:Label>
                         </strong>
                     </td>
                     <td class="auto-style1">
@@ -247,7 +247,15 @@
                 </tr>
                 <tr>
                     <td class="auto-style21">
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT CODPARC, DIASEM, ATIVO, LIMDIA, LIMHORA, IDSEM FROM TabProg WHERE (CODPARC = @CODPARC) AND (ATIVO = 1) ORDER BY IDSEM">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="Lab10" Name="CODPARC" PropertyName="Text" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <br />
+                <asp:Label ID="Label5" runat="server" 
+                    
+                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00;" CssClass="auto-style26" Font-Size="Small"></asp:Label>
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
@@ -270,16 +278,47 @@
                         &nbsp;</td>
                 </tr>
                 <tr>
+                    <td class="auto-style21">
+                        <br />
+                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana"></asp:Label>
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource5" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White" />
+                            <Columns>
+                                <asp:BoundField DataField="CODPARC" HeaderText="CODPARC" SortExpression="CODPARC" Visible="False" />
+                                <asp:BoundField DataField="DIASEM" HeaderText="Dias Entrega" SortExpression="DIASEM" />
+                                <asp:BoundField DataField="LIMDIA" HeaderText="Dias Limite" SortExpression="LIMDIA" />
+                                <asp:CheckBoxField DataField="ATIVO" HeaderText="ATIVO" SortExpression="ATIVO" Visible="False" />
+                                <asp:BoundField DataField="LIMHORA" HeaderText="H.Limite" SortExpression="LIMHORA">
+                                <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                            </Columns>
+                            <EditRowStyle BackColor="#7C6F57" />
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#E3EAEB" />
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                            <SortedAscendingHeaderStyle BackColor="#246B61" />
+                            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                            <SortedDescendingHeaderStyle BackColor="#15524A" />
+                        </asp:GridView>
+                    </td>
+                    <td class="style9">
+                        &nbsp;</td>
+                    <td class="style13" style="text-align: right">
+                        &nbsp;</td>
+                    <td class="style13" style="text-align: right">
+                        &nbsp;</td>
+                </tr>
+                <tr>
                     <td class="auto-style9">
                 <strong> <asp:Label ID="Label1" runat="server"
-                        Style="text-align: left; color: #006600; background-color: #FFFFFF;"></asp:Label>
+                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
                 </strong>
                     </td>
                     <td class="auto-style19">
-                <asp:Label ID="Label5" runat="server" 
-                    
-                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700;" CssClass="auto-style26" Font-Size="Small"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style10" style="text-align: right">
                         </td>
                     <td class="auto-style10" style="text-align: right">
@@ -287,7 +326,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style22">
-                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
                     </td>
                     <td class="auto-style24">
                         <br />
