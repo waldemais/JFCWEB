@@ -173,7 +173,7 @@
                 <asp:Button ID="Button1" runat="server" EnableTheming="False" Text="Novo Pedido" Width="150px" OnClick="Button1_Click" />
             </td>
             <td class="auto-style9" align="center">
-                <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/MenuPedidos.aspx" Text="Consultar Pedidos" Width="150px" />
+                <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/ConsultaPedido.aspx" Text="Consultar Pedidos" Width="150px" />
             </td>
             <td class="auto-style11" align="center">
                         <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="CRM" Width="150px" />
