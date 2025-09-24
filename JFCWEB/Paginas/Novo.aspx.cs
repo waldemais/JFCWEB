@@ -439,22 +439,24 @@ hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
               if (test1 > test2 && hh1>hh2) 
             {
                 var dtx0 = Grid4.Rows[1].Cells[0].Text;
-                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
+                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
               SqlCommand comm1 = new SqlCommand(Ped1, conn);
               comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
               comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
               comm1.ExecuteNonQuery();
                  Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0 ;
                          }
-                        
+                        //***acertado em 19/09 CL005246
+
             if (test1 < test2 && Xteste > 2)
-            {   var dtx0 = Grid4.Rows[0].Cells[0].Text;
+            {   var dtx0 = Grid4.Rows[1].Cells[0].Text;
                 string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                 SqlCommand comm1 = new SqlCommand(Ped1, conn);
                 comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                 comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
                 comm1.ExecuteNonQuery();
-                Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
+                Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                //alterado em 22/09/2025
             }
                        
             if (test1 > test2 && hh1 > hh2 && test1==7)
@@ -501,15 +503,15 @@ hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
             }
 
             // ******************
-           // if (test1 < test2 && Xteste==1)
-           if (test1<test2 && hh1>hh2)
+           // if (test1 < test2 )
+           if (test1<test2 && hh1>hh2 && Xteste==1)
             {
-                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
+                string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                 SqlCommand comm1 = new SqlCommand(Ped1, conn);
                 comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                 comm1.Parameters.AddWithValue("@ENTREGA", dt0.ToString());
                 comm1.ExecuteNonQuery();
-              Label5.Text = "NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0 + ".";
+              Label5.Text = "2 NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0 + ".";
             }
            
 

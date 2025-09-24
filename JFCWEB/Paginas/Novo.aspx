@@ -305,7 +305,12 @@
                         </asp:GridView>
                     </td>
                     <td class="style9">
-                        &nbsp;</td>
+                <strong> <asp:Label ID="Label1" runat="server"
+                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
+                        <br />
+                </strong>
+                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
+                    </td>
                     <td class="style13" style="text-align: right">
                         &nbsp;</td>
                     <td class="style13" style="text-align: right">
@@ -313,27 +318,12 @@
                 </tr>
                 <tr>
                     <td class="auto-style9">
-                <strong> <asp:Label ID="Label1" runat="server"
-                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
-                </strong>
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style19">
                         &nbsp;</td>
                     <td class="auto-style10" style="text-align: right">
                         </td>
                     <td class="auto-style10" style="text-align: right">
-                        </td>
-                </tr>
-                <tr>
-                    <td class="auto-style22">
-                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
-                    </td>
-                    <td class="auto-style24">
-                        <br />
-                    </td>
-                    <td class="auto-style25" style="text-align: right">
-                        </td>
-                    <td class="auto-style25" style="text-align: right">
                         </td>
                 </tr>
                 <tr>
@@ -354,16 +344,6 @@
                         </Columns>
                     </asp:GridView>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style20">
-                        &nbsp;</td>
-                    <td class="style9">
-                        &nbsp;</td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="style9" colspan="4">
