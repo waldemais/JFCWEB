@@ -89,7 +89,9 @@
                             <td class="auto-style8" colspan="4">
                                 <table style="width:100%;">
                                     <tr>
-                                        <td class="auto-style9">&nbsp;</td>
+                                        <td class="auto-style9">
+                                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logos_JFC.jpg" Width="100px" />
+                                        </td>
                                         <td>Menu Principal<br />
                                         </td>
                                         <td class="auto-style10">
@@ -186,7 +188,7 @@
                             <td class="style4">
                                 &nbsp;</td>
                             <td class="style13" style="text-align: center">
-                                <asp:Button ID="Button7" runat="server" PostBackUrl="~/Administrador/Usuario.aspx" Text="Acessos" Width="150px" />
+                                <asp:Button ID="Button7" runat="server" PostBackUrl="~/Administrador/Usuario.aspx" Text="Troca de Senha" Width="150px" />
                             </td>
                             <td class="style8" style="text-align: center">
                                 <asp:Button ID="Button9" runat="server" PostBackUrl="~/Administrador/Ajudaadm.aspx" Text="Ajuda" Width="150px" />

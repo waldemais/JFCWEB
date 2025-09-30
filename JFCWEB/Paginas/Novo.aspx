@@ -255,7 +255,7 @@
                         <br />
                 <asp:Label ID="Label5" runat="server" 
                     
-                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00;" CssClass="auto-style26" Font-Size="Small"></asp:Label>
+                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00; font-size: medium;" CssClass="auto-style26" Font-Size="Small" Font-Bold="True" Font-Italic="False"></asp:Label>
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
@@ -280,7 +280,7 @@
                 <tr>
                     <td class="auto-style21">
                         <br />
-                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana"></asp:Label>
+                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana" style="text-decoration: underline"></asp:Label>
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource5" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
@@ -306,10 +306,10 @@
                     </td>
                     <td class="style9">
                 <strong> <asp:Label ID="Label1" runat="server"
-                        Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
+                        Style="text-align: left; color: #006600; background-color: #FFFFFF;"></asp:Label>
                         <br />
                 </strong>
-                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;"></asp:Label>
                     </td>
                     <td class="style13" style="text-align: right">
                         &nbsp;</td>

@@ -91,7 +91,7 @@
                 <asp:Label ID="Label18" runat="server" Font-Bold="True" Text="Cadastro de CRM" BackColor="#CCFFCC" Font-Size="Large"></asp:Label>
             </div>
             <br />
-            <h3>CADASTRO DE RECLAMAÇÕES</h3>
+            <h3>CADASTRO DE OCORRÊNCIAS</h3>
             <hr />
         </div>
         <div>

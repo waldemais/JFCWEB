@@ -41,6 +41,7 @@
             width: 438px;
             color: #006600;
             font-size: medium;
+            height: 26px;
         }
         .auto-style6 {
             width: 438px;
@@ -51,11 +52,15 @@
             width: 199px;
             color: #006600;
             font-size: medium;
+            height: 26px;
         }
         .auto-style8 {
             width: 199px;
             color: #006600;
             font-size: large;
+        }
+        .auto-style9 {
+            height: 26px;
         }
     </style>
 </head>
@@ -66,13 +71,16 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style2" style="background-color: #77A364">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logos _JFC.jpg" 
-                        Width="35px" Height="40px" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/_Logos _JFC-01.jpg" 
+                        Width="50px" Height="40px" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="Button1" runat="server" CssClass="auto-style3" PostBackUrl="~/Paginas/MenuPedidos.aspx" Text="Menu Pedidos" />
-                </td>
-                <td class="auto-style4" style="background-color: #77A364">
-                    &nbsp;</td>
+                    </td>
+                <td class="auto-style4" style="background-color: #77A364; text-align: center;">
+                    <h2 class="titulo-pagina" 
+                        style="color: rgb(255, 255, 255); font-weight: 100; font-size: 2em; margin: 5px 0px; float: left; font-family: Raleway, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; width: 433px;">
+                        Meus
+                        Pedidos</h2>
+                    </td>
                 <td style="background-color: #77A364;" class="auto-style1">
                     <asp:ImageButton ID="ImageButton1" runat="server" 
                         ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="35px" Height="40px" ImageAlign="Right" />
@@ -80,16 +88,13 @@
             </tr>
             <tr>
                 <td class="auto-style7">
-                    <h2 class="titulo-pagina" 
-                        style="color: rgb(63, 137, 40); font-weight: 100; font-size: 2em; margin: 5px 0px; float: left; font-family: Raleway, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
-                        Meus
-                        Pedidos</h2>
                     <asp:TextBox ID="TBo1" runat="server" Visible="False"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" CssClass="auto-style3" PostBackUrl="~/Cliente/Menu4.aspx" Text="Menu Principal" />
                 </td>
                 <td class="auto-style5">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
+                    </td>
+                <td class="auto-style9">
+                    </td>
             </tr>
             <tr>
                 <td class="auto-style8">

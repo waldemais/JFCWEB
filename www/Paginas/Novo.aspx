@@ -255,7 +255,7 @@
                         <br />
                 <asp:Label ID="Label5" runat="server" 
                     
-                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00;" CssClass="auto-style26" Font-Size="Small"></asp:Label>
+                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00; font-size: medium;" CssClass="auto-style26" Font-Size="Small" Font-Bold="True" Font-Italic="False"></asp:Label>
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
@@ -280,7 +280,7 @@
                 <tr>
                     <td class="auto-style21">
                         <br />
-                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana"></asp:Label>
+                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana" style="text-decoration: underline"></asp:Label>
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource5" ForeColor="#333333" GridLines="None">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
@@ -327,17 +327,6 @@
                         </td>
                 </tr>
                 <tr>
-                    <td class="auto-style22">
-                        &nbsp;</td>
-                    <td class="auto-style24">
-                        <br />
-                    </td>
-                    <td class="auto-style25" style="text-align: right">
-                        </td>
-                    <td class="auto-style25" style="text-align: right">
-                        </td>
-                </tr>
-                <tr>
                     <td class="style9" colspan="4">
                 <asp:GridView ID="GrdView1" runat="server" AutoGenerateColumns="False" 
                         DataSourceID="SqlDataSource1" BorderStyle="None" ShowHeader="False" 
@@ -355,16 +344,6 @@
                         </Columns>
                     </asp:GridView>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style20">
-                        &nbsp;</td>
-                    <td class="style9">
-                        &nbsp;</td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="style9" colspan="4">

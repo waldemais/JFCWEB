@@ -89,6 +89,7 @@
             <tr>
                 <td class="auto-style7">
                     <asp:TextBox ID="TBo1" runat="server" Visible="False"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" CssClass="auto-style3" PostBackUrl="~/Cliente/Menu4.aspx" Text="Menu Principal" />
                 </td>
                 <td class="auto-style5">
                     </td>
@@ -97,8 +98,7 @@
             </tr>
             <tr>
                 <td class="auto-style8">
-                    <asp:Button ID="Button1" runat="server" CssClass="auto-style3" PostBackUrl="~/Paginas/MenuPedidos.aspx" Text="Menu Principal" />
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style6">
                     &nbsp;</td>
                 <td>
