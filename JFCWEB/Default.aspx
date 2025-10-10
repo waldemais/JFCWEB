@@ -203,7 +203,7 @@
                     <asp:Label ID="Lb1" runat="server" Font-Names="Verdana" Font-Size="Medium" 
                         style="text-align: center; color: #006600;" Font-Bold="True" ForeColor="#FF3300"></asp:Label>
                                 <br />
-                                Versão 1.0408.25</td>
+                                Versão 1.061025.1705</td>
                             <td class="auto-style30"></td>
                         </tr>
                     </table>

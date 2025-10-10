@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="JFCWEB.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Login</title>
+
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" media="screen" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" EnableViewState="False">
+    </asp:ContentPlaceHolder>
+    <style type="text/css" rel="stylesheet" href="Content/bootstrap.css">
+        .menu
+        {
+            background-color: #669999;
+        }
+        .menu
+        {
+            background-color: #000099;
+        }
+        .menu
+        {
+            background-color: #99FF99;
+        }
+        .menu
+        {
+            background-color: #FFFF99;
+        }
+        .auto-style4 {
+            padding: 0px 12px;
+            margin: 12px 8px 8px 8px;
+            min-height: 420px;
+            height: 10px;
+        }
+        .auto-style5 {
+            height: 40px;
+            margin-bottom: 0px;
+        }
+        </style>
+</head>
+<script src="Scripts/jquery-1.9.1.min.js"></script> 
+<script src="Scripts/bootstrap.min.js"></script> 
+<body>
+    <form runat="server" class="auto-style5">
+    <div class="page">
+        <div class="auto-style4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        
+        </div>
+    </div>
+    </form>
+</body>
+</html>

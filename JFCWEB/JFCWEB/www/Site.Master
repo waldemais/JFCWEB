@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="JFCWEB.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Pedidos</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .menu
+        {
+            background-color: #669999;
+        }
+        .menu
+        {
+            background-color: #000099;
+        }
+        .menu
+        {
+            background-color: #99FF99;
+        }
+        .menu
+        {
+            background-color: #FFFF99;
+        }
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            color: #006600;
+        }
+        </style>
+</head>
+<body style="height: 93px" background="Imagem/fundo2.jpg" alink="#33cc33">
+    <form runat="server" style="height: 448px; margin-bottom: 45px;">
+    <div class="page">
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <p>
+                    <asp:ImageButton ID="ImageButton1" runat="server" Height="63px" 
+                        ImageAlign="Left" ImageUrl="~/Imagem/boneco.png" PostBackUrl="~/Default.aspx" 
+                        Width="60px" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logos _JFC.jpg" 
+                        Width="75px" ImageAlign="Middle" style="text-align: left" />
+                </p>
+            </asp:ContentPlaceHolder>
+        
+                    <h4 class="auto-style2">&nbsp;</h4>
+        </div>
+    </div>
+    <div class="footer">
+        
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1" style="color: #008000">
+        
+                    Copyright @ 2021 | Informática Grupo Campanha |<br />
+                    V.1.0.03 - 09/12/2021</td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

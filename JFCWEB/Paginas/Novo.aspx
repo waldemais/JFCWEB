@@ -118,12 +118,6 @@
             background-color: #FFFFFF;
             height: 25px;
         }
-        .auto-style20 {
-            text-align: center;
-            background-color: #FFFFFF;
-            font-style: italic;
-            width: 544px;
-        }
         .auto-style21 {
             text-align: left;
             background-color: #FFFFFF;
@@ -138,24 +132,7 @@
       left:45%;
       color:blue;
         }
-         .auto-style22 {
-            text-align: left;
-            background-color: #FFFFFF;
-            font-style: italic;
-            width: 544px;
-            height: 24px;
-        }
-        .auto-style24 {
-            text-align: left;
-            background-color: #FFFFFF;
-            font-style: italic;
-            height: 24px;
-        }
-         .auto-style25 {
-            background-color: #FFFFFF;
-            height: 24px;
-        }
-        .auto-style26 {
+         .auto-style26 {
             font-size: small;
             color: #FF0000;
         }
@@ -255,7 +232,7 @@
                         <br />
                 <asp:Label ID="Label5" runat="server" 
                     
-                    style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; background-color: #00FF00; font-size: medium;" CssClass="auto-style26" Font-Size="Small" Font-Bold="True" Font-Italic="False"></asp:Label>
+                    style="font-family: Arial, Helvetica, sans-serif; background-color: #00FF00; font-size: medium;" CssClass="auto-style26" Font-Size="Small" Font-Bold="False" Font-Italic="False" Visible="False"></asp:Label>
                     </td>
                     <td class="style9">
                         <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
@@ -308,6 +285,7 @@
                 <strong> <asp:Label ID="Label1" runat="server"
                         Style="text-align: left; color: #006600; background-color: #FFFFFF;" Visible="False"></asp:Label>
                         <br />
+                &nbsp;
                 </strong>
                         <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
                     </td>
