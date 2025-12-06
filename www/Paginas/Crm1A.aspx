@@ -60,7 +60,7 @@
                     <SortedDescendingCellStyle BackColor="#D4DFE1" />
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [Id], [Dtatual], [Numnota], [Status], [Nomeaprov], [Emailaprov], [Qreclamada], [Qautoriz], [Obser] FROM [CRM1] WHERE ([Id] = @Id)">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [Id], [Dtatual], [Numnota], [Status], [Nomeaprov], [Emailaprov], [Qreclamada], [Qautoriz], [Obser] FROM [CRM1] WHERE ([Id] = @Id)">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="TextBox1" Name="Id" PropertyName="Text" Type="Int32" />
                     </SelectParameters>
@@ -70,7 +70,7 @@
         <div>
             <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" BorderWidth="1px">
                 <br />
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT [Qautoriz], [Nomeaprov], [Emailaprov], [Obser], [Produto], [Ocorrencia] FROM [CRM1] WHERE ([Id] = @Id)">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [Qautoriz], [Nomeaprov], [Emailaprov], [Obser], [Produto], [Ocorrencia] FROM [CRM1] WHERE ([Id] = @Id)">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="GridView1" Name="Id" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>

@@ -23,8 +23,7 @@ namespace JFCWEB
             Session["cgc"] = nomecgc;
             string senhausu = TBox2.Text;
             Session["serial"] = senhausu;
-         // strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string sql = "SELECT * FROM TBLogin WHERE CNPJ=@cnpj AND SENHA=@senha";
@@ -42,7 +41,9 @@ namespace JFCWEB
             var resultado = commsql.ExecuteScalar();
             var resnivel = commsqlx.ExecuteScalar();
             var resativo = commsqly.ExecuteScalar();
+            
             conn.Close();
+
            if (resativo is false)
             {
                 Lb1.Text = ("Entrar em contato com o Comercial.");
@@ -68,8 +69,8 @@ namespace JFCWEB
                             Response.Redirect("Usuario/Menu3.aspx");
                             break;
                         case "Cliente":
-                      Response.Redirect("Cliente/Menu4.aspx");
-                   // Response.Redirect("Cliente/Popup.aspx");
+                 Response.Redirect("Cliente/Menu4.aspx");
+                  //Response.Redirect("Cliente/Popup.aspx");
                             break;
                         case "Zamp":
                             Response.Redirect("Zamp/ZampCrm1.aspx");
@@ -93,6 +94,11 @@ namespace JFCWEB
         public SqlConnection conn { get; set; }
 
         protected void TBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

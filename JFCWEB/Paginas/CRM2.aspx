@@ -189,7 +189,7 @@
                 <asp:BoundField DataField="Tel" HeaderText="Tel" SortExpression="Tel" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT * FROM [CRM1] WHERE ([Id] = @Id)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT * FROM [CRM1] WHERE ([Id] = @Id)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TB1" Name="Id" PropertyName="Text" Type="Int32" />
             </SelectParameters>

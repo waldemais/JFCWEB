@@ -28,7 +28,7 @@ namespace JFCWEB.Paginas
         {
             string Box2;
             Box2 = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             byte[] imageBytes = new byte[FileUp.PostedFile.InputStream.Length + 1];
             FileUp.PostedFile.InputStream.Read(imageBytes, 0, imageBytes.Length);

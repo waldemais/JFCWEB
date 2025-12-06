@@ -72,9 +72,10 @@
             margin-left: 40px;
         }
         .auto-style9 {
-            width: 121px;
-            height: 32px;
+            width: 88px;
+            height: 24px;
             margin-left: 0px;
+            margin-top: 0px;
         }
         .auto-style10 {
             text-align: center;
@@ -107,12 +108,25 @@
         .auto-style33 {
             width: 100%;
             height: 95%;
+            margin-left: 0px;
         }
         .auto-style34 {
             height: 24px;
         }
         .auto-style35 {
             height: 29px;
+        }
+        .auto-style36 {
+            height: 25px;
+            text-align: center;
+            font-weight: normal;
+            color: #000000;
+        }
+        .auto-style37 {
+            width: 422px;
+        }
+        .auto-style38 {
+            height: 34px;
         }
         </style>
 </asp:Content>
@@ -123,43 +137,52 @@
                 <td class="auto-style10" style="border-color: #006600; border-style: double; width: 50%;">
                     <table align="right" class="auto-style33">
                         <tr>
-                            <td class="auto-style32">
-                    <img alt="" src="Imagem/grupo.png" height="90" width="100" /><br />
-                                <asp:Label ID="Label6" runat="server" Enabled="False" Font-Size="X-Large" Text="PORTAL DE PEDIDOS"></asp:Label>
+                            <td class="auto-style37" rowspan="10">
+                    <img alt="" src="Imagem/grupo.png" style="height: 49px; width: 72px" /><br />
+                                <asp:TextBox ID="TextBox2" runat="server" Height="367px" OnTextChanged="TextBox2_TextChanged" TextMode="MultiLine" Width="393px" Font-Bold="True" Font-Size="Large" ForeColor="#000099">O SITE ESTA LIBERADO PARA PEDIDOS.
+
+ABAIXO ESTÃO OS CONTATOS PARA DÚVIDAS:
+
+Clientes de São Paulo
+Josy - 11 91137-7683
+Camila - 11 97489-1012
+Larissa - 21 99941-3076
+
+Clientes do Rio de Janeiro
+Duane - 21 97367-0250
+Sabrine - 21 97366-9509</asp:TextBox>
+                                <br />
                                 <br />
                             </td>
-                            <td class="auto-style32"></td>
+                            <td class="auto-style32">
+                                <br />
+                                <asp:Label ID="Label6" runat="server" Enabled="False" Font-Size="X-Large" Text="PORTAL DE PEDIDOS" ForeColor="#006600"></asp:Label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style34">
                                 <hr />
                             </td>
-                            <td class="auto-style34"></td>
                         </tr>
                         <tr>
                             <td class="auto-style30">
-                                <asp:Label ID="Label4" runat="server" Text="CNPJ"></asp:Label>
-                            </td>
-                            <td class="auto-style30"></td>
+                                &nbsp;</td>
                         </tr>
                         <tr>
-                            <td><asp:TextBox ID="TBox1" 
+                            <td class="auto-style38">
+                                <asp:Label ID="Label4" runat="server" Text="CNPJ"></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TBox1" 
                         runat="server" style="font-family: Calibri; font-size: medium" 
                         Font-Names="Verdana" Font-Size="Medium" Font-Strikeout="False" 
                         ForeColor="#003300" Width="150px" CssClass="auto-style12"></asp:TextBox>
                                 <ajaxToolkit:MaskedEditExtender ID="TBox1_MaskedEditExtender" runat="server" BehaviorID="TBox1_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" InputDirection="RightToLeft" Mask="99,999,999/9999-99" TargetControlID="TBox1">
                                 </ajaxToolkit:MaskedEditExtender>
                             </td>
-                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style30">
                                 <asp:Label ID="Label5" runat="server" Text="SENHA"></asp:Label>
-                            </td>
-                            <td class="auto-style30"></td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style35">
+                            &nbsp;
                     <span class="style15">
                     <asp:TextBox ID="TBox2" runat="server" 
                         style="font-family: Calibri; font-size: medium" TextMode="Password" 
@@ -167,17 +190,22 @@
                         ForeColor="#003300" Width="150px"></asp:TextBox>
                     </span>
                             </td>
-                            <td class="auto-style35"></td>
                         </tr>
                         <tr>
-                            <td><span class="style15">
-                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/system-lock-screen.png" Width="40px" />
-                    <IMG alt="" src="Captcha.aspx" class="auto-style9" width="150"></span></td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style25">
+                            <td class="auto-style35">
                                 <span class="style15">
+       
+                  
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/system-lock-screen.png" Width="28px" Height="31px" />
+                    &nbsp;&nbsp;
+                    <IMG alt="" src="Captcha.aspx" class="auto-style9">&nbsp;
+       
+                  
+                    </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="style15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        
                   
                     <asp:TextBox ID="TextBox1" runat="server" With="100px" Height="25px" 
@@ -187,24 +215,27 @@
                   
                     </span>
                             </td>
-                            <td class="auto-style25"></td>
                         </tr>
                         <tr>
-                            <td class="auto-style26">
+                            <td class="auto-style25">
+                  
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   
                         <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Entrar" 
                         Height="36px" Width="150px" BackColor="#006600" Font-Size="Large" 
                         ForeColor="White" Font-Bold="True" />
                             </td>
-                            <td class="auto-style26"></td>
                         </tr>
                         <tr>
-                            <td class="auto-style30">
+                            <td class="auto-style26">
+                  
                     <asp:Label ID="Lb1" runat="server" Font-Names="Verdana" Font-Size="Medium" 
                         style="text-align: center; color: #006600;" Font-Bold="True" ForeColor="#FF3300"></asp:Label>
-                                <br />
-                                Versão 1.061025.1705</td>
-                            <td class="auto-style30"></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style36">
+                                Versão 1.241025.1450</td>
                         </tr>
                     </table>
                 </td>

@@ -513,7 +513,7 @@
     </div>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         InsertCommand="INSERT INTO ITENS_PEDIDO(pedidoID, CODPROD, CODPARC) SELECT pedidoID, CODPROD, CODPARC FROM ITENS WHERE (pedidoID = @PEDIDOID)" 
         
         
@@ -533,7 +533,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         
         
@@ -568,7 +568,7 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         
         
@@ -591,7 +591,7 @@
     </asp:SqlDataSource>
     
                             <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                                ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                                 
                                 
                                 
@@ -603,7 +603,7 @@
                                 </SelectParameters>
                             </asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                                ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                                 
                                 
                                 SelectCommand="SELECT [DTENTREGA], [pedidoID] FROM [ENTREGA] WHERE ([CGC_CPF] = @CGC_CPF)">

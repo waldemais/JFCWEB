@@ -135,13 +135,13 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'ABERTO')">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'ABERTO')">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                             <asp:ControlParameter ControlID="TextB1" DbType="Date" Name="DTENTREGA" PropertyName="Text" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT pedidoID, DTENTREGA, DTEMISSAO FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'FECHADO')">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTENTREGA, DTEMISSAO FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'FECHADO')">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="TextB1" Name="DTENTREGA" PropertyName="Text" />
@@ -167,7 +167,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'CANCELADO')">
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'CANCELADO')">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                             <asp:ControlParameter ControlID="TextB1" DbType="Date" Name="DTENTREGA" PropertyName="Text" />

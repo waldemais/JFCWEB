@@ -24,8 +24,8 @@ namespace JFCWEB.Administrador
         }
         private void BindGrid()
         {
-           // string strConnstring = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;Integrated Security=False;Pooling=False;User ID=jfcverduras;Password=jfc102030";
-              string strConnstring = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+           // string strConnstring = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Integrated Security=False;Pooling=False;User ID=jfcverduras;Password=Campanha#2025";
+              string strConnstring = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             using (SqlConnection con = new SqlConnection(strConnstring))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM VPrograma"))

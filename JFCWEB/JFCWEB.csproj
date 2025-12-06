@@ -20,8 +20,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UseIISExpress>false</UseIISExpress>
-    <Use64BitIISExpress />
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>
     </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
@@ -180,6 +180,7 @@
     <Content Include="Administrador\AjudaProdParc.aspx" />
     <Content Include="Administrador\AjudaProduto.aspx" />
     <Content Include="Administrador\AjudaVerPedidos.aspx" />
+    <Content Include="Administrador\ExportaExcelBobs.aspx" />
     <Content Include="Administrador\ExportaExcelMania .aspx" />
     <Content Include="Administrador\ExportaExcel.aspx" />
     <Content Include="Administrador\ExportaExcelSubway.aspx" />
@@ -208,13 +209,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Fotos\fundo.jpg" />
     <Content Include="Gestor\Menu2.aspx" />
     <Content Include="Imagem\Ajuda01.jpg" />
     <Content Include="Imagem\AjudaColab.jpg" />
     <Content Include="Imagem\AjudaLpedidos.jpg" />
     <Content Include="Imagem\AjudaPrevia.jpg" />
     <Content Include="Imagem\boneco.png" />
+    <Content Include="Imagem\Captura de tela 2025-11-25 164909.png" />
+    <Content Include="Imagem\Natal-2025.gif" />
     <Content Include="Imagem\crm.png" />
     <Content Include="Imagem\Decoração.jpg" />
     <Content Include="Imagem\Exportar.png" />
@@ -506,6 +508,13 @@
     </Compile>
     <Compile Include="Administrador\AjudaVerPedidos.aspx.designer.cs">
       <DependentUpon>AjudaVerPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelBobs.aspx.cs">
+      <DependentUpon>ExportaExcelBobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelBobs.aspx.designer.cs">
+      <DependentUpon>ExportaExcelBobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\ExportaExcelMania .aspx.cs">
       <DependentUpon>ExportaExcelMania .aspx</DependentUpon>
@@ -806,6 +815,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Fotos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImagemHandler.ashx" />
@@ -877,11 +887,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52027</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/JFCWEB</IISUrl>
+          <IISUrl>http://localhost:52027/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

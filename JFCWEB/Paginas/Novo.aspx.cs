@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -58,12 +59,14 @@ namespace JFCWEB.Paginas
                 {
                 string CGC_CPF = " ";
                 CGC_CPF = TxtBox1.Text;
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
+                
                 string dte = DpLi1.SelectedItem.Value.ToString();
                 string data = ("SELECT COUNT(*) AS PED FROM PEDIDO WHERE (CGC_CPF=@CGC_CPF) AND (DTENTREGA=@dte) AND STATUS <> 'CANCELADO'");
                 SqlCommand commdt = new SqlCommand(data, conn);
+                commdt.CommandTimeout = 10;
                 commdt.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
                 commdt.Parameters.AddWithValue("@dte", dte);
                 int Ped = (int)commdt.ExecuteScalar();
@@ -81,6 +84,7 @@ namespace JFCWEB.Paginas
                     string Cod = GrdView1.Rows[0].Cells[3].Text;
                     string sql = ("INSERT INTO PEDIDO (CGC_CPF, CODPARC, UF) VALUES (@CGC_CPF, @CODPAR, @UF)");
                 SqlCommand comm = new SqlCommand(sql, conn);
+                    comm.CommandTimeout = 10;
                 comm.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
                 comm.Parameters.AddWithValue("@UF", UFf.ToString());
                 comm.Parameters.AddWithValue("@CODPAR", Cod.ToString());
@@ -134,7 +138,7 @@ namespace JFCWEB.Paginas
             string dia1, dia2, dia3, dia4, dia5, dia6, dia7, dia8, dia9, dia10, dia11, dia12, dia13, dia14, dia15;
             TxtBox1.Text = Session["cgc"].ToString();
             TxtBox2.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-            //
+            
             data1 = DateTime.Now.AddDays(16).ToString("dd/MM/yyyy");
             dia1 = DateTime.Now.AddDays(16).ToString("ddd");
             data2 = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
@@ -166,7 +170,7 @@ namespace JFCWEB.Paginas
             data15 = DateTime.Now.AddDays(15).ToString("dd/MM/yyyy");
             dia15 = DateTime.Now.AddDays(15).ToString("ddd");
             //
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             //
@@ -290,7 +294,7 @@ namespace JFCWEB.Paginas
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='#99FF66'");
+                e.Row.Attributes.Add("onMouseOver","this.style.backgroundColor='#99FF66'");
                 e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor=''");
             }
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -319,7 +323,7 @@ namespace JFCWEB.Paginas
             // int idseq = 0;
 
             //
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string vlr1 = ("UPDATE ITENS_PEDIDO SET QTDE=@QTDE");
@@ -341,7 +345,7 @@ namespace JFCWEB.Paginas
 
         protected void Grid4_Load(object sender, EventArgs e)
         {
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string hh0, dt2, dtex;
@@ -375,6 +379,21 @@ namespace JFCWEB.Paginas
             var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
             
             var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            Dnome = dtn.Substring(0, 3);
+            switch (Dnome)
+            {
+                case "BOB":
+                    GrdV2.Visible = false;
+                    Butt1.Visible = false;
+                    Btt2.Visible = false;
+                    Lbl11.Visible = false;
+                    break;
+                    default:
+                    GrdV3.Visible = false;
+                    Butt3.Visible = false;
+                    Btt3.Visible = false;
+                    break;
+            }
             //***************
             // if (hh2<hh3)
             //    {
@@ -421,7 +440,7 @@ namespace JFCWEB.Paginas
             }
             //*****
 
-
+            
             var dt0 = Grid4.Rows[0].Cells[0].Text;
             var Xteste = (test2 - test1);
             //################################################
@@ -501,6 +520,20 @@ namespace JFCWEB.Paginas
                             hh2 = hh3;
                             test2 = test3;
                         }
+                        if (hh1 > hh2 && test1==1)
+                        {
+                            var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
+                            var test3 = Convert.ToDouble(dta1);
+                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
+                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
+                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0.ToString());
+                            comm1.ExecuteNonQuery();
+                            Label5.Text = "4.2 - PEDIDOS PARA O DIA " + dt0 + " ENCERROU AS " + hh2;
+                            hh2 = hh3;
+                            test2 = test3;
+                        }
                         if (hh1 > hh2 && Xteste == 1)
                         {
                             //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
@@ -538,7 +571,21 @@ namespace JFCWEB.Paginas
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                             comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
                             comm1.ExecuteNonQuery();
-                            Label5.Text = " 5 - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                            Label5.Text = " 5 SP - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
+                        }
+                        if (hh1 < hh2 && test1==7)
+                        {
+                            var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[1].Cells[4].Text));
+                            var test3 = Convert.ToDouble(dta1);
+                            test2 = test3;
+                            hh2 = hh3;
+                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
+                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
+                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
+                            comm1.ExecuteNonQuery();
+                            Label5.Text = " 5.1 - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
                         }
                         if (hh1 > hh2)
                         {
@@ -634,6 +681,20 @@ namespace JFCWEB.Paginas
                             //   hh2 = hh3;
                             //  test2 = test3;
                         }
+                        if (hh1 > hh2 && test1==1)
+                        {
+                            //var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
+                            //var test3 = Convert.ToDouble(dta1);
+                            //var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
+                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
+                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dt0.ToString());
+                            comm1.ExecuteNonQuery();
+                            Label5.Text = "4.2 RJ- PEDIDOS PARA O DIA " + dt0 + " ENCERROU AS " + hh2;
+                            // hh2 = hh3;
+                            //  test2 = test3;
+                        }
 
                         if (dt1 == "domingo" & dtd == "seg")
                         {
@@ -672,12 +733,22 @@ namespace JFCWEB.Paginas
                         if (hh1 > hh2)
                         {
                            // var dtx0 = Grid4.Rows[0].Cells[0].Text;
-                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                             comm1.Parameters.AddWithValue("@ENTREGA", dt0);
                             comm1.ExecuteNonQuery();
                             Label5.Text = "6 RJ - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
+                        }
+                        if (hh1 > hh2 && Xteste == -5)
+                        {
+                           var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
+                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
+                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
+                            comm1.ExecuteNonQuery();
+                            Label5.Text = "6.1 RJ - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
                         }
                     }
                     break;
@@ -791,7 +862,17 @@ namespace JFCWEB.Paginas
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
                             comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
                             comm1.ExecuteNonQuery();
-                            Label5.Text = " 5 - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                            Label5.Text = " 5 PR - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                        }
+                        if (hh1 < hh2 && Xteste < 0)
+                        {
+                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
+                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
+                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
+                            comm1.ExecuteNonQuery();
+                            Label5.Text = " 5.1 PR - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
                         }
                         if (hh1 > hh2)
                         {
@@ -810,7 +891,9 @@ namespace JFCWEB.Paginas
             switch (test1)
             {
                 case 7:
-                    if (dtu!="RJ")if (test1 > test2 && hh1 > hh2) 
+                    if (dtu!="RJ")
+
+       if (test1 > test2 && hh1 > hh2) 
   {
       var dtx0 = Grid4.Rows[1].Cells[0].Text;
       string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
@@ -822,7 +905,7 @@ namespace JFCWEB.Paginas
                }
 
                     {
-hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
+//hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
 
                     }
                     
@@ -859,7 +942,7 @@ hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
             vlr = (GrdV2.SelectedRow.Cells[5].Text).ToString();
            Decimal tot = Convert.ToDecimal(vlr) * Convert.ToDecimal(inn);
             idd = (GrdV2.SelectedRow.Cells[0].Text).ToString();
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde,STATUS='1', TOTAL= @total WHERE itemID=@itemID");
@@ -915,5 +998,180 @@ hh2 = TimeSpan.FromHours(Convert.ToDouble(12));
             }
         }
 
-          }
+        protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+        protected void GrdV3_DataBound(object sender, EventArgs e)
+        {
+            Decimal ValorTotal = 0;
+            foreach (GridViewRow row in GrdV3.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    if (!String.IsNullOrEmpty(row.Cells[6].Text))
+                        ValorTotal += Decimal.Parse(row.Cells[6].Text);
+                    Lbl12.Text = "Valor Total: " + ValorTotal.ToString();
+                }
+            }
+        }
+
+        protected void GrdV3_Load(object sender, EventArgs e)
+        {
+            Butt3.Enabled = true;
+            Butt4.Enabled = false;
+            //
+            GrdV3.Attributes.Add("onkeydown", "if(event.which || event.keyCode){if ((event.which == 13) || (event.keyCode == 13)) {document.getElementById.click();return false;}} else {return true}; ");
+            //
+        }
+
+        protected void GrdV3_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='#99FF66'");
+                e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor=''");
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string Status = DataBinder.Eval(e.Row.DataItem, "QTDE").ToString();
+                if (Status == "0")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    // e.Row.Cells[5].Enabled = false;
+                }
+
+            }
+        }
+
+        protected void GrdV3_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+            Butt3.Enabled = true;
+        }
+
+        protected void GrdV3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            vlr = (GrdV3.SelectedRow.Cells[5].Text).ToString();
+            Decimal tot = Convert.ToDecimal(vlr) * Convert.ToDecimal(inn);
+            idd = (GrdV3.SelectedRow.Cells[0].Text).ToString();
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+            conn = new SqlConnection(strcon);
+            conn.Open();
+            string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde,STATUS='1', TOTAL= @total WHERE itemID=@itemID");
+            SqlCommand comm1 = new SqlCommand(item, conn);
+            comm1.Parameters.AddWithValue("@qtde", Convert.ToInt32(inn));
+            comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
+            comm1.Parameters.AddWithValue("@total", Convert.ToDecimal(tot));
+            comm1.ExecuteNonQuery();
+
+            GrdV3.DataBind();
+            conn.Close();
+        }
+
+        protected void Butt3_Click(object sender, EventArgs e)
+        {
+            string hh0;
+            //  int dte1 = DpLi1.SelectedIndex;
+            hh0 = DateTime.Now.ToString("HH:mm");
+            //dt2 = (Grid4.Rows[dte1].Cells[3].Text);xxxxxxxx
+            var dtex = (Grid4.Rows[0].Cells[4].Text);
+            var dta = Grid4.Rows[0].Cells[6].ToString();
+            var dt1 = DateTime.Now.DayOfWeek.ToString();
+            //  var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[dte1].Cells[4].Text));
+            //  var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+
+
+            if (dt1 == dta)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('O horário limite foi ultrapassado!')", true);
+            }
+            //***********************************
+
+            decimal ValorTotal = 0;
+
+            foreach (GridViewRow row in GrdV3.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    if (!String.IsNullOrEmpty(row.Cells[3].Text))
+                        ValorTotal += Decimal.Parse(row.Cells[3].Text);
+                }
+            }
+            if (ValorTotal > 0)
+            {
+                string CGC_CPF = " ";
+                CGC_CPF = TxtBox1.Text;
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                conn = new SqlConnection(strcon);
+                conn.Open();
+                string dte = DpLi1.SelectedItem.Value.ToString();
+                string data = ("SELECT COUNT(*) AS PED FROM PEDIDO WHERE (CGC_CPF=@CGC_CPF) AND (DTENTREGA=@dte) AND STATUS <> 'CANCELADO'");
+                SqlCommand commdt = new SqlCommand(data, conn);
+                commdt.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+                commdt.Parameters.AddWithValue("@dte", dte);
+                int Ped = (int)commdt.ExecuteScalar();
+                if (Ped > 0)
+                {
+                    // Label5.Visible = true;
+                    //Label5.Text = ("EXISTE PEDIDO PARA ESTA DATA, PARA EMITIR NOVO PEDIDO DEVERÁ CANCELAR O ATUAL!");
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Existe pedido para esta data, è necessário cancelar o atual!')", true);
+
+                }
+
+                else
+                {
+                    string UFf = GrdView1.Rows[0].Cells[4].Text;
+                    string Cod = GrdView1.Rows[0].Cells[3].Text;
+                    string sql = ("INSERT INTO PEDIDO (CGC_CPF, CODPARC, UF) VALUES (@CGC_CPF, @CODPAR, @UF)");
+                    SqlCommand comm = new SqlCommand(sql, conn);
+                    comm.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+                    comm.Parameters.AddWithValue("@UF", UFf.ToString());
+                    comm.Parameters.AddWithValue("@CODPAR", Cod.ToString());
+
+                    int x = comm.ExecuteNonQuery();
+                    if (x == 1)
+                    {
+                        string sqlped = ("SELECT DISTINCT pedidoID FROM PEDIDO WHERE CGC_CPF = @CGC_CPF AND DTENTREGA IS NULL");
+                        SqlCommand commped = new SqlCommand(sqlped, conn);
+                        commped.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+                        var entrega = commped.ExecuteScalar();
+
+                        string sql1 = ("UPDATE PEDIDO SET DTENTREGA=@dte,DTEMISSAO=@emissao,STATUS='ABERTO' WHERE pedidoID=@entrega");
+                        SqlCommand commsql1 = new SqlCommand(sql1, conn);
+                        commsql1.Parameters.AddWithValue("@dte", dte);
+                        commsql1.Parameters.AddWithValue("@entrega", entrega);
+                        commsql1.Parameters.AddWithValue("@emissao", TxtBox2.Text);
+                        commsql1.ExecuteNonQuery();
+                        //
+                        string sqlitem = ("UPDATE ITENS_PEDIDO SET pedidoID=@pedidoID WHERE CGC_CPF=@CGC_CPF AND pedidoID IS NULL");
+                        SqlCommand commsqlitem = new SqlCommand(sqlitem, conn);
+                        commsqlitem.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+                        commsqlitem.Parameters.AddWithValue("@pedidoID", entrega);
+                        commsqlitem.ExecuteNonQuery();
+                        //
+                        Label2.Text = ("Pedido n°") + Convert.ToString(entrega);
+                        //  conn.Close();
+                        Session["Ped"] = entrega;
+                        Butt2.Enabled = true;
+                        string destinatario;
+                        destinatario = Text2.Text;
+                        Response.Redirect("~/Paginas/Relatorio.aspx");
+                    }
+                }
+                conn.Close();
+            }
+            else
+            {
+                //Label1.Text = ("Informe a Quantidade e click em OK!");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Informe a quantidade e click em OK!')", true);
+            }
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

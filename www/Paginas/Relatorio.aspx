@@ -122,8 +122,8 @@
         <tr class="style7">
             <td class="auto-style22" 
                 style="text-align: left; font-size: medium; color: #006600; font-weight: 700;">
-                &nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Pedido enviado para o mail cadastrado --&gt;&gt;" BackColor="#77A364" CssClass="auto-style21" Height="30px" Enabled="False" Width="258px" />
-                <asp:Label ID="Labe2" runat="server" Text="Label" Enabled="False" Height="30px" Width="300px"></asp:Label>
+                &nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Pedido enviado para o mail cadastrado --&gt;&gt;" BackColor="#77A364" CssClass="auto-style21" Height="30px" Enabled="False" Width="265px" />
+                <asp:Label ID="Labe2" runat="server" Text="Label" Enabled="False" Height="30px" Width="324px"></asp:Label>
             </td>
             <td class="auto-style23">
                 &nbsp;</td>
@@ -240,7 +240,7 @@
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         SelectCommand="SELECT DISTINCT [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
         <SelectParameters>
             <asp:ControlParameter ControlID="Labe1" Name="CGC_CPF" PropertyName="Text" 
@@ -249,7 +249,7 @@
     </asp:SqlDataSource>
     <br />
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE &lt;&gt; 0) ORDER BY DESCRPROD">
         <SelectParameters>
@@ -258,7 +258,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         SelectCommand="SELECT DISTINCT [CGC_CPF], [NOMEPARC], [DTENTREGA], [DTEMISSAO], [STATUS] FROM [PEDIDOS] WHERE ([pedidoID] = @pedidoID)">
         <SelectParameters>
             <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" 

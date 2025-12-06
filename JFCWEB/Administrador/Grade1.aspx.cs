@@ -50,7 +50,7 @@ namespace JFCWEB
         {
             if (RBList1.Items[0].Selected)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM IN ('seg','qua','sex')");
@@ -73,7 +73,7 @@ namespace JFCWEB
             }
             if (RBList1.Items[1].Selected)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM IN ('ter','qui','sáb')");
@@ -95,7 +95,7 @@ namespace JFCWEB
             }
             if (RBList1.Items[2].Selected)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM IN ('qua','sáb')");
@@ -120,7 +120,7 @@ namespace JFCWEB
                 }
         protected void Btn1_Click(object sender, EventArgs e)
         {
-          strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+          strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string sql = ("SELECT CODPARC FROM TabProg WHERE CODPARC=@CODPARC");
@@ -149,7 +149,7 @@ namespace JFCWEB
 
         protected void Btn2_Click(object sender, EventArgs e)
         {
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             //*Limpando a tabela
@@ -215,7 +215,7 @@ namespace JFCWEB
             string Semana = DDL1.Text;
             string Dia = "seg";
             int Numdia = DDL1.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -233,7 +233,7 @@ namespace JFCWEB
             string Hora = DDL2.Text;
             string Dia = "seg";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -250,7 +250,7 @@ namespace JFCWEB
             string Semana = DDL3.Text;
             string Dia = "ter";
             int Numdia = DDL3.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -268,7 +268,7 @@ namespace JFCWEB
             string Hora = DDL4.Text;
             string Dia = "ter";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -285,7 +285,7 @@ namespace JFCWEB
             string Semana = DDL5.Text;
             string Dia = "qua";
             int Numdia = DDL5.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -303,7 +303,7 @@ namespace JFCWEB
             string Hora = DDL6.Text;
             string Dia = "qua";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -319,7 +319,7 @@ namespace JFCWEB
             string Semana = DDL7.Text;
             string Dia = "qui";
             int Numdia = DDL7.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -337,7 +337,7 @@ namespace JFCWEB
             string Hora = DDL8.Text;
             string Dia = "qui";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -353,7 +353,7 @@ namespace JFCWEB
             string Semana = DDL9.Text;
             string Dia = "sex";
             int Numdia = DDL9.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -371,7 +371,7 @@ namespace JFCWEB
             string Hora = DDL10.Text;
             string Dia = "sex";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -387,7 +387,7 @@ namespace JFCWEB
             string Semana = DDL11.Text;
             string Dia = "sáb";
             int Numdia = DDL11.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -405,7 +405,7 @@ namespace JFCWEB
             string Hora = DDL12.Text;
             string Dia = "sáb";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -421,7 +421,7 @@ namespace JFCWEB
             string Semana = DDL13.Text;
             string Dia = "dom";
             int Numdia = DDL13.SelectedIndex;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbnome = ("UPDATE TabProg SET LIMDIA=@LIMDIA,DIA=@NUMDIA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -439,7 +439,7 @@ namespace JFCWEB
             string Hora = DDL14.Text;
             string Dia = "dom";
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string cbhora = ("UPDATE TabProg SET LIMHORA=@LIMHORA WHERE CODPARC=@CODPARC AND DIASEM = @DIASEM");
@@ -530,7 +530,7 @@ namespace JFCWEB
         {
             if (CBox1.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('seg')");
@@ -542,7 +542,7 @@ namespace JFCWEB
             }
             if (CBo1.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('seg')");
@@ -558,7 +558,7 @@ namespace JFCWEB
         {
             if (CBox2.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('ter')");
@@ -570,7 +570,7 @@ namespace JFCWEB
             }
             if (CBo2.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('ter')");
@@ -587,7 +587,7 @@ namespace JFCWEB
         {
             if (CBox3.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('qua')");
@@ -599,7 +599,7 @@ namespace JFCWEB
             }
             if (CBo3.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('qua')");
@@ -616,7 +616,7 @@ namespace JFCWEB
         {
             if (CBox4.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('qui')");
@@ -628,7 +628,7 @@ namespace JFCWEB
             }
             if (CBo4.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('qui')");
@@ -645,7 +645,7 @@ namespace JFCWEB
         {
             if (CBox5.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('sex')");
@@ -657,7 +657,7 @@ namespace JFCWEB
             }
             if (CBo5.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('sex')");
@@ -674,7 +674,7 @@ namespace JFCWEB
         {
             if (CBox6.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('sáb')");
@@ -686,7 +686,7 @@ namespace JFCWEB
             }
             if (CBo6.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('sáb')");
@@ -703,7 +703,7 @@ namespace JFCWEB
         {
             if (CBox7.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='False' WHERE CODPARC=@CODPARC AND DIASEM =('dom')");
@@ -715,7 +715,7 @@ namespace JFCWEB
             }
             if (CBo7.Checked == true)
             {
-                strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                 conn = new SqlConnection(strcon);
                 conn.Open();
                 string selet1 = ("UPDATE TabProg SET ATIVO='True' WHERE CODPARC=@CODPARC AND DIASEM =('dom')");

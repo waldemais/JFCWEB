@@ -16,7 +16,7 @@ namespace JFCWEB
             TxtBx.Text = Session["cgc"].ToString();
             string CGC_CPF = " ";
             CGC_CPF = TxtBx.Text;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             //
@@ -36,7 +36,7 @@ namespace JFCWEB
 
                 protected void Button1_Click(object sender, EventArgs e)
         {
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string sqlgrade = ("SELECT TabProg.CODPARC FROM TabProg INNER JOIN TGFPAR ON TabProg.CODPARC = TGFPAR.CODPARC WHERE (TGFPAR.CGC_CPF = @CGC_CPF)");

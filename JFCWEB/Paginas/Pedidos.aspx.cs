@@ -130,7 +130,7 @@ namespace JFCWEB.Paginas
         protected void Btt5_Click(object sender, EventArgs e)
         {
 
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon); 
             conn.Open();
             //
@@ -150,7 +150,7 @@ namespace JFCWEB.Paginas
         protected void Bt01_Click(object sender, EventArgs e)
         {
             string cancela = TBox5.Text;
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string sql = ("UPDATE PEDIDO SET STATUS='CANCELADO' WHERE pedidoID=@entrega");

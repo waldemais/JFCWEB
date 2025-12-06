@@ -78,7 +78,7 @@
             </Columns>
             <HeaderStyle BackColor="#E7EBEF" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual, Status, Produto, CGC, Ocor FROM CRM1 WHERE (CGC = @CGC) AND (Classe = @Classe) ORDER BY Id DESC">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual, Status, Produto, CGC, Ocor FROM CRM1 WHERE (CGC = @CGC) AND (Classe = @Classe) ORDER BY Id DESC">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox1" Name="CGC" PropertyName="Text" Type="String" />
                 <asp:ControlParameter ControlID="RadioButtonList1" Name="Classe" PropertyName="SelectedValue" Type="String" />

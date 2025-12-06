@@ -25,7 +25,7 @@ namespace JFCWEB
 
         protected void Bt2_Click(object sender, EventArgs e)
         {
-            strcon = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
             string sqlped = ("SELECT DISTINCT CODPROD FROM TGFPRO WHERE CODPROD = @codprod");

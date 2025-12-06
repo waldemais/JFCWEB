@@ -24,7 +24,7 @@ namespace JFCWEB.Administrador
         }
         private void BindGrid()
         {
-  string strConnstring = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;Integrated Security=True;Pooling=False";
+  string strConnstring = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Integrated Security=True;Pooling=False";
             using (SqlConnection con = new SqlConnection(strConnstring))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM Customers"))
@@ -82,7 +82,7 @@ namespace JFCWEB.Administrador
                         }
                         cell.CssClass = "textmode";
                     }
-                    strconrj = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                    strconrj = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                     connrj = new SqlConnection(strconrj);
                     connrj.Open();
                     string sqlrj = ("UPDATE PEDIDO SET STATUS = 'FINALIZADO' WHERE pedidoID = ANY (SELECT pedidoID from Exporta WHERE DTENTREGA = @ENTREGA AND QTDE <> 0 AND UF IN('RJ', 'MG', 'NULL') AND NOMEPARC LIKE('%MANIA%') AND STATUS = 'ABERTO')");
@@ -146,7 +146,7 @@ namespace JFCWEB.Administrador
                         }
                         cell.CssClass = "textmode";
                     }
-                    strconsp = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                    strconsp = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                     connsp = new SqlConnection(strconsp);
                     connsp.Open();
                     string sqlsp = ("UPDATE PEDIDO SET STATUS = 'FINALIZADO' WHERE pedidoID = ANY (SELECT pedidoID from Exporta WHERE DTENTREGA = @ENTREGA AND QTDE <> 0 AND UF IN('SP') AND NOMEPARC LIKE('%MANIA%') AND STATUS = 'ABERTO')");
@@ -322,7 +322,7 @@ namespace JFCWEB.Administrador
                         }
                         cell.CssClass = "textmode";
                     }
-                    strconpr = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
+                    strconpr = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
                     connpr = new SqlConnection(strconpr);
                     connpr.Open();
                     string sqlpr = ("UPDATE PEDIDO SET STATUS = 'FINALIZADO' WHERE pedidoID = ANY (SELECT pedidoID from Exporta WHERE DTENTREGA = @ENTREGA AND QTDE <> 0 AND UF IN('PR') AND NOMEPARC LIKE('%MANIA%') AND STATUS = 'ABERTO')");

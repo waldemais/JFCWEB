@@ -533,6 +533,36 @@
         .auto-style164 {
             width: 124px;
         }
+        .auto-style165 {
+            width: 168px;
+            text-align: center;
+            height: 27px;
+        }
+        .auto-style166 {
+            width: 170px;
+            text-align: center;
+            height: 27px;
+        }
+        .auto-style167 {
+            width: 160px;
+            text-align: center;
+            height: 27px;
+        }
+        .auto-style168 {
+            text-align: center;
+            width: 163px;
+            height: 27px;
+        }
+        .auto-style169 {
+            width: 165px;
+            text-align: center;
+            height: 27px;
+        }
+        .auto-style170 {
+            text-align: center;
+            width: 176px;
+            height: 27px;
+        }
         </style>
 </head>
 <body bgcolor="#ffffff">
@@ -628,6 +658,11 @@
                     <br />
                     <br />
                     <br />
+                            <strong>
+                    <asp:Button ID="Btn2" runat="server" onclick="Btn2_Click" 
+                        style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
+                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="#CCCCCC" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" />
+                                </strong>
                     <br />
                     <br />
                     <br />
@@ -645,11 +680,6 @@
                 <asp:ListItem>Terça/Quinta/Sábado</asp:ListItem>
                 <asp:ListItem>Quarta/Sábado</asp:ListItem>
             </asp:RadioButtonList>
-                            <strong>
-                    <asp:Button ID="Btn2" runat="server" onclick="Btn2_Click" 
-                        style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
-                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="Lime" BorderStyle="Solid" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" />
-                                </strong>
                     <br />
                 </td>
             </tr>
@@ -848,19 +878,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style141" style="border: thin solid #00FF00;">
+                    <td class="auto-style165" style="border: thin solid #00FF00;">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style127" style="border: thin solid #00FF00">
+                    <td class="auto-style166" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style147" style="border: thin solid #00FF00">
+                    <td class="auto-style167" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style100" style="border: thin solid #00FF00">
+                    <td class="auto-style168" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style147" style="border: thin solid #00FF00">
+                    <td class="auto-style167" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style89" style="border: thin solid #00FF00">
+                    <td class="auto-style169" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
-                    <td class="auto-style107" style="border: thin solid #00FF00">
+                    <td class="auto-style170" style="border: thin solid #00FF00">
                         <strong>Selecione o Dia</strong></td>
                 </tr>
                 <tr>
@@ -984,7 +1014,7 @@
                     </td>
                 </tr>
                 <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMHORA, LIMDIA, ATIVO FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'sex') AND (ATIVO = 1)" 
                     
                     
@@ -999,7 +1029,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource8" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     
                     
                     
@@ -1010,7 +1040,7 @@
                 </asp:SqlDataSource>
                  <asp:RadioButton ID="RadioButton2" runat="server" />
                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMHORA, LIMDIA, ATIVO FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'qua') AND (ATIVO = 1)" 
                     
                     
@@ -1025,7 +1055,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMDIA, LIMHORA FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'seg') AND (ATIVO = 1)" 
                     
                     
@@ -1040,7 +1070,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMDIA, LIMHORA FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'ter') AND (ATIVO = 1)" 
                     
                     
@@ -1055,7 +1085,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource7" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMDIA, LIMHORA, ATIVO FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'dom') AND (ATIVO = 1)" 
                     
                     
@@ -1070,7 +1100,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource6" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMHORA, LIMDIA, ATIVO FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'sáb') AND (ATIVO = 1)" 
                     
                     
@@ -1086,7 +1116,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                     SelectCommand="SELECT LIMHORA, LIMDIA, ATIVO FROM VPrograma WHERE (CODPARC = @CODPARC) AND (DIASEM = 'qui') AND (ATIVO = 1)" 
                     
                     
@@ -1101,8 +1131,8 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 
-                        <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT [hora] FROM [Tempo]"></asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT [nome] FROM [Semana] ORDER BY [dia]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [hora] FROM [Tempo]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [nome] FROM [Semana] ORDER BY [dia]"></asp:SqlDataSource>
                </table>
         <div>
                     </div>

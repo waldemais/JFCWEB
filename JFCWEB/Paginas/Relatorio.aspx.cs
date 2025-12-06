@@ -11,6 +11,7 @@ using System.Web.UI.HtmlControls;
 using System.IO;
 using System.Net.Mime;
 using System.Net.Configuration;
+using AjaxControlToolkit;
 
 
 namespace JFCWEB.Paginas
@@ -53,48 +54,50 @@ namespace JFCWEB.Paginas
 
         protected void GridView3_Load(object sender, EventArgs e)
         {
-
+          //  ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "confirm('Foi enviado um TESTE!')", true);
+              
             System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
-            string assunto = TextBx1.Text;
-            string destino = Labe2.Text;
-            string corpo = GridViewToHtml(GridView1);
-            string corpo2 = GridViewToHtml(GridView2);
-            string itens = Label2.Text;
-            string total = Label3.Text;
-            mailMessage.From = new System.Net.Mail.MailAddress("naoresponda@jfcverduras.com.br");
-            mailMessage.To.Add(new System.Net.Mail.MailAddress(destino));
-           mailMessage.CC.Add(new System.Net.Mail.MailAddress("pedidos@jfcverduras.com.br"));
+                string assunto = TextBx1.Text;
+                string destino = Labe2.Text;
+                string corpo = GridViewToHtml(GridView1);
+                string corpo2 = GridViewToHtml(GridView2);
+                string itens = Label2.Text;
+                string total = Label3.Text;
+                mailMessage.From = new System.Net.Mail.MailAddress("naoresponda@jfcverduras.com.br");
+                mailMessage.To.Add(new System.Net.Mail.MailAddress(destino));
+                mailMessage.CC.Add(new System.Net.Mail.MailAddress("pedidos@jfcverduras.com.br"));
 
-            //Cópia oculta:
-            //mailMessage.Bcc.Add(new System.Net.Mail.MailAddress("copia.oculta@email.com"));
+                //Cópia oculta:
+                //mailMessage.Bcc.Add(new System.Net.Mail.MailAddress("copia.oculta@email.com"));
 
-            mailMessage.Subject = "Pedido JFC nº " + assunto;
-            mailMessage.Body = corpo + "<br>" + corpo2 + "<br>" + "Total de Itens: " + itens + "<br>" + "Valor Total: R$" + total;
-            mailMessage.IsBodyHtml = true;
+                mailMessage.Subject = "Pedido JFC nº " + assunto;
+                mailMessage.Body = corpo + "<br>" + corpo2 + "<br>" + "Total de Itens: " + itens + "<br>" + "Valor Total: R$" + total;
+                mailMessage.IsBodyHtml = true;
 
-            using (var smtp = new System.Net.Mail.SmtpClient())
-            {
-                smtp.Host = "smtp.kinghost.net";
-                smtp.Port = 25;
-                smtp.EnableSsl = false;
-                smtp.Credentials = new System.Net.NetworkCredential("naoresponda@jfcverduras.com.br", "Jfc$0904");
-                smtp.Send(mailMessage);
+                using (var smtp = new System.Net.Mail.SmtpClient())
+                {
+                    smtp.Host = "smtp.kinghost.net";
+                    smtp.Port = 25;
+                    smtp.EnableSsl = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("naoresponda@jfcverduras.com.br", "Jfc$0904");
+                    smtp.Send(mailMessage);
 
-            }
-            try
-            {
-ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Foi enviado uma cópia para o email cadastrado!')", true);
-               // Labe1.Text = "Email enviado com sucesso!";
-            }
-            catch
-            {
-                // Labe1.Text = "Ocorreu um erro ao enviar o Email.";
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Email inválido, verifique o email cadastrado!')", true);
-                //Labe2.Text = " ";
-            }
-            finally
-            {
+                }
+                try
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Foi enviado uma cópia para o email cadastrado!')", true);
+                    // Labe1.Text = "Email enviado com sucesso!";
+                }
+                catch
+                {
+                    // Labe1.Text = "Ocorreu um erro ao enviar o Email.";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Email inválido, verifique o email cadastrado!')", true);
+                    //Labe2.Text = " ";
+                }
+                finally
+                {
 
+                
             }
         }
 

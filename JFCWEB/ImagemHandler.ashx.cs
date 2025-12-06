@@ -11,7 +11,7 @@ namespace JFCWEB
     /// </summary>
     public class ImagemHandler11 : IHttpHandler
     {
-        string strcon = ConfigurationManager.ConnectionStrings["Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030"].ConnectionString;
+        string strcon = ConfigurationManager.ConnectionStrings["Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True"].ConnectionString;
         public void ProcessRequest(HttpContext context)
         {
             string imagemID = context.Request.QueryString["FOTO"];

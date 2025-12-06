@@ -261,7 +261,7 @@
                 <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [NOMEPARC], [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [NOMEPARC], [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox12" Name="CGC_CPF" PropertyName="Text" Type="String" />
             </SelectParameters>
@@ -269,7 +269,7 @@
             <br />
             <br />
         </div>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [CODPROD], [DESCRPROD] FROM [VLISTPRO] WHERE ([CGC_CPF] = @CGC_CPF)">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [CODPROD], [DESCRPROD] FROM [VLISTPRO] WHERE ([CGC_CPF] = @CGC_CPF)">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="TBox12" Name="CGC_CPF" PropertyName="Text" Type="String" />
                             </SelectParameters>

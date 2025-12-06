@@ -167,7 +167,7 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [Id], [Numnota], [Produto], [Qentregue], [Qreclamada], [Qautoriz], [Nomeaprov], [Obser], [Emailsol] FROM [CRM1] WHERE ([Id] = @Id)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [Id], [Numnota], [Produto], [Qentregue], [Qreclamada], [Qautoriz], [Nomeaprov], [Obser], [Emailsol] FROM [CRM1] WHERE ([Id] = @Id)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TB1" Name="Id" PropertyName="Text" Type="Int32" />
             </SelectParameters>

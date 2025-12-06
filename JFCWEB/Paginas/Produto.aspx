@@ -92,7 +92,7 @@
         </asp:ScriptManager>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         SelectCommand="SELECT DISTINCT [CODPROSAP], [DESCRPROD], [PADRAO], [CODPROD] FROM [TGFPRO] WHERE ([CODPROSAP] = @CODPROSAP)">
         <SelectParameters>

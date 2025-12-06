@@ -21,7 +21,7 @@
         }
         .style6
         {
-            font-size: x-large;
+            font-size: large;
             color: #3F8949;
         }
         .style8
@@ -95,16 +95,13 @@
             width: 367px;
         }
         .auto-style5 {
-            width: 368px;
+            width: 150px;
         }
         .auto-style6 {
             font-family: Verdana;
             font-size: xx-large;
             color: #009933;
-            width: 368px;
-        }
-        .auto-style7 {
-            width: 111px;
+            width: 150px;
         }
         .auto-style8 {
             width: 111px;
@@ -138,7 +135,7 @@
             color: #666666;
         }
         .auto-style17 {
-            width: 368px;
+            width: 150px;
             height: 83px;
         }
         .auto-style18 {
@@ -159,10 +156,11 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style17">
-                    <asp:Image ID="Image1" runat="server" Height="90px" 
-                        ImageUrl="~/Imagem/Logos_JFC.jpg" Width="100px" />
+                    <asp:Image ID="Image1" runat="server" Height="50px" 
+                        ImageUrl="~/Imagem/grupo.png" Width="70px" />
                 </td>
                 <td class="auto-style18" style="text-align: center">
+                    <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="#7BB800" style="font-size: large" Text="Pedido Detalhado"></asp:Label>
                     </td>
                 <td style="text-align: right" class="auto-style19">
                     <asp:ImageButton ID="ImageButton1" runat="server" Height="50px" 
@@ -179,20 +177,20 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-                    Pedido Detalhado</td>
-                <td class="style23">
                     &nbsp;</td>
-                <td style="text-align: right">
-                    <asp:Button ID="Btt3" runat="server" Text="Visualizar" onclick="Btt3_Click" 
-                        style="color: #61AC00; font-size: x-large; background-color: #D4D0C8" 
+                <td class="style23">
+                    <asp:Button ID="Btt3" runat="server" Text="Enviar Email" onclick="Btt3_Click" 
+                        style="color: #61AC00; font-size: small; background-color: #D4D0C8; font-weight: 700;" 
                         Height="40px" Width="120px" />
-                    <asp:Button ID="Btt4" runat="server" Text="Cancelar" Height="40px" 
+                    <asp:Button ID="Btt4" runat="server" Text="Cancelar Pedido" Height="40px" 
                         ONClientClick="Javascript:return confirm('Confirma o Cancelamento do Pedido?');" 
-                        onclick="Btt4_Click" style="font-size: x-large; color: #61AC00" Width="120px" />
-                    <asp:Button ID="Btt5" runat="server" Text="Duplicar" Height="40px" 
-                        style="font-size: x-large; color: #61AC00" Width="120px" 
-                        onclick="Btt5_Click" Visible="False" Enabled="False" />
+                        onclick="Btt4_Click" style="font-size: small; color: #61AC00; font-weight: 700;" Width="120px" />
+                    <asp:Button ID="Btt5" runat="server" Text="Duplicar Pedido" Height="40px" 
+                        style="font-size: small; color: #61AC00; font-weight: 700;" Width="120px" 
+                        onclick="Btt5_Click" Visible="False" />
                 </td>
+                <td style="text-align: right">
+                    &nbsp;</td>
             </tr>
         </table>
     
@@ -200,12 +198,12 @@
     <asp:Panel ID="Panel1" runat="server" Height="201px">
         <table class="auto-style13">
             <tr>
-                <td class="auto-style7">
-                    &nbsp;</td>
-                <td class="style10">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
+                <td class="auto-style9">
+                    </td>
+                <td class="style19">
+                    </td>
+                <td class="style20">
+                    </td>
             </tr>
             <tr>
                 <td class="auto-style8">
@@ -343,7 +341,7 @@
         </tr>
     </table>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
     
             
             
@@ -394,7 +392,7 @@
         <RowStyle BorderStyle="None" Font-Size="X-Large" ForeColor="#003300" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE &gt; 0) ORDER BY DESCRPROD" 
         
@@ -438,7 +436,7 @@
                                 SortExpression="STATUS" />
                         </Columns>
                     </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT itemID, pedidoID, CODPROD, DESCRPROD, QTDE, STATUS FROM VLISTPRO WHERE (pedidoID = @pedidoID)" UpdateCommand="UPDATE VLISTPRO SET QTDE = @QTDE WHERE (itemID = @itemID)">
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT itemID, pedidoID, CODPROD, DESCRPROD, QTDE, STATUS FROM VLISTPRO WHERE (pedidoID = @pedidoID)" UpdateCommand="UPDATE VLISTPRO SET QTDE = @QTDE WHERE (itemID = @itemID)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox5" Name="pedidoID" PropertyName="Text" Type="Int32" />
             </SelectParameters>
@@ -448,7 +446,7 @@
             </UpdateParameters>
         </asp:SqlDataSource>
     <div>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [DataCan], [IdNome], [IdTel], [IdEmail], [IdIP] FROM [PedCancelado] WHERE ([PedidoID] = @PedidoID)">
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [DataCan], [IdNome], [IdTel], [IdEmail], [IdIP] FROM [PedCancelado] WHERE ([PedidoID] = @PedidoID)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox5" Name="PedidoID" PropertyName="Text" Type="Int32" />
             </SelectParameters>

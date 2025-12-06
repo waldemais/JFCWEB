@@ -54,7 +54,7 @@
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+            ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
             
             SelectCommand="SELECT CODPARC, NOMEPARC, TEMPO, DIASEM, LIMDIA, LIMHORA FROM VPrograma WHERE (NOMEPARC LIKE '%bk%') AND (ATIVO = 1)">
         </asp:SqlDataSource>

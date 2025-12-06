@@ -18,6 +18,10 @@
         }
         .auto-style6 {
             font-size: x-large;
+            color: #0000FF;
+        }
+        .MsoNormal {
+            text-align: justify;
         }
         </style>
 </head>
@@ -28,8 +32,32 @@
                 <div>
                     <div class="auto-style2">
                         <br />
-                        <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagem/Imagem do WhatsApp de 2025-02-25 à(s) 16.37.54_30e628c8.jpg" />
+                        <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagem/grupo.png" Width="101px" Height="59px" />
                         <br />
+                        <br />
+                        <br />
+                        <strong><span class="auto-style6">Comunicado Importante </span>
+                        <br class="auto-style6" />
+                        </strong>
+                        <br />
+                        <p class="MsoNormal">
+                            <span style="font-size: 12.0pt; font-family: &quot;Helvetica&quot;,sans-serif; color: #73737D; text-align: justify;">Olá!
+                            <br />
+                            Com o objetivo de manter a esstabilidade dos pedidos<br />
+                            &nbsp;<br />
+                            <br />
+                            O tempo estimado para a atividade é de <b>4 horas</b>. No entanto, caso surja alguma dificuldade, esse período poderá ser estendido por até mais <b>2 horas adicionais</b>, visando evitar transtornos e permitindo a execução de um rollback, se necessário.
+                            <br />
+                            <br />
+                            Agradecemos desde já pela compreensão e colaboração de todos, e pedimos atenção especial ao período informado para que possam se programar. </span><span style="font-size:10.5pt;font-family:&quot;Helvetica&quot;,sans-serif;color:white">
+                            <p></p>
+                            </span>
+                            <p>
+                            </p>
+                            <br />
+                            <p>
+                            </p>
+                        </p>
                     </div>
                 </div>
             </asp:Panel>

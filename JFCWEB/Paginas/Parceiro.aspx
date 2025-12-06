@@ -102,20 +102,22 @@
             <table style="width:92%;">
                 <tr>
                     <td class="style2">
-                        <asp:Label ID="Label1" runat="server" Text="Código do Parceiro: " 
-                            style="color: #009933; font-size: large"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td class="style3">
                         <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 0px" 
                             Width="95px" onload="TextBox1_Load"></asp:TextBox>
                         <asp:Button ID="Button1" runat="server" Text="PESQUISAR" 
                             style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
-                            Width="99px" />
+                            Width="99px" OnClick="Button1_Click1" />
                     &nbsp;
-                        <asp:Button ID="Btton02" runat="server" onclick="Btton02_Click" Text="Novo Parceiro" 
-                            Width="106px" 
+                        &nbsp;
+                        <br />
+                        <div style="width: 546px">
+                        <asp:Button ID="Btton02" runat="server" onclick="Btton02_Click" Text="Cadastrar" 
+                            Width="100px" 
                             style="color: #006600; font-weight: 700; background-color: #FFFFFF" />
-                    &nbsp;
+                            <asp:Button ID="Btton04" runat="server" OnClick="Btton04_Click" Text="Alterar" Width="100px" Visible="False" />
+                        </div>
                         <asp:Label ID="Lbel04" runat="server" style="color: #006600"></asp:Label>
                     </td>
                 </tr>
@@ -127,7 +129,7 @@
                             style="text-align: left" Width="456px" BorderColor="#33CC33" 
                             Font-Bold="False">
                             <div class="style8">
-                                Novo Parceiro<br />
+                                Cadasttro de Parceiro<br />
                                 <br />
                                 <asp:Label ID="Lbel01" runat="server" ForeColor="#006600" Text="Código"></asp:Label>
                                 <br />
@@ -143,7 +145,7 @@
                                 <asp:TextBox ID="TextBox4" runat="server" Width="392px"></asp:TextBox>
                                 <br />
                                 Email<br />
-                                <asp:TextBox ID="TextBox5" runat="server" Width="392px" TextMode="Email"></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" runat="server" Width="392px"></asp:TextBox>
                                 <table style="width:100%;">
                                     <tr>
                                         <td>UF</td>
@@ -167,6 +169,7 @@
                                     <tr>
                                         <td align="center">
                                             <asp:Button ID="Button02" runat="server" onclick="Button02_Click" style="color: #006600; font-weight: 700; background-color: #FFFFFF" Text="Confirma" />
+                                            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Gravar" />
                                         </td>
                                         <td class="auto-style3">
                                             <asp:Button ID="Button03" runat="server" style="color: #006600; font-weight: 700" Text="Cancela" />
@@ -202,7 +205,6 @@
                                 <asp:BoundField DataField="EMAIL" HeaderText="Email" SortExpression="EMAIL" />
                                 <asp:BoundField DataField="UF" DataFormatString="{0:@}" HeaderText="UF" SortExpression="UF" />
                                 <asp:BoundField DataField="ROTA" HeaderText="ROTA" SortExpression="ROTA" />
-                                <asp:CommandField ShowEditButton="True" />
                             </Columns>
                             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -239,7 +241,7 @@
             </table>
             <br />
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
                 
                 
                 SelectCommand="SELECT DISTINCT [CODPROD], [DESCRPROD] FROM [ItemParceiros] WHERE ([CODPARC] = @CODPARC) ORDER BY [CODPROD]">
@@ -249,7 +251,7 @@
             </asp:SqlDataSource>
             <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         DeleteCommand="DELETE FROM TGFPAR WHERE (CODPARC = @CODPARC)" 
         InsertCommand="INSERT INTO TGFPAR(CODPARC, NOMEPARC, CGC_CPF, CODPARSAP) VALUES (@CODPARC, @NOMEPARC, @CGC_CPF, @CODPARSAP)" 
         SelectCommand="SELECT DISTINCT CODPARC, CGC_CPF, NOMEPARC, EMAIL, UF, ROTA, CODPARSAP FROM TGFPAR WHERE (CODPARC = @CODPARC)" 
@@ -260,7 +262,7 @@
         
                 
                 
-                UpdateCommand="UPDATE TGFPAR SET CODPARC = @CODPARC, NOMEPARC = @NOMEPARC, CGC_CPF = @CGC_CPF, EMAIL = @EMAIL, UF = @UF, ROTA = @ROTA, CODPARSAP = @CODPARSAP WHERE (CODPARC = @CODPARC)">
+                UpdateCommand="UPDATE TGFPAR SET  EMAIL = @EMAIL WHERE (CODPARC = @CODPARC)">
         <DeleteParameters>
             <asp:Parameter Name="CODPARC" />
         </DeleteParameters>
@@ -274,13 +276,8 @@
             <asp:ControlParameter ControlID="TextBox1" Name="CODPARC" PropertyName="Text" Type="String" />
         </SelectParameters>
         <UpdateParameters>
-            <asp:Parameter Name="CODPARC" />
-            <asp:Parameter Name="NOMEPARC" />
-            <asp:Parameter Name="CGC_CPF" />
             <asp:Parameter Name="EMAIL" />
-            <asp:Parameter Name="UF" />
-            <asp:Parameter Name="ROTA" />
-            <asp:Parameter Name="CODPARSAP" />
+            <asp:Parameter Name="CODPARC" />
         </UpdateParameters>
     </asp:SqlDataSource>
             <br />

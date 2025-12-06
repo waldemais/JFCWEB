@@ -180,7 +180,7 @@
             </asp:GridView>
         </div>
     <asp:SqlDataSource ID="SqlData1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         SelectCommand="SELECT [IDparc], [CODPARC], [NOMEPARC], [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
         <SelectParameters>
             <asp:ControlParameter ControlID="TxtBx1" Name="CGC_CPF" PropertyName="Text" 
@@ -190,7 +190,7 @@
         <br />
     </div>
     <asp:SqlDataSource ID="SqlData2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
     
         SelectCommand="SELECT DISTINCT idContato, CNPJ, NOME, EMAIL, TELEFONE FROM Contato WHERE (CNPJ = @CNPJ) ORDER BY NOME" 

@@ -223,7 +223,7 @@
         </SelectedItemTemplate>
     </asp:ListView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:JFCConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         SelectCommand="SELECT [IDSEM], [TEMPO] FROM [VPrograma] WHERE (([CGC_CPF] = @CGC_CPF) AND ([DIASEM] = @DIASEM))" 
         UpdateCommand="UPDATE VPrograma SET TEMPO = @TEMPO WHERE (IDSEM = @IDSEM)">
         <SelectParameters>

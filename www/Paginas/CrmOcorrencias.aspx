@@ -88,7 +88,7 @@
                 </asp:BoundField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT [Id], [Dtatual], [Status], [Produto], [Ocor], [Qentregue], [Qreclamada], [Numnota] FROM [CRM1] WHERE (([CGC] = @CGC) AND ([Status] = @Status))">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [Id], [Dtatual], [Status], [Produto], [Ocor], [Qentregue], [Qreclamada], [Numnota] FROM [CRM1] WHERE (([CGC] = @CGC) AND ([Status] = @Status))">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox1" Name="CGC" PropertyName="Text" Type="String" />
                 <asp:Parameter DefaultValue="Aberto" Name="Status" Type="String" />

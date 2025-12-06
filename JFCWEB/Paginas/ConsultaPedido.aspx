@@ -155,7 +155,7 @@
     </asp:GridView>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         
         SelectCommand="SELECT DISTINCT pedidoID, DTEMISSAO, DTENTREGA, STATUS, CGC_CPF FROM ListaPedido WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA IS NOT NULL) ORDER BY pedidoID DESC">

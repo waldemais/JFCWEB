@@ -42,6 +42,7 @@
         {
             height: 23px;
             width: 95px;
+            text-align: center;
         }
         .style34
         {
@@ -84,7 +85,7 @@
             height: 71px;
         }
         .auto-style10 {
-            width: 87%;
+            width: 100%;
             height: 225px;
         }
         .auto-style11 {
@@ -117,7 +118,7 @@
         .auto-style20 {
             width: 95px;
             height: 63px;
-            text-align: center;
+            text-align: left;
         }
         .auto-style21 {
             text-align: center;
@@ -188,25 +189,23 @@
             <td class="auto-style22" colspan="2">
                         <br />
             </td>
-            <td style="text-align: center" class="style31">
+            <td class="style31">
+        <asp:Label ID="Labl5" runat="server" Font-Names="Verdana" Font-Size="Small" 
+            ForeColor="White" style="text-align: center" Width="169px" BackColor="#48C857" Enabled="False" Height="34px">Click no Ícone para falar no  Whatsapp</asp:Label>
                         </td>
         </tr>
         <tr>
             <td class="auto-style19" style="text-align: center">
                 </td>
-            <td style="text-align: inherit" class="auto-style18" colspan="2">
-                        <br />
-                    </td>
+            <td class="auto-style18" colspan="2">
+                        &nbsp;</td>
             <td class="auto-style20">
-        <asp:Label ID="Labl5" runat="server" Font-Names="Verdana" Font-Size="Small" 
-            ForeColor="White" style="text-align: left" Width="149px" BackColor="#48C857" Enabled="False" Height="34px">Fale com o Comercial pelo Whatsapp</asp:Label>
-                        <br />
-                        <asp:ImageButton ID="ImageButton2" runat="server" Height="40px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="40px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5521990019227" />
+                        <asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="50px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5521990019227" style="text-align: left" />
                     </td>
         </tr>
     </table>
         <div class="auto-style21">
-            <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Microsoft Himalaya" Font-Size="X-Large" ForeColor="#006600" Text="Desenvolvedor Waldeck Silva | (21) 99001-9227" style="font-size: medium; color: #999999"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Microsoft Himalaya" Font-Size="X-Large" ForeColor="#006600" Text="Desenvolvedor Waldeck Silva " style="font-size: medium; color: #999999"></asp:Label>
         </div>
     <p class="auto-style21">
         &nbsp;</p>

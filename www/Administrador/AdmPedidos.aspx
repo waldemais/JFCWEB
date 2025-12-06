@@ -211,7 +211,7 @@
             <hr />
         </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         SelectCommand="SELECT pedidoID, NOMEPARC, DTEMISSAO, DTENTREGA, STATUS, UF, CODPARC FROM ListaPedidos WHERE (UF = @UF) AND (DTEMISSAO BETWEEN @DTEMISSAO1 AND DATEADD(Day, 1, @DTEMISSAO2)) AND (UF = @UF) ORDER BY pedidoID">
         <SelectParameters>
             <asp:ControlParameter ControlID="DropDownList2" Name="UF" PropertyName="SelectedValue" />
@@ -250,7 +250,7 @@
                 <sorteddescendingcellstyle backcolor="#CAC9C9" />
                 <sorteddescendingheaderstyle backcolor="#000065" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([CODPARC] = @CODPARC) ORDER BY [DTEMISSAO] DESC">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([CODPARC] = @CODPARC) ORDER BY [DTEMISSAO] DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="TextBox3" Name="CODPARC" PropertyName="Text" Type="String" />
                 </SelectParameters>
@@ -288,7 +288,7 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#000065" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([pedidoID] = @pedidoID)">
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([pedidoID] = @pedidoID)">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="TextBox4" Name="pedidoID" PropertyName="Text" Type="Int32" />
                 </SelectParameters>
@@ -321,7 +321,7 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#000065" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT ITENS_PEDIDO.pedidoID, ITENS_PEDIDO.CODPROD, ITENS_PEDIDO.QTDE, PEDIDO.DTENTREGA, TGFPRO.DESCRPROD, ITENS_PEDIDO.CODPARC FROM ITENS_PEDIDO INNER JOIN PEDIDO ON ITENS_PEDIDO.pedidoID = PEDIDO.pedidoID INNER JOIN TGFPRO ON ITENS_PEDIDO.CODPROD = TGFPRO.CODPROD WHERE (ITENS_PEDIDO.CODPARC = @CODPARC) ORDER BY ITENS_PEDIDO.pedidoID DESC">
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT ITENS_PEDIDO.pedidoID, ITENS_PEDIDO.CODPROD, ITENS_PEDIDO.QTDE, PEDIDO.DTENTREGA, TGFPRO.DESCRPROD, ITENS_PEDIDO.CODPARC FROM ITENS_PEDIDO INNER JOIN PEDIDO ON ITENS_PEDIDO.pedidoID = PEDIDO.pedidoID INNER JOIN TGFPRO ON ITENS_PEDIDO.CODPROD = TGFPRO.CODPROD WHERE (ITENS_PEDIDO.CODPARC = @CODPARC) ORDER BY ITENS_PEDIDO.pedidoID DESC">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TextBox5" Name="CODPARC" PropertyName="Text" />
             </SelectParameters>

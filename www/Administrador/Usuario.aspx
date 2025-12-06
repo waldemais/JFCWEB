@@ -79,7 +79,7 @@
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
         
         
         SelectCommand="SELECT * FROM [TBLogin] WHERE ([CNPJ] = @CNPJ)" 

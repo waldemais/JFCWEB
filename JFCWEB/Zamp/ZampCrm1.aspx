@@ -129,7 +129,7 @@
                 <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
             <br />
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual AS Expr1, CGC, Nomepar, Status, Ocor, Produto, Qentregue, Qreclamada, Lote, Dtemb, Ocorrencia, Dtvenc, Foto, BKNumber, Qautoriz FROM CRM1 WHERE (Status = @Status) AND (Dtatual BETWEEN @Dtatual1 AND DATEADD(Day, 1, @Dtatual2)) AND (Nomepar LIKE '%BK%')">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual AS Expr1, CGC, Nomepar, Status, Ocor, Produto, Qentregue, Qreclamada, Lote, Dtemb, Ocorrencia, Dtvenc, Foto, BKNumber, Qautoriz FROM CRM1 WHERE (Status = @Status) AND (Dtatual BETWEEN @Dtatual1 AND DATEADD(Day, 1, @Dtatual2)) AND (Nomepar LIKE '%BK%')">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DropDownList1" Name="Status" PropertyName="SelectedValue" Type="String" />
                     <asp:ControlParameter ControlID="TextBox1" Name="Dtatual1" PropertyName="Text" />

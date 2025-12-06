@@ -92,7 +92,7 @@
                     <SortedDescendingCellStyle BackColor="#E1DB9C" />
                     <SortedDescendingHeaderStyle BackColor="#C2A47B" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcwConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual, CGC, Nomepar, Status, Ocor FROM CRM1 WHERE (Status = @Status) AND (Dtatual BETWEEN @Dtatual1 AND DATEADD(Day, 1, @Dtatual2)) ORDER BY Dtatual">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT Id, Dtatual, CGC, Nomepar, Status, Ocor FROM CRM1 WHERE (Status = @Status) AND (Dtatual BETWEEN @Dtatual1 AND DATEADD(Day, 1, @Dtatual2)) ORDER BY Dtatual">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="DropDownList1" Name="Status" PropertyName="SelectedValue" />
                         <asp:ControlParameter ControlID="TextBox1" Name="Dtatual1" PropertyName="Text" Type="DateTime" />
