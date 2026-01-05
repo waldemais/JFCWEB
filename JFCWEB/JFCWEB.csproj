@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JFCWEB</RootNamespace>
     <AssemblyName>JFCWEB</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -214,15 +214,15 @@
     <Content Include="Imagem\AjudaColab.jpg" />
     <Content Include="Imagem\AjudaLpedidos.jpg" />
     <Content Include="Imagem\AjudaPrevia.jpg" />
-    <Content Include="Imagem\boneco.png" />
-    <Content Include="Imagem\Captura de tela 2025-11-25 164909.png" />
-    <Content Include="Imagem\Natal-2025.gif" />
     <Content Include="Imagem\crm.png" />
     <Content Include="Imagem\Decoração.jpg" />
     <Content Include="Imagem\Exportar.png" />
+    <Content Include="Imagem\Festas.jpeg" />
+    <Content Include="Imagem\Festas.jpg" />
     <Content Include="Imagem\Fundo Gradiente.jpg" />
     <Content Include="Imagem\Fundo JFCWEB.jpg" />
     <Content Include="Imagem\grupo.png" />
+    <Content Include="Imagem\Logogrupo.png" />
     <Content Include="Imagem\icons8-compose-64.png" />
     <Content Include="Imagem\icons8-create-filled-48.png" />
     <Content Include="Imagem\icons8-document-48.png" />
@@ -234,11 +234,12 @@
     <Content Include="Imagem\Icons_250x250px-27.png" />
     <Content Include="Imagem\Imagem do WhatsApp de 2025-02-25 à%28s%29 16.37.54_30e628c8.jpg" />
     <Content Include="Imagem\invisivel.png" />
+    <Content Include="Imagem\Grupo.jpg" />
     <Content Include="Imagem\jfcverduras.jpg" />
     <Content Include="Imagem\logojfc.png" />
     <Content Include="Imagem\Logos_JFC.jpg" />
     <Content Include="Imagem\Logo_JFC.ico" />
-    <Content Include="Imagem\Natal.png" />
+    <Content Include="Imagem\Logo_Natal.jpg" />
     <Content Include="Imagem\NsALADS.jpg" />
     <Content Include="Imagem\Parc01.jpg" />
     <Content Include="Imagem\Parc02.jpg" />
@@ -256,9 +257,7 @@
     <Content Include="Imagem\visivel.png" />
     <Content Include="Imagem\Voltar.png" />
     <Content Include="Imagem\whatsapp.jpeg" />
-    <Content Include="Imagem\_Logos _JFC-01.jpg" />
     <Content Include="Index.html" />
-    <Content Include="Paginas\ConsultaPedido.aspx" />
     <Content Include="Paginas\CRM4.aspx" />
     <Content Include="Paginas\CrmOcorrencias.aspx" />
     <Content Include="Paginas\CRM.aspx" />
@@ -880,6 +879,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -899,6 +901,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />

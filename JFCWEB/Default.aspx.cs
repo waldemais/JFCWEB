@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.Sql;
-//using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 namespace JFCWEB
 {
@@ -14,14 +14,16 @@ namespace JFCWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void Btt1_Click(object sender, EventArgs e)
         {
-            string nomecgc = TBox1.Text;
+            string nomecgc = " ";
+            string senhausu = " ";
+            nomecgc = TBox1.Text;
             Session["cgc"] = nomecgc;
-            string senhausu = TBox2.Text;
+            senhausu = TBox2.Text;
             Session["serial"] = senhausu;
             strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
@@ -41,9 +43,7 @@ namespace JFCWEB
             var resultado = commsql.ExecuteScalar();
             var resnivel = commsqlx.ExecuteScalar();
             var resativo = commsqly.ExecuteScalar();
-            
-            conn.Close();
-
+             conn.Close();
            if (resativo is false)
             {
                 Lb1.Text = ("Entrar em contato com o Comercial.");
@@ -83,8 +83,8 @@ namespace JFCWEB
                  }
                 else
                {
-                  
-                    Lb1.Text = "Captcha Inválido!";
+                    TextBox1.Text = "";
+                      Lb1.Text = "Captcha Inválido, tente novamente!";
                }
 
             }      
@@ -93,14 +93,5 @@ namespace JFCWEB
         public string strcon { get; set; }
         public SqlConnection conn { get; set; }
 
-        protected void TBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+            }
 }

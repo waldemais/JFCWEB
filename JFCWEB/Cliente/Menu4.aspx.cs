@@ -16,15 +16,15 @@ namespace JFCWEB
             TxtBx.Text = Session["cgc"].ToString();
             string CGC_CPF = " ";
             CGC_CPF = TxtBx.Text;
-            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
-            conn = new SqlConnection(strcon);
-            conn.Open();
+           // strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+         //   conn = new SqlConnection(strcon);
+         //   conn.Open();
             //
         }
         public string strcon { get; set; }
         public SqlConnection conn { get; set; }
 
-                protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+      protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
 
         }
@@ -34,7 +34,7 @@ namespace JFCWEB
 
         }
 
-                protected void Button1_Click(object sender, EventArgs e)
+      protected void Button1_Click(object sender, EventArgs e)
         {
             strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
@@ -54,15 +54,15 @@ namespace JFCWEB
                 SqlCommand comm01 = new SqlCommand(sql01, conn);
                 comm01.Parameters.AddWithValue("@CGC_CPF", TxtBx.Text);
                 comm01.ExecuteNonQuery();
-
+                conn.Close();
                 Response.Redirect("~/Paginas/Novo.aspx");
-
             }
             else
             {
-
+                conn.Close();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Dias de entrega não cadastrado. Contate o Atendimento!')", true);
             }
+            
         }
 
         protected void Button4_Click(object sender, EventArgs e)

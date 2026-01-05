@@ -51,15 +51,6 @@ namespace JFCWEB
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
 
         /// <summary>
-        /// Controle TxtBx.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBx;
-
-        /// <summary>
         /// Controle Label3.
         /// </summary>
         /// <remarks>
@@ -67,6 +58,24 @@ namespace JFCWEB
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+
+        /// <summary>
+        /// Controle Label5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
+
+        /// <summary>
+        /// Controle TxtBx.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBx;
 
         /// <summary>
         /// Controle Button1.

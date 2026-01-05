@@ -114,7 +114,7 @@
         DataSourceID="SqlDataSource1" GridLines="None" 
         style="color: #006600; font-size: 22pt;" 
         Font-Size="Small" onrowdatabound="GridView1_RowDataBound" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged" DataKeyNames="pedidoID" CellPadding="4" Font-Overline="False" ForeColor="#333333" PageSize="100">
+        onselectedindexchanged="GridView1_SelectedIndexChanged" DataKeyNames="pedidoID" CellPadding="4" Font-Overline="False" ForeColor="#333333" PageSize="100" EnablePersistedSelection="True">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="pedidoID" HeaderText="Pedido" ReadOnly="True" SortExpression="pedidoID" >

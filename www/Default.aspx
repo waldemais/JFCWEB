@@ -72,7 +72,7 @@
             margin-left: 40px;
         }
         .auto-style9 {
-            width: 88px;
+            width: 116px;
             height: 24px;
             margin-left: 0px;
             margin-top: 0px;
@@ -111,19 +111,19 @@
             margin-left: 0px;
         }
         .auto-style34 {
-            height: 24px;
+            height: 23px;
         }
         .auto-style35 {
             height: 29px;
         }
         .auto-style36 {
-            height: 25px;
+            height: 37px;
             text-align: center;
             font-weight: normal;
             color: #000000;
         }
         .auto-style37 {
-            width: 422px;
+            width: 562px;
         }
         .auto-style38 {
             height: 34px;
@@ -138,38 +138,40 @@
                     <table align="right" class="auto-style33">
                         <tr>
                             <td class="auto-style37" rowspan="10">
-                    <img alt="" src="Imagem/grupo.png" style="height: 49px; width: 72px" /><br />
-                                <asp:TextBox ID="TextBox2" runat="server" Height="367px" OnTextChanged="TextBox2_TextChanged" TextMode="MultiLine" Width="393px" Font-Bold="True" Font-Size="Large" ForeColor="#000099">O SITE ESTA LIBERADO PARA PEDIDOS.
-
-ABAIXO ESTÃO OS CONTATOS PARA DÚVIDAS:
-
-Clientes de São Paulo
-Josy - 11 91137-7683
-Camila - 11 97489-1012
-Larissa - 21 99941-3076
-
-Clientes do Rio de Janeiro
-Duane - 21 97367-0250
-Sabrine - 21 97366-9509</asp:TextBox>
                                 <br />
-                                <br />
+                                <asp:TextBox ID="TextBox2" runat="server" Height="414px" style="margin-top: 0px" TextMode="MultiLine" Width="543px">LINK PARA ACESSAR O SITE:
+https://jfcverduras.com.br/
+
+CONTATOS SÃO PAULO:
+JOSY    - 11 96841-7287
+CAMILA  - 11 97849-1012
+LARISSA - 11 99941-3076
+
+CONTATOS RIO DE JANEIRO:
+DUANE   - 21 97367-0250
+SABRINE - 21 97366-9509
+
+
+
+
+</asp:TextBox>
                             </td>
-                            <td class="auto-style32">
-                                <br />
+                            <td class="auto-style32" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
+                    <img alt="" src="Imagem/Logogrupo.png" style="height: 64px; width: 93px" /><br />
                                 <asp:Label ID="Label6" runat="server" Enabled="False" Font-Size="X-Large" Text="PORTAL DE PEDIDOS" ForeColor="#006600"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style34">
+                            <td class="auto-style34" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                                 <hr />
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style30">
+                            <td class="auto-style30" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                                 &nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style38">
+                            <td class="auto-style38" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                                 <asp:Label ID="Label4" runat="server" Text="CNPJ"></asp:Label>
                             &nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TBox1" 
                         runat="server" style="font-family: Calibri; font-size: medium" 
@@ -180,7 +182,7 @@ Sabrine - 21 97366-9509</asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style30">
+                            <td class="auto-style30" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                                 <asp:Label ID="Label5" runat="server" Text="SENHA"></asp:Label>
                             &nbsp;
                     <span class="style15">
@@ -192,7 +194,7 @@ Sabrine - 21 97366-9509</asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style35">
+                            <td class="auto-style35" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                                 <span class="style15">
        
                   
@@ -205,19 +207,19 @@ Sabrine - 21 97366-9509</asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td><span class="style15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin"><span class="style15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        
                   
                     <asp:TextBox ID="TextBox1" runat="server" With="100px" Height="25px" 
                         Width="150px" Font-Size="Medium" 
-                        style="text-align: center; color: #006600; background-color: #FFFF99" TextMode="Password"></asp:TextBox>
+                        style="text-align: center; color: #006600; background-color: #FFFF99" TextMode="Number"></asp:TextBox>
        
                   
                     </span>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style25">
+                            <td class="auto-style25" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                   
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   
@@ -227,15 +229,15 @@ Sabrine - 21 97366-9509</asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style26">
+                            <td class="auto-style26" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                   
                     <asp:Label ID="Lb1" runat="server" Font-Names="Verdana" Font-Size="Medium" 
                         style="text-align: center; color: #006600;" Font-Bold="True" ForeColor="#FF3300"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style36">
-                                Versão 1.241025.1450</td>
+                            <td class="auto-style36" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
+                                Versão 1.231225.1000</td>
                         </tr>
                     </table>
                 </td>

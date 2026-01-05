@@ -166,7 +166,7 @@
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#999999" 
         BorderStyle="None" BorderWidth="1px" CellPadding="3" ForeColor="#003300" 
-        GridLines="None" style="font-size: small" Width="606px" OnDataBound="GridView2_DataBound">
+        GridLines="None" style="font-size: small" Width="606px" OnDataBound="GridView2_DataBound" OnLoad="GridView2_Load">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField DataField="itemID" 

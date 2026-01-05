@@ -71,7 +71,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" defaultbutton="Button1">
+    <form id="form1" runat="server" defaultbutton="Button1" enableviewstate="True">
     <div>
     
         <table style="width:100%;">
@@ -81,12 +81,12 @@
                         ImageUrl="~/Imagem/icons8-menu-48.png" 
                         PostBackUrl="~/Administrador/Menu1.aspx" />
                     <br />
-                    <asp:TextBox ID="TBo1" runat="server" Visible="False"></asp:TextBox>
+                    <asp:TextBox ID="TBo1" runat="server"></asp:TextBox>
                     <br />
                     <br />
                     </td>
                 <td style="text-align: center" class="auto-style5">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/grupo.png" Width="100px" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logo_Natal.jpg" Width="100px" />
                     </td>
                 <td class="auto-style11">
                     <asp:ImageButton ID="ImageButton2" runat="server" ImageAlign="Right" 
@@ -127,8 +127,8 @@
                 </tr>
                 <tr>
                     <td align="center" class="auto-style15" style="border-style: groove">
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" Height="22px" Width="100px"></asp:TextBox>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Height="22px" Width="100px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" Height="22px" Width="100px" AutoPostBack="True"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Height="22px" Width="100px" AutoPostBack="True"></asp:TextBox>
                         <br />
                     <asp:DropDownList ID="DropDownList2" runat="server" Height="22px" Width="120px">
                         <asp:ListItem Value="RJ">Rio de Janeiro</asp:ListItem>
@@ -175,7 +175,7 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource1" Font-Size="Small" 
         onrowdatabound="GridView1_RowDataBound" style="color: #006600" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged" AllowSorting="True" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical">
+        onselectedindexchanged="GridView1_SelectedIndexChanged" AllowSorting="True" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataKeyNames="pedidoID" EnablePersistedSelection="True" EnableViewState="False" ViewStateMode="Disabled">
         <AlternatingRowStyle BackColor="#DCDCDC" />
         <Columns>
             <asp:BoundField DataField="pedidoID" HeaderText="Pedido" 
@@ -189,11 +189,7 @@
                 SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
             <asp:BoundField DataField="STATUS" HeaderText="Situação" 
                 SortExpression="STATUS" />
-            <asp:CommandField ButtonType="Button" 
-                ShowSelectButton="True" HeaderText="Ver Pedido">
-            <ControlStyle BackColor="White" ForeColor="#006600" Font-Size="Small" />
-            <ItemStyle ForeColor="#006600" Font-Size="Small" />
-            </asp:CommandField>
+            <asp:CommandField ShowSelectButton="True" />
         </Columns>
         <EmptyDataRowStyle Font-Size="Small" />
         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -212,7 +208,7 @@
         </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        SelectCommand="SELECT pedidoID, NOMEPARC, DTEMISSAO, DTENTREGA, STATUS, UF, CODPARC FROM ListaPedidos WHERE (UF = @UF) AND (DTEMISSAO BETWEEN @DTEMISSAO1 AND DATEADD(Day, 1, @DTEMISSAO2)) AND (UF = @UF) ORDER BY pedidoID">
+        SelectCommand="SELECT pedidoID, NOMEPARC, DTEMISSAO, DTENTREGA, STATUS, UF, CODPARC FROM ListaPedidos WHERE (UF = @UF) AND (DTEMISSAO BETWEEN @DTEMISSAO1 AND DATEADD(Day, 1, @DTEMISSAO2)) AND (UF = @UF) ORDER BY pedidoID" ProviderName="System.Data.SqlClient">
         <SelectParameters>
             <asp:ControlParameter ControlID="DropDownList2" Name="UF" PropertyName="SelectedValue" />
             <asp:ControlParameter ControlID="TextBox1" Name="DTEMISSAO1" PropertyName="Text" Type="DateTime" />
@@ -225,7 +221,7 @@
             <br />
         </div>
         <div>
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource2" Font-Size="Small" GridLines="Vertical" AllowPaging="True" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource2" Font-Size="Small" GridLines="Vertical" AllowPaging="True" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnLoad="GridView2_Load">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="pedidoID" HeaderText="Pedido" SortExpression="pedidoID"></asp:BoundField>
@@ -250,7 +246,7 @@
                 <sorteddescendingcellstyle backcolor="#CAC9C9" />
                 <sorteddescendingheaderstyle backcolor="#000065" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([CODPARC] = @CODPARC) ORDER BY [DTEMISSAO] DESC">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [CODPARC], [NOMEPARC], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [ListaPedidos] WHERE ([CODPARC] = @CODPARC) ORDER BY [DTEMISSAO] DESC" ProviderName="System.Data.SqlClient">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="TextBox3" Name="CODPARC" PropertyName="Text" Type="String" />
                 </SelectParameters>

@@ -77,31 +77,15 @@
             color: #61AC00;
             background-color: #FFFFFF;
         }
-        .auto-style13 {
-            text-align: center;
-            background-color: #FFFFFF;
-            font-style: italic;
-            height: 44px;
-        }
-        .auto-style14 {
-            background-color: #FFFFFF;
-            height: 44px;
-        }
         .auto-style15 {
             font-size: xx-large;
             color: #009933;
-        }
-        .auto-style17 {
-            text-align: left;
-            background-color: #FFFFFF;
-            font-style: italic;
-            height: 44px;
-            width: 544px;
         }
         .auto-style18 {
             text-align: left;
             background-color: #FFFFFF;
             font-style: italic;
+            height: 58px;
         }
         .auto-style21 {
             text-align: left;
@@ -150,6 +134,23 @@
             font-style: italic;
             height: 31px;
         }
+         .auto-style34 {
+            text-align: left;
+            background-color: #FFFFFF;
+            font-style: italic;
+            width: 544px;
+            height: 58px;
+        }
+        .auto-style35 {
+            background-color: #FFFFFF;
+            height: 58px;
+        }
+         .auto-style36 {
+            text-align: center;
+            background-color: #FFFFFF;
+            font-style: italic;
+            height: 108px;
+        }
          </style>
     <link rel="Stylesheet""
      href=~/Imagem\Temporizador.gif />
@@ -170,7 +171,9 @@
                     <td class="auto-style31">
                         &nbsp;</td>
                     <td class="auto-style29">
-                        &nbsp;</td>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                    </td>
                     <td class="auto-style27">
                         <strong>
                         <asp:Label ID="Label6" runat="server" Text="Emissão de Pedido" Enabled="False" BorderStyle="None" CssClass="auto-style15" Height="30px" Width="269px" Font-Bold="True" Font-Italic="False" ForeColor="White"></asp:Label>
@@ -186,14 +189,36 @@
         <div>
             <table style="width: 99%; height: 97px;">
                 <tr>
-                    <td class="auto-style21">
+                    <td class="auto-style34">
                         <asp:Label ID="Label8" runat="server" style="font-size: medium" Text="CNPJ: " Enabled="False"></asp:Label>
-                        <asp:TextBox ID="Lab7" runat="server" Enabled="False" CssClass="auto-style30"></asp:TextBox>
+                        <asp:TextBox ID="Lab7" runat="server" Enabled="False" CssClass="auto-style30" BorderStyle="None"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label13" runat="server" Text="Còdigo: "></asp:Label>
+                        <asp:Label ID="Lab10" runat="server" Font-Size="Large" Text="CL" Font-Italic="False" style="font-size: medium"></asp:Label>
+                        <br />
+                        <asp:Label ID="Label14" runat="server" Text="Fantasia: "></asp:Label>
+                <asp:Label ID="Lab6" runat="server" style="font-size: medium" Enabled="False">DESCRIÇAO</asp:Label>
+                        <br />
+                        <asp:Label ID="Label15" runat="server" Text="Email: "></asp:Label>
+                <asp:TextBox ID="Text2" runat="server" OnTextChanged="Text2_TextChanged" BorderStyle="None" Enabled="False"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="Label16" runat="server" Text="Unidade: "></asp:Label>
+                        <asp:Label ID="Label12" runat="server" BorderStyle="None" Enabled="False" Text="Label"></asp:Label>
                         </td>
                     <td class="auto-style18">
-                        <asp:Label ID="Label9" runat="server" style="font-size: large" Text="Data da Solicitação: " Enabled="False"></asp:Label>
+                        <asp:Label ID="Label9" runat="server" style="font-size: large" Text="Solicitação: " Enabled="False"></asp:Label>
                         <asp:TextBox ID="TxtBox2" runat="server" BorderStyle="None" Enabled="False" style="font-size: large" Width="144px"></asp:TextBox>
-                        <asp:Label ID="Label10" runat="server" style="font-size: large" Text="- Data da Entrega: "></asp:Label>
+                        <br />
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+               <asp:Label ID="lblHoraAtual" runat="server" Visible="False" />
+                                        
+                  <asp:Timer ID="Timer1" runat="server" Interval="60000" OnTick="Timer1_Tick" />
+    </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <br />
+                        <asp:Label ID="Label10" runat="server" style="font-size: large" Text="Próximas Entrega: "></asp:Label>
+                        &nbsp;
                     <asp:DropDownList ID="DpLi1" runat="server" 
                         DataSourceID="SqlDataSource3" DataTextField="DTENTREGA" 
                         DataValueField="DTENTREGA" Height="40px" 
@@ -206,31 +231,9 @@
                         <asp:ListItem></asp:ListItem>
                     </asp:DropDownList>
                     </td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
-                    <td class="style13" style="text-align: right">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style17">
-                        <asp:Label ID="lab9" runat="server" CssClass="auto-style30" Text=" Código: "></asp:Label>
-                        <asp:Label ID="Lab10" runat="server" Font-Size="Large" Text="Label" Font-Italic="False" style="font-size: medium"></asp:Label>
-                        <asp:Label ID="Label7" runat="server" style="font-size: large" Text="  - " Enabled="False"></asp:Label>
-                <asp:Label ID="Lab6" runat="server" style="font-size: medium" Enabled="False"></asp:Label>
-                        <br />
-                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT CODPARC, DIASEM, ATIVO, LIMDIA, LIMHORA, IDSEM FROM TabProg WHERE (CODPARC = @CODPARC) AND (ATIVO = 1) ORDER BY IDSEM">
-                            <SelectParameters>
-                                <asp:ControlParameter ControlID="Lab10" Name="CODPARC" PropertyName="Text" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
-                    </td>
-                    <td class="auto-style13">
-                <asp:TextBox ID="Text2" runat="server" Visible="False" OnTextChanged="Text2_TextChanged"></asp:TextBox>
-                        <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
-                    </td>
-                    <td class="auto-style14" style="text-align: right">
+                    <td class="auto-style35" style="text-align: right">
                         </td>
-                    <td class="auto-style14" style="text-align: right">
+                    <td class="auto-style35" style="text-align: right">
                         </td>
                 </tr>
                 <tr>
@@ -247,7 +250,8 @@
                         <asp:Label ID="Label2" runat="server" Style="color: #006600; font-size: large;" Visible="False"></asp:Label>
                     </td>
                     <td class="style9">
-                        &nbsp;</td>
+                        <asp:TextBox ID="TxtBox1" runat="server" Visible="False"></asp:TextBox>
+                    </td>
                     <td class="style13" style="text-align: right">
                         &nbsp;</td>
                     <td class="style13" style="text-align: right">
@@ -255,25 +259,15 @@
                 </tr>
                 <tr>
                     <td class="style9" colspan="4" width="100">
-                <asp:GridView ID="GrdView1" runat="server" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource1" BorderStyle="None" ShowHeader="False" 
-                        style="font-family: Verdana; font-size: x-large" GridLines="None" 
-                    CaptionAlign="Left" Width="16px" onload="GrdView1_Load" 
-                    onselectedindexchanged="GrdView1_SelectedIndexChanged" Visible="False" Height="19px">
-                        <Columns>
-                            <asp:BoundField DataField="NOMEPARC" HeaderText="NOMEPARC" 
-                                SortExpression="NOMEPARC" />
-                            <asp:BoundField DataField="CGC_CPF" HeaderText="CGC_CPF" 
-                                SortExpression="CGC_CPF" />
-                            <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
-                            <asp:BoundField DataField="CODPARC" HeaderText="CODPARC" SortExpression="CODPARC" />
-                            <asp:BoundField DataField="UF" HeaderText="UF" SortExpression="UF" />
-                        </Columns>
-                    </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT CODPARC, DIASEM, ATIVO, LIMDIA, LIMHORA, IDSEM FROM TabProg WHERE (CODPARC = @CODPARC) AND (ATIVO = 1) ORDER BY IDSEM">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="Lab10" Name="CODPARC" PropertyName="Text" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
-                    <td class="style9" colspan="4">
+                    <td class="auto-style36" colspan="4">
         <asp:GridView ID="GrdV2" runat="server" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource2" Width="1000px" 
             
@@ -306,7 +300,7 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("QTDE") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:TextBox ID="TxtB2" runat="server" Height="22px" 
+                        <asp:TextBox ID="TxtB2" runat="server" Height="20px" 
                             ontextchanged="TxtB2_TextChanged" Text=' ' Width="91px"></asp:TextBox>
                     </ItemTemplate>
                     <ControlStyle Font-Size="X-Large" ForeColor="#009933" />
@@ -452,12 +446,12 @@
                 </tr>
                 <tr>
                     <td class="auto-style32" colspan="4" align="left">
-                        <asp:Label ID="Label11" runat="server" Text="Grade de Entregas da Semana" style="text-decoration: underline; font-weight: 700; font-size: large;"></asp:Label>
+                        <asp:Label ID="Label11" runat="server" Text="Dias para Entrega:" style="text-decoration: underline; font-weight: 700; font-size: large;"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style32" colspan="4">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource5" ForeColor="Black" GridLines="Vertical" Height="115px" Width="385px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="SqlDataSource5" ForeColor="Black" GridLines="Vertical" Height="115px" Width="385px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnLoad="GridView1_Load">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:BoundField DataField="CODPARC" HeaderText="CODPARC" SortExpression="CODPARC" Visible="False" />
@@ -485,7 +479,7 @@
                         <div>
                         </div>
         <asp:GridView ID="Grid4" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource4" onload="Grid4_Load" Visible="False">
+        DataSourceID="SqlDataSource4" onload="Grid4_Load" OnSelectedIndexChanged="Grid4_SelectedIndexChanged" Visible="False">
             <Columns>
                 <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" 
                     HeaderText="DTENTREGA" SortExpression="DTENTREGA" />
@@ -567,7 +561,7 @@
                         
         
             
-                        SelectCommand="SELECT DISTINCT NOMEPARC, CGC_CPF, EMAIL, CODPARC, UF FROM TGFPAR WHERE (CGC_CPF = @CGC_CPF)">
+                        SelectCommand="SELECT DISTINCT NOMEPARC, CGC_CPF, EMAIL, CODPARC, UF FROM TGFPAR WHERE (CGC_CPF = @CGC_CPF)" ProviderName="System.Data.SqlClient">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" 
                                 Type="String" />

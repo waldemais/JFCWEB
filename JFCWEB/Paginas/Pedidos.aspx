@@ -419,8 +419,7 @@
         <div>
         </div>
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource1" 
-        Visible="False" onrowdatabound="GridView1_RowDataBound">
+                        DataSourceID="SqlDataSource1" onrowdatabound="GridView1_RowDataBound" Visible="False">
                         <Columns>
                             <asp:BoundField DataField="pedidoID" HeaderText="pedidoID" 
                                 SortExpression="pedidoID" />
@@ -446,7 +445,7 @@
             </UpdateParameters>
         </asp:SqlDataSource>
     <div>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [DataCan], [IdNome], [IdTel], [IdEmail], [IdIP] FROM [PedCancelado] WHERE ([PedidoID] = @PedidoID)">
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [DataCan], [IdNome], [IdTel], [IdEmail], [IdIP] FROM [PedCancelado] WHERE ([PedidoID] = @PedidoID)" ProviderName="System.Data.SqlClient">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TBox5" Name="PedidoID" PropertyName="Text" Type="Int32" />
             </SelectParameters>

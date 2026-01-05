@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,21 +26,36 @@ namespace JFCWEB.Paginas
 {
     public partial class Novo : System.Web.UI.Page
     {
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            
+            lblHoraAtual.Text = DateTime.Now.ToString();
+          
+          
+        }
 
         protected void Butt1_Click(object sender, EventArgs e)
         {
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+            conn = new SqlConnection(strcon);
+            conn.Open();
+            string sqldt1 = "SELECT TOP (1) Tabprog.DIA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt1 = new SqlCommand(sqldt1, conn);
+            commdt1.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dta = commdt1.ExecuteScalar();
+            conn.Close();
             string hh0;
           //  int dte1 = DpLi1.SelectedIndex;
             hh0 = DateTime.Now.ToString("HH:mm");
           //dt2 = (Grid4.Rows[dte1].Cells[3].Text);xxxxxxxx
-            var dtex = (Grid4.Rows[0].Cells[4].Text);
-            var dta = Grid4.Rows[0].Cells[6].ToString();
-            var dt1 = DateTime.Now.DayOfWeek.ToString();
-          //  var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[dte1].Cells[4].Text));
-          //  var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+         //   var dtex = (Grid4.Rows[0].Cells[4].Text);
+           // var dta = Grid4.Rows[0].Cells[6].ToString();
+           var dt1 = DateTime.Now.DayOfWeek.ToString();
+            //  var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[dte1].Cells[4].Text));
+            //  var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
 
 
-        if (dt1==dta)
+            if (dt1 == dta)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('O horário limite foi ultrapassado!')", true);
             }
@@ -80,9 +96,9 @@ namespace JFCWEB.Paginas
 
                 else
                 {
-                    string UFf = GrdView1.Rows[0].Cells[4].Text;
-                    string Cod = GrdView1.Rows[0].Cells[3].Text;
-                    string sql = ("INSERT INTO PEDIDO (CGC_CPF, CODPARC, UF) VALUES (@CGC_CPF, @CODPAR, @UF)");
+                  string UFf = Label12.Text;
+                 string Cod = Lab10.Text;
+                 string sql = ("INSERT INTO PEDIDO (CGC_CPF, CODPARC, UF) VALUES (@CGC_CPF, @CODPAR, @UF)");
                 SqlCommand comm = new SqlCommand(sql, conn);
                     comm.CommandTimeout = 10;
                 comm.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
@@ -111,11 +127,12 @@ namespace JFCWEB.Paginas
                         commsqlitem.ExecuteNonQuery();
                         //
                         Label2.Text = ("Pedido n°") + Convert.ToString(entrega);
-                      //  conn.Close();
+                    
                         Session["Ped"] = entrega;
                         Butt2.Enabled = true;
                         string destinatario;
                         destinatario = Text2.Text;
+                        conn.Close();
                         Response.Redirect("~/Paginas/Relatorio.aspx");
                     }
                 }
@@ -138,7 +155,9 @@ namespace JFCWEB.Paginas
             string dia1, dia2, dia3, dia4, dia5, dia6, dia7, dia8, dia9, dia10, dia11, dia12, dia13, dia14, dia15;
             TxtBox1.Text = Session["cgc"].ToString();
             TxtBox2.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-            
+            //=====================================================
+            //*******
+            //====================================================
             data1 = DateTime.Now.AddDays(16).ToString("dd/MM/yyyy");
             dia1 = DateTime.Now.AddDays(16).ToString("ddd");
             data2 = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
@@ -173,7 +192,28 @@ namespace JFCWEB.Paginas
             strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
-            //
+            string Nome = "SELECT NOMEPARC FROM TGFPAR WHERE CGC_CPF=@cnpj";
+            string Email = "SELECT EMAIL FROM TGFPAR WHERE CGC_CPF=@cnpj";
+            string Codp = "SELECT CODPARC FROM TGFPAR WHERE CGC_CPF=@cnpj";
+            string Ufe = "SELECT UF FROM TGFPAR WHERE CGC_CPF=@cnpj";
+            SqlCommand commNome = new SqlCommand(Nome, conn);
+            SqlCommand commEmail = new SqlCommand(Email, conn);
+            SqlCommand commCodp = new SqlCommand(Codp, conn);
+            SqlCommand commUfe = new SqlCommand(Ufe, conn);
+            commNome.Parameters.AddWithValue("@cnpj", TxtBox1.Text);
+            commEmail.Parameters.AddWithValue("@cnpj", TxtBox1.Text);
+            commCodp.Parameters.AddWithValue("@cnpj", TxtBox1.Text);
+            commUfe.Parameters.AddWithValue("@cnpj", TxtBox1.Text);
+            var xnome = commNome.ExecuteScalar();
+            var xemai = commEmail.ExecuteScalar();
+            var xcodp = commCodp.ExecuteScalar();
+            var xufe = commUfe.ExecuteScalar();
+            Lab6.Text = xnome.ToString();
+            Lab10.Text = xcodp.ToString();
+            Text2.Text = xemai.ToString();
+            Label12.Text = xufe.ToString();
+            Lab7.Text = TxtBox1.Text;
+            //======================================================================
             string sqldel = ("DELETE FROM ENTREGA WHERE CGC_CPF = @deleta");
             SqlCommand commdel = new SqlCommand(sqldel, conn);
             commdel.Parameters.AddWithValue("@deleta", TxtBox1.Text);
@@ -273,7 +313,6 @@ namespace JFCWEB.Paginas
             comm14.ExecuteNonQuery();
             comm15.ExecuteNonQuery();
             conn.Close();
-            //
         }
 
         protected void GrdV2_Load(object sender, EventArgs e)
@@ -345,6 +384,8 @@ namespace JFCWEB.Paginas
 
         protected void Grid4_Load(object sender, EventArgs e)
         {
+            Grid4.DataBind();
+
             strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
             conn = new SqlConnection(strcon);
             conn.Open();
@@ -362,12 +403,47 @@ namespace JFCWEB.Paginas
             //   dtex = (Grid4.Rows[dte1].Cells[0].Text);
             //************************************
             //  dte = DpLi1.SelectedValue.ToString();
-            var dtd = Grid4.Rows[0].Cells[5].Text;
-            var dta = Grid4.Rows[0].Cells[6].Text;
-            var dta1 = Grid4.Rows[0].Cells[6].Text;
-            var dtasp = Grid4.Rows[1].Cells[6].Text;
-            var dtn = Grid4.Rows[0].Cells[7].Text;
-            var dtu = Grid4.Rows[0].Cells[8].Text;
+            // ALTERÇÃO DE GRIDA PARA SCRIPT888888888888*********************
+            string sqldt = "SELECT TOP (1) ENTREGA.DIASEM FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt = new SqlCommand(sqldt, conn);
+            commdt.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dtd = commdt.ExecuteScalar();
+            //*******************************
+            string sqldt1 = "SELECT TOP (1) Tabprog.DIA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt1 = new SqlCommand(sqldt1, conn);
+            commdt1.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dta = commdt1.ExecuteScalar();
+            //*******************************
+            string sqldt1sp = "SELECT Tabprog.DIA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA OFFSET 1 ROWS FETCH NEXT 1 ROW ONLY";
+            SqlCommand commdt1sp = new SqlCommand(sqldt1sp, conn);
+            commdt1sp.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dtasp = commdt1sp.ExecuteScalar();
+            //*******************************
+            var dta1 = dta;
+            //*********************************
+            string sqldt2 = "SELECT TOP (1) TGFPAR.NOMEPARC FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt2 = new SqlCommand(sqldt2, conn);
+            commdt2.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dtnx = commdt2.ExecuteScalar();
+            //********************************
+            string sqldt3 = "SELECT TOP (1) TGFPAR.UF FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt3 = new SqlCommand(sqldt3, conn);
+            commdt3.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dtu= commdt3.ExecuteScalar();
+            //**************************************************
+            string sqldh = "SELECT TOP (1) TabProg.LIMHORA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdh = new SqlCommand(sqldh, conn);
+            commdh.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dth = commdh.ExecuteScalar();
+            //*******************************
+            string dtn = dtnx.ToString();
+            //********************************
+            // var dtd = Grid4.Rows[0].Cells[5].Text;
+            //var dta = Grid4.Rows[0].Cells[6].Text;
+            //var dta1 = Grid4.Rows[0].Cells[6].Text;
+            //  var dtasp = Grid4.Rows[1].Cells[6].Text;
+            //var dtn = Grid4.Rows[0].Cells[7].Text;
+            //r dtu = Grid4.Rows[0].Cells[8].Text;
             var Dnome = "BK";
             var Duf = "RJ";
             var Dufsp = "SP";
@@ -376,7 +452,7 @@ namespace JFCWEB.Paginas
             //**********************************
             //******************************************************
             var dt1 = DateTime.Now.ToString("dddd");
-            var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
+            var hh2 = TimeSpan.FromHours(Convert.ToDouble(dth));
             
             var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
             Dnome = dtn.Substring(0, 3);
@@ -439,9 +515,17 @@ namespace JFCWEB.Paginas
 
             }
             //*****
-
-            
-            var dt0 = Grid4.Rows[0].Cells[0].Text;
+            string sqldt0 = "SELECT TOP (1) ENTREGA.DTENTREGA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt0 = new SqlCommand(sqldt0, conn);
+            commdt0.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dt0 = commdt0.ExecuteScalar();
+            //*******************************
+            string sqldtsp = "SELECT ENTREGA.DTENTREGA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA OFFSET 1 ROWS FETCH NEXT 1 ROW ONLY";
+            SqlCommand commdt2sp = new SqlCommand(sqldtsp, conn);
+            commdt2sp.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dtx0 = commdt2sp.ExecuteScalar();
+            //  var dt0 = Grid4.Rows[0].Cells[0].Text;
+            //***************************************************************
             var Xteste = (test2 - test1);
             //################################################
             switch (dtu)
@@ -466,8 +550,8 @@ namespace JFCWEB.Paginas
                             var test3 = Convert.ToDouble(dta1);
                             test2 = test3; 
                            hh2=hh3;
-
-                            var dtx0 = Grid4.Rows[1].Cells[0].Text;
+                            //*******************************
+                           // var dtx0 = Grid4.Rows[1].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -477,27 +561,29 @@ namespace JFCWEB.Paginas
                         }
                     }
                     //*
-
                     if (test1 < test2)
                     {
 
                         if (hh1 < hh2 && test1 != 1)
                         {
-                          //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
-                         //   var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
-                            string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
-                            SqlCommand comm1 = new SqlCommand(Ped1, conn);
-                            comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
-                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
-                            comm1.ExecuteNonQuery();
-                            Label5.Text = "3 - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                            //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
+                            //   var test3 = Convert.ToDouble(dta1);
+                           
+                           // **********************************************
+                          // var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                           string sqlx = "DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA";
+                            SqlCommand commsqlx = new SqlCommand(sqlx,conn);
+                            commsqlx.Parameters.AddWithValue("@CGC", TxtBox1.Text);
+                            commsqlx.Parameters.AddWithValue("@ENTREGA", dt0);
+                          commsqlx.ExecuteNonQuery();   
+                            Label5.Text = "3 - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
                          //   hh2 = hh3;
                          //   test2 = test3;
                         }
                         if (hh1 < hh2 && test1 == 1)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                             //************************
+                           // var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -510,7 +596,9 @@ namespace JFCWEB.Paginas
                         {
                             var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            
+                            //var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            //**********************************
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -524,7 +612,8 @@ namespace JFCWEB.Paginas
                         {
                             var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                           //******************************************
+                           // var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -538,20 +627,21 @@ namespace JFCWEB.Paginas
                         {
                             //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             //  var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                              // var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                            //********************************
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
-                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0.ToString());
+                            comm1.Parameters.AddWithValue("@ENTREGA", dt0.ToString());
                             comm1.ExecuteNonQuery();
-                            Label5.Text = "4.1 - PEDIDOS PARA O DIA " + dtx0 + " ENCERROU AS " + hh2;
+                            Label5.Text = "4.1 - PEDIDOS PARA O DIA " + dt0 + " ENCERROU AS " + hh2;
                             //   hh2 = hh3;
                             //  test2 = test3;
                         }
 
                         if (dt1 == "domingo" & dtd == "seg")
                         {
-                            var dtx0 = Grid4.Rows[1].Cells[0].Text;
+                           // var dtx0 = Grid4.Rows[1].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -565,7 +655,8 @@ namespace JFCWEB.Paginas
                     {
                         if (hh1 < hh2)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -579,7 +670,7 @@ namespace JFCWEB.Paginas
                             var test3 = Convert.ToDouble(dta1);
                             test2 = test3;
                             hh2 = hh3;
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                           // var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -589,7 +680,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -614,7 +705,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2)
                         {
-                            var dtx0 = Grid4.Rows[1].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[1].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -632,19 +723,19 @@ namespace JFCWEB.Paginas
                         {
                             var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
-                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0);
+                            comm1.Parameters.AddWithValue("@ENTREGA", dt0);
                             comm1.ExecuteNonQuery();
-                            Label5.Text = "3 RJ - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dtx0;
+                            Label5.Text = "3 RJ - NÃO É POSSÍVEL SOLICITAR PEDIDOS PARA O DIA " + dt0;
                             hh2 = hh3;
                             test2 = test3;
                         }
                         if (hh1 < hh2 && test1 == 1)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -657,7 +748,7 @@ namespace JFCWEB.Paginas
                         {
                             //var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             //var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -671,13 +762,13 @@ namespace JFCWEB.Paginas
                         {
                             //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             //  var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
-                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0.ToString());
+                            comm1.Parameters.AddWithValue("@ENTREGA", dt0.ToString());
                             comm1.ExecuteNonQuery();
-                            Label5.Text = "4.1 RJ - PEDIDOS PARA O DIA " + dtx0 + " ENCERROU AS " + hh2;
+                            Label5.Text = "4.1 RJ - PEDIDOS PARA O DIA " + dt0 + " ENCERROU AS " + hh2;
                             //   hh2 = hh3;
                             //  test2 = test3;
                         }
@@ -698,7 +789,7 @@ namespace JFCWEB.Paginas
 
                         if (dt1 == "domingo" & dtd == "seg")
                         {
-                            var dtx0 = Grid4.Rows[1].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[1].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -712,7 +803,7 @@ namespace JFCWEB.Paginas
                     {
                         if (hh1 < hh2)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -722,7 +813,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 < hh2 && test1==7)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -742,7 +833,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2 && Xteste == -5)
                         {
-                           var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                        //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -768,11 +859,11 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2)
                         {
-                     var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[1].Cells[4].Text));
+                     var hh3 = TimeSpan.FromHours(Convert.ToDouble(dth));
                      var test3 = Convert.ToDouble(dta1);
                      test2 = test3;
                      hh2 = hh3;
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -790,7 +881,7 @@ namespace JFCWEB.Paginas
                         {
                             //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             //   var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -802,7 +893,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 < hh2 && test1 == 1)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -813,9 +904,9 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2 && Xteste != 1)
                         {
-                            var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
+                            var hh3 = TimeSpan.FromHours(Convert.ToDouble(dth));
                             var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -829,7 +920,7 @@ namespace JFCWEB.Paginas
                         {
                             //  var hh3 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[0].Cells[4].Text));
                             //  var test3 = Convert.ToDouble(dta1);
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -842,7 +933,7 @@ namespace JFCWEB.Paginas
 
                         if (dt1 == "domingo" & dtd == "seg")
                         {
-                            var dtx0 = Grid4.Rows[1].Cells[0].Text;
+                         //   var dtx0 = Grid4.Rows[1].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -856,7 +947,7 @@ namespace JFCWEB.Paginas
                     {
                         if (hh1 < hh2)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -866,7 +957,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 < hh2 && Xteste < 0)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -876,7 +967,7 @@ namespace JFCWEB.Paginas
                         }
                         if (hh1 > hh2)
                         {
-                            var dtx0 = Grid4.Rows[0].Cells[0].Text;
+                          //  var dtx0 = Grid4.Rows[0].Cells[0].Text;
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -895,7 +986,7 @@ namespace JFCWEB.Paginas
 
        if (test1 > test2 && hh1 > hh2) 
   {
-      var dtx0 = Grid4.Rows[1].Cells[0].Text;
+     // var dtx0 = Grid4.Rows[1].Cells[0].Text;
       string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<=@ENTREGA");
     SqlCommand comm1 = new SqlCommand(Ped1, conn);
     comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
@@ -914,8 +1005,7 @@ namespace JFCWEB.Paginas
             }
            Label1.Text =test1+" - "+hh1+" - "+ dtn.Substring(0,2);
            Label2.Text =test2 + " - " + hh2 + " - "+dtu + " = "+Xteste+".";
-
-           
+                               
             conn.Close();
         }
 
@@ -938,8 +1028,7 @@ namespace JFCWEB.Paginas
 
         protected void GrdV2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            vlr = (GrdV2.SelectedRow.Cells[5].Text).ToString();
+           vlr = (GrdV2.SelectedRow.Cells[5].Text).ToString();
            Decimal tot = Convert.ToDecimal(vlr) * Convert.ToDecimal(inn);
             idd = (GrdV2.SelectedRow.Cells[0].Text).ToString();
             strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
@@ -951,7 +1040,6 @@ namespace JFCWEB.Paginas
             comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
             comm1.Parameters.AddWithValue("@total", Convert.ToDecimal(tot));
             comm1.ExecuteNonQuery();
-           
             GrdV2.DataBind();
             conn.Close();
         }
@@ -963,11 +1051,7 @@ namespace JFCWEB.Paginas
 
         protected void GrdView1_Load(object sender, EventArgs e)
         {
-            Lab6.Text = (GrdView1.Rows[0].Cells[0].Text);
-            Lab7.Text = (GrdView1.Rows[0].Cells[1].Text);
-            Text2.Text = (GrdView1.Rows[0].Cells[2].Text);
-            Lab10.Text = (GrdView1.Rows[0].Cells[3].Text);
-                         }
+            }
 
         protected void Text2_TextChanged(object sender, EventArgs e)
         {
@@ -1064,19 +1148,27 @@ namespace JFCWEB.Paginas
             comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
             comm1.Parameters.AddWithValue("@total", Convert.ToDecimal(tot));
             comm1.ExecuteNonQuery();
-
             GrdV3.DataBind();
             conn.Close();
         }
 
         protected void Butt3_Click(object sender, EventArgs e)
         {
+            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+            conn = new SqlConnection(strcon);
+            conn.Open();
+            string sqldt1 = "SELECT TOP (1) Tabprog.DIA FROM ENTREGA INNER JOIN TGFPAR ON ENTREGA.CGC_CPF = TGFPAR.CGC_CPF INNER JOIN TabProg ON TGFPAR.CODPARC = TabProg.CODPARC AND ENTREGA.DIASEM = TabProg.DIASEM WHERE (ENTREGA.CGC_CPF = @CGC_CPF) AND (TabProg.ATIVO = 1) ORDER BY ENTREGA.DTENTREGA";
+            SqlCommand commdt1 = new SqlCommand(sqldt1, conn);
+            commdt1.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
+            var dta = commdt1.ExecuteScalar();
+            conn.Close();
+            //************************************
             string hh0;
             //  int dte1 = DpLi1.SelectedIndex;
             hh0 = DateTime.Now.ToString("HH:mm");
             //dt2 = (Grid4.Rows[dte1].Cells[3].Text);xxxxxxxx
-            var dtex = (Grid4.Rows[0].Cells[4].Text);
-            var dta = Grid4.Rows[0].Cells[6].ToString();
+           // var dtex = (Grid4.Rows[0].Cells[4].Text);
+            //var dta = Grid4.Rows[0].Cells[6].ToString();
             var dt1 = DateTime.Now.DayOfWeek.ToString();
             //  var hh2 = TimeSpan.FromHours(Convert.ToDouble(Grid4.Rows[dte1].Cells[4].Text));
             //  var hh1 = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
@@ -1121,8 +1213,8 @@ namespace JFCWEB.Paginas
 
                 else
                 {
-                    string UFf = GrdView1.Rows[0].Cells[4].Text;
-                    string Cod = GrdView1.Rows[0].Cells[3].Text;
+                    string UFf = Label12.Text;
+                    string Cod = Lab10.Text;
                     string sql = ("INSERT INTO PEDIDO (CGC_CPF, CODPARC, UF) VALUES (@CGC_CPF, @CODPAR, @UF)");
                     SqlCommand comm = new SqlCommand(sql, conn);
                     comm.Parameters.AddWithValue("@CGC_CPF", TxtBox1.Text);
@@ -1172,6 +1264,16 @@ namespace JFCWEB.Paginas
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Grid4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView1_Load(object sender, EventArgs e)
+        {
+            GridView1.DataBind();
         }
     }
 }

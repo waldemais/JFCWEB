@@ -49,7 +49,7 @@ namespace JFCWEB.Paginas
 
         protected void GridView1_Load(object sender, EventArgs e)
         {
-
+            GridView1.DataBind();
         }
 
         protected void GridView3_Load(object sender, EventArgs e)
@@ -129,6 +129,11 @@ namespace JFCWEB.Paginas
                 }
             }
           
+        }
+
+        protected void GridView2_Load(object sender, EventArgs e)
+        {
+            GridView2.DataBind();
         }
     }
 }

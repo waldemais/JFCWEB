@@ -68,7 +68,7 @@
         }
         .auto-style3 {
             height: 67px;
-            text-align: center;
+            text-align: left;
         }
         .auto-style6 {
             width: 105px;
@@ -118,7 +118,7 @@
         .auto-style20 {
             width: 95px;
             height: 63px;
-            text-align: left;
+            text-align: center;
         }
         .auto-style21 {
             text-align: center;
@@ -131,7 +131,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" title="Principal">
+    <form id="form1" runat="server" title="Principal">  
     <div>
         <asp:Panel ID="Panel2" runat="server" Height="170px">
             <table style="width:100%;" align="center">
@@ -153,7 +153,6 @@
                 </tr>
                 <tr>
                     <td class="style34">
-                        <asp:TextBox ID="TxtBx" runat="server" Enabled="False" onload="TxtBx_Load" Visible="False"></asp:TextBox>
                         <br />
                         <asp:Label ID="Label3" runat="server" BackColor="#CCCCCC" BorderStyle="None" Font-Names="Calibri" Font-Size="XX-Large" Text="Menu Principal"></asp:Label>
                         <br />
@@ -167,7 +166,9 @@
         title="Menu Principal" class="auto-style10">
         <tr>
             <td class="auto-style3" colspan="4">
-                        &nbsp;</td>
+                        <asp:Label ID="Label5" runat="server" Text="CNPJ: "></asp:Label>
+                        <asp:TextBox ID="TxtBx" runat="server" Enabled="False" onload="TxtBx_Load" BorderStyle="None" TextMode="Number"></asp:TextBox>
+                        </td>
         </tr>
         <tr>
             <td class="auto-style6" align="center">
@@ -191,16 +192,16 @@
             </td>
             <td class="style31">
         <asp:Label ID="Labl5" runat="server" Font-Names="Verdana" Font-Size="Small" 
-            ForeColor="White" style="text-align: center" Width="169px" BackColor="#48C857" Enabled="False" Height="34px">Click no Ícone para falar no  Whatsapp</asp:Label>
+            ForeColor="White" style="text-align: center" Width="190px" BackColor="#48C857" Enabled="False" Height="41px">FALE COM O COMERCIAL PELO ZAP</asp:Label>
                         </td>
         </tr>
         <tr>
             <td class="auto-style19" style="text-align: center">
                 </td>
             <td class="auto-style18" colspan="2">
-                        &nbsp;</td>
+                                &nbsp;</td>
             <td class="auto-style20">
-                        <asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="50px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5521990019227" style="text-align: left" />
+                        <asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="50px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5511968417287" style="text-align: center" />
                     </td>
         </tr>
     </table>

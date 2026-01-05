@@ -11,7 +11,7 @@ namespace JFCWEB.Usuario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+          // string numped="";
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -38,7 +38,7 @@ namespace JFCWEB.Usuario
         {
             TBo1.Text = GridView1.SelectedRow.Cells[0].Text;
             string numped = TBo1.Text;
-            Session["Ped"] = numped;
+            Session["Ped"] = numped.ToString();
             Response.Redirect("~/Paginas/Pedidos.aspx");
         }
 
@@ -83,6 +83,9 @@ namespace JFCWEB.Usuario
 
         }
 
-       
+        protected void GridView2_Load(object sender, EventArgs e)
+        {
+            GridView2.DataBind();
+        }
     }
 }
