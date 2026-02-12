@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JFCWEB</RootNamespace>
     <AssemblyName>JFCWEB</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -42,13 +42,6 @@
     <WarningLevel>4</WarningLevel>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="jfcwConnectionString-Deployment" Order="3" Enabled="True">
-          <Destination Path="Data Source=RIONT108\SQLEXPRESS%3bInitial Catalog=jfcw%3bIntegrated Security=True" />
-          <Object Type="dbFullSql">
-            <PreSource Path="Data Source=RIONT108\SQLEXPRESS%3bInitial Catalog=jfcw%3bIntegrated Security=True%3bPooling=False" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
-            <Source Path="obj\Debug\AutoScripts\jfcwConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
-          </Object>
-        </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
     <Prefer32Bit>false</Prefer32Bit>
@@ -181,7 +174,8 @@
     <Content Include="Administrador\AjudaProduto.aspx" />
     <Content Include="Administrador\AjudaVerPedidos.aspx" />
     <Content Include="Administrador\ExportaExcelBobs.aspx" />
-    <Content Include="Administrador\ExportaExcelMania .aspx" />
+    <Content Include="Administrador\ExportaExcelKfcsSH.aspx" />
+    <Content Include="Administrador\ExportaExcelMania.aspx" />
     <Content Include="Administrador\ExportaExcel.aspx" />
     <Content Include="Administrador\ExportaExcelSubway.aspx" />
     <Content Include="Administrador\Menu1.aspx" />
@@ -214,8 +208,10 @@
     <Content Include="Imagem\AjudaColab.jpg" />
     <Content Include="Imagem\AjudaLpedidos.jpg" />
     <Content Include="Imagem\AjudaPrevia.jpg" />
+    <Content Include="Imagem\Carnaval.PNG" />
     <Content Include="Imagem\crm.png" />
     <Content Include="Imagem\Decoração.jpg" />
+    <Content Include="Imagem\Entregas no Carnaval.png" />
     <Content Include="Imagem\Exportar.png" />
     <Content Include="Imagem\Festas.jpeg" />
     <Content Include="Imagem\Festas.jpg" />
@@ -258,6 +254,7 @@
     <Content Include="Imagem\Voltar.png" />
     <Content Include="Imagem\whatsapp.jpeg" />
     <Content Include="Index.html" />
+    <Content Include="Paginas\ConsultaPedido.aspx" />
     <Content Include="Paginas\CRM4.aspx" />
     <Content Include="Paginas\CrmOcorrencias.aspx" />
     <Content Include="Paginas\CRM.aspx" />
@@ -271,6 +268,7 @@
     <Content Include="Paginas\Nfeemitidas.aspx" />
     <Content Include="Paginas\Novo.aspx" />
     <Content Include="Paginas\Perfil.aspx" />
+    <Content Include="Paginas\Relatorio1.aspx" />
     <Content Include="Paginas\Relatorio.aspx" />
     <Content Include="Administrador\AdmPedidos.aspx" />
     <Content Include="Imagem\DDORes_dll_19_10.png" />
@@ -515,12 +513,19 @@
     <Compile Include="Administrador\ExportaExcelBobs.aspx.designer.cs">
       <DependentUpon>ExportaExcelBobs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\ExportaExcelMania .aspx.cs">
-      <DependentUpon>ExportaExcelMania .aspx</DependentUpon>
+    <Compile Include="Administrador\ExportaExcelKfcsSH.aspx.cs">
+      <DependentUpon>ExportaExcelKfcsSH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administrador\ExportaExcelMania .aspx.designer.cs">
-      <DependentUpon>ExportaExcelMania .aspx</DependentUpon>
+    <Compile Include="Administrador\ExportaExcelKfcsSH.aspx.designer.cs">
+      <DependentUpon>ExportaExcelKfcsSH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelMania.aspx.cs">
+      <DependentUpon>ExportaExcelMania.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ExportaExcelMania.aspx.designer.cs">
+      <DependentUpon>ExportaExcelMania.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\ExportaExcel.aspx.cs">
       <DependentUpon>ExportaExcel.aspx</DependentUpon>
@@ -598,6 +603,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>jfcwDataSet_Pedidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ConsultaPedido.aspx.cs">
+      <DependentUpon>ConsultaPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ConsultaPedido.aspx.designer.cs">
+      <DependentUpon>ConsultaPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\CRM4.aspx.cs">
       <DependentUpon>CRM4.aspx</DependentUpon>
@@ -691,6 +703,13 @@
     </Compile>
     <Compile Include="Paginas\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Relatorio1.aspx.cs">
+      <DependentUpon>Relatorio1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Relatorio1.aspx.designer.cs">
+      <DependentUpon>Relatorio1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Relatorio.aspx.cs">
       <DependentUpon>Relatorio.aspx</DependentUpon>
@@ -881,6 +900,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Imagem\Logo_JFC.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

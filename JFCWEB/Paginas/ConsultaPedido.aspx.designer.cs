@@ -33,6 +33,15 @@ namespace JFCWEB.Paginas
         protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
+        /// Controle Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
         /// Controle ImageButton1.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,31 @@ namespace JFCWEB.Paginas
         protected global::System.Web.UI.WebControls.TextBox TBo1;
 
         /// <summary>
-        /// Controle Button1.
+        /// Controle Label1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// Controle Box1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Box1;
+
+        /// <summary>
+        /// Controle Botao2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Botao2;
 
         /// <summary>
         /// Controle Lbel1.

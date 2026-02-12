@@ -18,7 +18,7 @@ namespace JFCWEB.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TBox5.Text = " ";
+         //TBox5.Text = " ";
          TBox5.Text = Session["Ped"].ToString();
         foreach (GridViewRow row in GridView1.Rows)
             {

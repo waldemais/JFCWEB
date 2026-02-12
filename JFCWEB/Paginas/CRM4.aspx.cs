@@ -8,7 +8,7 @@ using System.Data.Sql;
 
 namespace JFCWEB.Paginas
 {
-    public partial class ConsultaPedido : System.Web.UI.Page
+    public partial class CRM4 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

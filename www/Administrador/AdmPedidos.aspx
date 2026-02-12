@@ -86,7 +86,7 @@
                     <br />
                     </td>
                 <td style="text-align: center" class="auto-style5">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logo_Natal.jpg" Width="100px" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logogrupo.png" Width="100px" />
                     </td>
                 <td class="auto-style11">
                     <asp:ImageButton ID="ImageButton2" runat="server" ImageAlign="Right" 
@@ -122,7 +122,7 @@
                     <td align="center" class="auto-style19">
             <asp:Label ID="Label8" runat="server" Text="Pedido Nº"></asp:Label>
                     </td>
-                    <td align="center" class="auto-style20">Resumo de Pedidos por Cliente</td>
+                    <td align="center" class="auto-style20">&nbsp;</td>
                     <td align="center">&nbsp;</td>
                 </tr>
                 <tr>
@@ -136,7 +136,7 @@
                         <asp:ListItem Value="PR">Paraná</asp:ListItem>
                     </asp:DropDownList>
                         <br />
-                    <asp:Button ID="Button1" runat="server" Text="Localizar" Height="26px" Width="75px" />
+                    <asp:Button ID="Button1" runat="server" Text="Localizar" Height="26px" Width="75px" OnClick="Button1_Click" />
                     </td>
                     <td align="center" class="auto-style18" height="66" style="border-style: groove">
             <asp:TextBox ID="TextBox3" runat="server" Height="22px" Width="100px"></asp:TextBox>
@@ -144,14 +144,14 @@
             <asp:Button ID="Button2" runat="server" Text="Localizar" Height="26px" Width="75px" />
                     </td>
                     <td align="center" class="auto-style19" height="66" style="border-style: groove">
-            <asp:TextBox ID="TextBox4" runat="server" Height="22px" Width="100px"></asp:TextBox>
+            <asp:TextBox ID="TextBox4" runat="server" Height="22px" Width="100px" OnTextChanged="TextBox4_TextChanged" AutoPostBack="True"></asp:TextBox>
                         <br />
             <asp:Button ID="Button3" runat="server" Text="Localizar" Height="26px" Width="75px" />
                     </td>
-                    <td align="center" class="auto-style20" height="66" style="border-style: groove">
-                        <asp:TextBox ID="TextBox5" runat="server" Height="22px" Width="100px"></asp:TextBox>
+                    <td align="center" class="auto-style20" height="66">
+                        <asp:TextBox ID="TextBox5" runat="server" Height="22px" Width="100px" Visible="False"></asp:TextBox>
                         <br />
-                        <asp:Button ID="Button4" runat="server" Height="26px" Text="Localizar" Width="75px" />
+                        <asp:Button ID="Button4" runat="server" Height="26px" Text="Localizar" Width="75px" Visible="False" />
                     </td>
                     <td align="center" height="66" width="260">&nbsp;</td>
                 </tr>
@@ -179,7 +179,7 @@
         <AlternatingRowStyle BackColor="#DCDCDC" />
         <Columns>
             <asp:BoundField DataField="pedidoID" HeaderText="Pedido" 
-                SortExpression="pedidoID" />
+                SortExpression="pedidoID" HtmlEncode="False" />
             <asp:BoundField DataField="CODPARC" HeaderText="Cliente" 
                 SortExpression="CODPARC" />
             <asp:BoundField DataField="NOMEPARC" HeaderText="Nome" SortExpression="NOMEPARC" />
@@ -189,7 +189,7 @@
                 SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
             <asp:BoundField DataField="STATUS" HeaderText="Situação" 
                 SortExpression="STATUS" />
-            <asp:CommandField ShowSelectButton="True" />
+            <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
         <EmptyDataRowStyle Font-Size="Small" />
         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -221,7 +221,7 @@
             <br />
         </div>
         <div>
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource2" Font-Size="Small" GridLines="Vertical" AllowPaging="True" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnLoad="GridView2_Load">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource2" Font-Size="Small" GridLines="Vertical" AllowPaging="True" OnRowDataBound="GridView2_RowDataBound" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnLoad="GridView2_Load" EnableViewState="False">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="pedidoID" HeaderText="Pedido" SortExpression="pedidoID"></asp:BoundField>
@@ -230,10 +230,7 @@
                     <asp:BoundField DataField="DTEMISSAO" HeaderText="Emissão" SortExpression="DTEMISSAO"></asp:BoundField>
                     <asp:BoundField DataField="DTENTREGA" HeaderText="Entrega" SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundField>
                     <asp:BoundField DataField="STATUS" HeaderText="Situação" SortExpression="STATUS"></asp:BoundField>
-                    <asp:CommandField ButtonType="Button" HeaderText="Ver Pedido" ShowSelectButton="True">
-                        <controlstyle forecolor="#006600" />
-                        <ItemStyle ForeColor="#006600" />
-                    </asp:CommandField>
+                    <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 </Columns>
                 <EmptyDataRowStyle Font-Size="Small" />
                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -259,7 +256,7 @@
             <br />
         </div>
         <div>
-            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource3" Font-Size="Small" GridLines="Vertical" OnSelectedIndexChanged="GridView3_SelectedIndexChanged">
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource3" Font-Size="Small" GridLines="Vertical" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" EnableViewState="False">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <Columns>
                     <asp:BoundField DataField="pedidoID" HeaderText="Pedido" SortExpression="pedidoID" />
@@ -268,10 +265,7 @@
                     <asp:BoundField DataField="DTEMISSAO" HeaderText="Emissão" SortExpression="DTEMISSAO" />
                     <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Entrega" SortExpression="DTENTREGA" />
                     <asp:BoundField DataField="STATUS" HeaderText="Situação" SortExpression="STATUS" />
-                    <asp:CommandField ButtonType="Button" HeaderText="Ver Pedido" ShowSelectButton="True">
-                        <controlstyle forecolor="#006600" />
-                        <ItemStyle ForeColor="#006600" />
-                    </asp:CommandField>
+                    <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                 </Columns>
                 <EmptyDataRowStyle Font-Size="Small" />
                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -306,6 +300,7 @@
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:BoundField DataField="CODPARC" HeaderText="CODPARC" SortExpression="CODPARC" Visible="False" />
+                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />

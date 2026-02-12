@@ -12,9 +12,13 @@ namespace JFCWEB.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Lbel1.Text = Session["cgc"].ToString();
-            GridView1.Databind();
-           
+          
+            if (!IsPostBack)
+            {
+                Lbel1.Text = Session["cgc"].ToString();
+             //   SqlDataSource1.SelectParameters["cgc"].DefaultValue = Session["cgc"].ToString();
+               
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -37,15 +41,29 @@ namespace JFCWEB.Paginas
             }
         }
         
-       protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //GridView1.DataBind();
+
             TBo1.Text = GridView1.SelectedRow.Cells[0].Text;
             string numped = TBo1.Text;
             Session["Ped"] = numped;
-            
-          //  Response.Redirect("Pedidos.aspx");
-                    }
+            Response.Redirect("~/Paginas/Pedidos.aspx");
 
-        
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+            string numped = Box1.Text;
+            Session["Ped"] = numped;
+            Response.Redirect("Pedidos.aspx");
+        }
+
+        protected void TextBox1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -105,6 +105,15 @@ namespace JFCWEB.Administrador
         protected global::System.Web.UI.WebControls.Button Button10;
 
         /// <summary>
+        /// Controle Button13.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button13;
+
+        /// <summary>
         /// Controle Button5.
         /// </summary>
         /// <remarks>

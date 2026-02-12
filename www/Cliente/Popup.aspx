@@ -43,7 +43,7 @@
                         <p class="MsoNormal">
                             <span style="font-size: 12.0pt; font-family: &quot;Helvetica&quot;,sans-serif; color: #73737D; text-align: justify;">Olá!
                             <br />
-                            Com o objetivo de manter a esstabilidade dos pedidos<br />
+                            Para a lojas que recebem Terça, quinta e sabado. favor fazer um pedido maior para chegar na SABADO dia 14/02, pois a sua próxima entrega será dia 19/02 QUINTA.om o objetivo de manter a esstabilidade dos ped<br />
                             &nbsp;<br />
                             <br />
                             O tempo estimado para a atividade é de <b>4 horas</b>. No entanto, caso surja alguma dificuldade, esse período poderá ser estendido por até mais <b>2 horas adicionais</b>, visando evitar transtornos e permitindo a execução de um rollback, se necessário.
@@ -55,6 +55,8 @@
                             <p>
                             </p>
                             <br />
+                            <p>
+                            </p>
                             <p>
                             </p>
                         </p>

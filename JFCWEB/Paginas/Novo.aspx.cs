@@ -1248,7 +1248,7 @@ namespace JFCWEB.Paginas
                         Butt2.Enabled = true;
                         string destinatario;
                         destinatario = Text2.Text;
-                        Response.Redirect("~/Paginas/Relatorio.aspx");
+                        Response.Redirect("~/Paginas/Relatorio1.aspx");
                     }
                 }
                 conn.Close();

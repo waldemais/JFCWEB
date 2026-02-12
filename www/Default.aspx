@@ -138,26 +138,11 @@
                     <table align="right" class="auto-style33">
                         <tr>
                             <td class="auto-style37" rowspan="10">
-                                <br />
-                                <asp:TextBox ID="TextBox2" runat="server" Height="414px" style="margin-top: 0px" TextMode="MultiLine" Width="543px">LINK PARA ACESSAR O SITE:
-https://jfcverduras.com.br/
-
-CONTATOS SÃO PAULO:
-JOSY    - 11 96841-7287
-CAMILA  - 11 97849-1012
-LARISSA - 11 99941-3076
-
-CONTATOS RIO DE JANEIRO:
-DUANE   - 21 97367-0250
-SABRINE - 21 97366-9509
-
-
-
-
-</asp:TextBox>
+                                <asp:Image ID="Image2" runat="server" Height="449px" ImageUrl="~/Imagem/Carnaval.PNG" style="margin-top: 0px" Width="560px" />
                             </td>
                             <td class="auto-style32" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                     <img alt="" src="Imagem/Logogrupo.png" style="height: 64px; width: 93px" /><br />
+                                <br />
                                 <asp:Label ID="Label6" runat="server" Enabled="False" Font-Size="X-Large" Text="PORTAL DE PEDIDOS" ForeColor="#006600"></asp:Label>
                             </td>
                         </tr>

@@ -11,7 +11,7 @@ namespace JFCWEB.Paginas
 {
 
 
-    public partial class ConsultaPedido
+    public partial class CRM4
     {
 
         /// <summary>
