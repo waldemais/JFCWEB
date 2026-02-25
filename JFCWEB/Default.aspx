@@ -138,7 +138,7 @@
                     <table align="right" class="auto-style33">
                         <tr>
                             <td class="auto-style37" rowspan="10">
-                                <asp:Image ID="Image2" runat="server" Height="449px" ImageUrl="~/Imagem/Carnaval.PNG" style="margin-top: 0px" Width="560px" />
+                                <asp:Image ID="Image2" runat="server" Height="249px" ImageUrl="~/Imagem/grupo.png" style="margin-top: 0px" Width="460px" />
                             </td>
                             <td class="auto-style32" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
                     <img alt="" src="Imagem/Logogrupo.png" style="height: 64px; width: 93px" /><br />
