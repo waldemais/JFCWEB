@@ -1,215 +1,113 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu4.aspx.cs" Inherits="JFCWEB.DtEntrega"  ValidateRequest="false"%>
+﻿<%@ Page Title="Menu Principal" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Menu4.aspx.cs" Inherits="JFCWEB.DtEntrega" ValidateRequest="false" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Menu</title>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
-        .style7
-        {
-            height: 99px;
-            width: 623px;
-            text-align: right;
+        .menu-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            height: 100%;
         }
-        .style15
-        {
-            width: 191px;
-            text-align: center;
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
         }
-        .style21
-        {
-            width: 95px;
+        .menu-icon {
+            font-size: 2.5rem;
+            color: #198754;
+            margin-bottom: 1rem;
         }
-        .style24
-        {
-            height: 23px;
-            width: 191px;
+        .client-info {
+            background-color: #f8f9fa;
+            border-left: 5px solid #198754;
+            padding: 1rem;
+            border-radius: 0.25rem;
         }
-        .style29
-        {
-            width: 88px;
-            text-align: center;
-        }
-        .style30
-        {
-            height: 23px;
-            width: 88px;
-        }
-        .style31
-        {
-            height: 23px;
-            width: 95px;
-            text-align: center;
-        }
-        .style34
-        {
-            width: 623px;
-            text-align: center;
-        }
-        .style35
-        {
-            width: 88px;
-            text-align: center;
-            height: 129px;
-        }
-        .style36
-        {
-            width: 191px;
-            text-align: center;
-            height: 129px;
-        }
-        .style37
-        {
-            width: 95px;
-            height: 129px;
-        }
-        .auto-style3 {
-            height: 67px;
-            text-align: left;
-        }
-        .auto-style6 {
-            width: 105px;
-            height: 71px;
-        }
-        .auto-style7 {
-            width: 105px;
-            text-align: center;
-            height: 23px;
-        }
-        .auto-style9 {
-            width: 90px;
-            text-align: center;
-            height: 71px;
-        }
-        .auto-style10 {
-            width: 100%;
-            height: 225px;
-        }
-        .auto-style11 {
-            width: 98px;
-            text-align: center;
-            height: 71px;
-        }
-        .auto-style12 {
-            width: 95px;
-            height: 71px;
-        }
-        .auto-style16 {
-            width: 330px;
-        }
-        .auto-style17 {
-            height: 84px;
-            width: 623px;
-            text-align: right;
-        }
-        .auto-style18 {
-            width: 191px;
-            text-align: right;
-            height: 63px;
-        }
-        .auto-style19 {
-            width: 105px;
-            text-align: center;
-            height: 63px;
-        }
-        .auto-style20 {
-            width: 95px;
-            height: 63px;
-            text-align: center;
-        }
-        .auto-style21 {
-            text-align: center;
-        }
-        .auto-style22 {
-            width: 191px;
-            text-align: center;
-            height: 23px;
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server" title="Principal">  
-    <div>
-        <asp:Panel ID="Panel2" runat="server" Height="170px">
-            <table style="width:100%;" align="center">
-                <tr>
-                    <td class="auto-style17">
-                        <table style="width:100%;">
-                            <tr>
-                                <td class="auto-style16">
-                                    <asp:Image ID="Image1" runat="server" Height="60px" ImageAlign="Left" ImageUrl="~/Imagem/grupo.png" Width="60px" />
-                                </td>
-                                <td align="center">
-                                    &nbsp;</td>
-                                <td>
-                                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" style="text-align: justify" Width="30px" Height="40px" ImageAlign="Right" />
-                                </td>
-                            </tr>
-                        </table>
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="style34">
-                        <br />
-                        <asp:Label ID="Label3" runat="server" BackColor="#CCCCCC" BorderStyle="None" Font-Names="Calibri" Font-Size="XX-Large" Text="Menu Principal"></asp:Label>
-                        <br />
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-    </div>
-    <table style="background-position: center; background-color: #FFFFFF; background-image: inherit; background-repeat: no-repeat; background-attachment: fixed;" 
-        align="center" frame="box" 
-        title="Menu Principal" class="auto-style10">
-        <tr>
-            <td class="auto-style3" colspan="4">
-                        <asp:Label ID="Label5" runat="server" Text="CNPJ: "></asp:Label>
-                        <asp:TextBox ID="TxtBx" runat="server" Enabled="False" onload="TxtBx_Load" BorderStyle="None" TextMode="Number"></asp:TextBox>
-                        </td>
-        </tr>
-        <tr>
-            <td class="auto-style6" align="center">
-                <asp:Button ID="Button1" runat="server" EnableTheming="False" Text="Novo Pedido" Width="150px" OnClick="Button1_Click" />
-            </td>
-            <td class="auto-style9" align="center">
-                <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/ConsultaPedido.aspx" Text="Consultar Pedidos" Width="150px" />
-            </td>
-            <td class="auto-style11" align="center">
-                        <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" Text="CRM" Width="150px" />
-            </td>
-            <td class="auto-style12" style="text-align: center" align="center">
-                <asp:Button ID="Button4" runat="server" Text="Alterar Senha" Width="150px" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" />
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style7">
-                        </td>
-            <td class="auto-style22" colspan="2">
-                        <br />
-            </td>
-            <td class="style31">
-        <asp:Label ID="Labl5" runat="server" Font-Names="Verdana" Font-Size="Small" 
-            ForeColor="White" style="text-align: center" Width="190px" BackColor="#48C857" Enabled="False" Height="41px">FALE COM O COMERCIAL PELO ZAP</asp:Label>
-                        </td>
-        </tr>
-        <tr>
-            <td class="auto-style19" style="text-align: center">
-                </td>
-            <td class="auto-style18" colspan="2">
-                                &nbsp;</td>
-            <td class="auto-style20">
-                        <asp:ImageButton ID="ImageButton2" runat="server" Height="50px" ImageUrl="~/Imagem/whatsapp.jpeg" Width="50px" OnClick="ImageButton2_Click" OnClientClick=" http://api.whatsapp.com/send?1=pt_BR&amp;phone=5511968417287" style="text-align: center" />
-                    </td>
-        </tr>
-    </table>
-        <div class="auto-style21">
-            <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Microsoft Himalaya" Font-Size="X-Large" ForeColor="#006600" Text="Desenvolvedor Waldeck Silva " style="font-size: medium; color: #999999"></asp:Label>
+</asp:Content>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0 fw-bold text-success">Menu Principal</h2>
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" CssClass="btn btn-outline-danger p-1" Width="40px" ToolTip="Sair" />
         </div>
-    <p class="auto-style21">
-        &nbsp;</p>
-    </form>
-</body>
-</html>
+
+        <div class="client-info mb-5 shadow-sm">
+            <div class="row align-items-center">
+                <div class="col-md-1">
+                    <i class="bi bi-person-badge fs-1 text-success"></i>
+                </div>
+                <div class="col-md-11">
+                    <div class="fw-bold text-muted small">DADOS DO CLIENTE</div>
+                    <div class="h5 mb-1">
+                        <asp:Label ID="Lb2" runat="server" Text="Nome do Cliente"></asp:Label>
+                    </div>
+                    <div class="text-muted">
+                        <i class="bi bi-hash me-1"></i>CNPJ: <asp:Label ID="Lb1" runat="server"></asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4 border-0" onclick="document.getElementById('<%= Button1.ClientID %>').click();">
+                    <i class="bi bi-cart-plus menu-icon"></i>
+                    <h5 class="card-title fw-bold">Novo Pedido</h5>
+                    <p class="card-text text-muted small">Inicie uma nova solicitação de compra</p>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" CssClass="d-none" />
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4 border-0" onclick="window.location.href='<%= ResolveUrl("~/Paginas/ConsultaPedido.aspx") %>';">
+                    <i class="bi bi-search menu-icon"></i>
+                    <h5 class="card-title fw-bold">Consultar Pedidos</h5>
+                    <p class="card-text text-muted small">Acompanhe o status dos seus pedidos</p>
+                    <asp:Button ID="Button2" runat="server" PostBackUrl="~/Paginas/ConsultaPedido.aspx" CssClass="d-none" />
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4 border-0" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Menucrm.aspx") %>';">
+                    <i class="bi bi-chat-dots menu-icon"></i>
+                    <h5 class="card-title fw-bold">CRM</h5>
+                    <p class="card-text text-muted small">Relate ocorrências ou dúvidas</p>
+                    <asp:Button ID="Button3" runat="server" PostBackUrl="~/Paginas/Menucrm.aspx" CssClass="d-none" />
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4 border-0" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Perfil.aspx") %>';">
+                    <i class="bi bi-shield-lock menu-icon"></i>
+                    <h5 class="card-title fw-bold">Alterar Senha</h5>
+                    <p class="card-text text-muted small">Gerencie a segurança da sua conta</p>
+                    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" PostBackUrl="~/Paginas/Perfil.aspx" CssClass="d-none" />
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted small">Desenvolvido por <span class="fw-bold">Waldeck Silva</span></p>
+        </div>
+
+        <asp:TextBox ID="TxtBx" runat="server" Visible="False"></asp:TextBox>
+
+        <!-- Botão Flutuante WhatsApp -->
+        <div class="whatsapp-btn">
+            <div class="d-flex flex-column align-items-end">
+                <div class="bg-success text-white px-3 py-1 rounded shadow-sm mb-2 small fw-bold">
+                    FALE COM O COMERCIAL
+                </div>
+                <asp:ImageButton ID="ImageButton2" runat="server" Height="60px" ImageUrl="~/Imagem/whatsapp.jpeg" 
+                    Width="60px" OnClick="ImageButton2_Click" CssClass="rounded-circle shadow" />
+            </div>
+        </div>
+    </div>
+</asp:Content>

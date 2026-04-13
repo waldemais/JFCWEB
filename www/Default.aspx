@@ -1,235 +1,79 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="JFCWEB._Default" %>
    
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
    
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-
     <style type="text/css">
-    .style3
-    {
-        font-family: Verdana;
-        font-size: large;
-    }
-    .style4
-    {
-            width: 298px;
+        .login-container {
+            max-width: 450px;
+            margin: auto;
         }
-    .style5
-    {
-        font-family: Verdana;
-        font-size: large;
-        width: 315px;
-    }
-    .style6
-    {
-        width: 315px;
-            text-align: left;
+        .card-header {
+            background-color: #198754;
+            color: white;
         }
-    .style7
-    {
-        width: 298px;
-        height: 38px;
-    }
-    .style8
-    {
-        font-family: Verdana;
-        font-size: large;
-        width: 315px;
-        height: 38px;
-            text-align: left;
-        }
-    .style9
-    {
-        height: 38px;
-    }
-    .style11
-    {
-            width: 315px;
-            height: 48px;
-            text-align: center;
-        }
-    .style13
-    {
-        height: 48px;
-    }
-        .style14
-        {
-            width: 298px;
-            height: 48px;
-        }
-    .style15
-    {
-        color: #418200;
-            text-align: left;
-        }
-    .style16
-    {
-        font-size: xx-large;
-        color: #418200;
-            width: 842px;
-            text-align: center;
+        .attention-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
             margin-left: 40px;
         }
-        .auto-style9 {
-            width: 116px;
-            height: 24px;
-            margin-left: 0px;
-            margin-top: 0px;
-        }
-        .auto-style10 {
-            text-align: center;
-            height: 350px;
-        }
-    .auto-style11 {
-        width: 100%;
-        height: 486px;
-            margin-top: 20px;
-        }
-    .auto-style12 {
-        margin-left: 0px;
-    }
-        .auto-style24 {
-            height: 2px;
-        }
-        .auto-style25 {
-        height: 49px;
-    }
-    .auto-style26 {
-        height: 17px;
-    }
-        .auto-style30 {
-            height: 25px;
-            text-align: center;
-        }
-        .auto-style32 {
-            height: 149px;
-        }
-        .auto-style33 {
-            width: 100%;
-            height: 95%;
-            margin-left: 0px;
-        }
-        .auto-style34 {
-            height: 23px;
-        }
-        .auto-style35 {
-            height: 29px;
-        }
-        .auto-style36 {
-            height: 37px;
-            text-align: center;
-            font-weight: normal;
-            color: #000000;
-        }
-        .auto-style37 {
-            width: 562px;
-        }
-        .auto-style38 {
-            height: 34px;
-        }
-        </style>
+        .text-dark {}
+    </style>
 </asp:Content>
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <p class="auto-style24">
-        <table class="auto-style11" align="right" frame="box">
-            <tr>
-                <td class="auto-style10" style="border-color: #006600; border-style: double; width: 50%;">
-                    <table align="right" class="auto-style33">
-                        <tr>
-                            <td class="auto-style37" rowspan="10">
-                                <asp:Image ID="Image2" runat="server" Height="249px" ImageUrl="~/Imagem/grupo.png" style="margin-top: 0px" Width="460px" />
-                            </td>
-                            <td class="auto-style32" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                    <img alt="" src="Imagem/Logogrupo.png" style="height: 64px; width: 93px" /><br />
-                                <br />
-                                <asp:Label ID="Label6" runat="server" Enabled="False" Font-Size="X-Large" Text="PORTAL DE PEDIDOS" ForeColor="#006600"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style34" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                <hr />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style30" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style38" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                <asp:Label ID="Label4" runat="server" Text="CNPJ"></asp:Label>
-                            &nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TBox1" 
-                        runat="server" style="font-family: Calibri; font-size: medium" 
-                        Font-Names="Verdana" Font-Size="Medium" Font-Strikeout="False" 
-                        ForeColor="#003300" Width="150px" CssClass="auto-style12"></asp:TextBox>
-                                <ajaxToolkit:MaskedEditExtender ID="TBox1_MaskedEditExtender" runat="server" BehaviorID="TBox1_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" InputDirection="RightToLeft" Mask="99,999,999/9999-99" TargetControlID="TBox1">
-                                </ajaxToolkit:MaskedEditExtender>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style30" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                <asp:Label ID="Label5" runat="server" Text="SENHA"></asp:Label>
-                            &nbsp;
-                    <span class="style15">
-                    <asp:TextBox ID="TBox2" runat="server" 
-                        style="font-family: Calibri; font-size: medium" TextMode="Password" 
-                        Font-Names="Verdana" Font-Size="Medium" Font-Strikeout="False" 
-                        ForeColor="#003300" Width="150px"></asp:TextBox>
-                    </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style35" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                <span class="style15">
-       
-                  
-                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/system-lock-screen.png" Width="28px" Height="31px" />
-                    &nbsp;&nbsp;
-                    <IMG alt="" src="Captcha.aspx" class="auto-style9">&nbsp;
-       
-                  
-                    </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin"><span class="style15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       
-                  
-                    <asp:TextBox ID="TextBox1" runat="server" With="100px" Height="25px" 
-                        Width="150px" Font-Size="Medium" 
-                        style="text-align: center; color: #006600; background-color: #FFFF99" TextMode="Number"></asp:TextBox>
-       
-                  
-                    </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style25" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                  
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  
-                        <asp:Button ID="Btt1" runat="server" onclick="Btt1_Click" Text="Entrar" 
-                        Height="36px" Width="150px" BackColor="#006600" Font-Size="Large" 
-                        ForeColor="White" Font-Bold="True" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style26" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                  
-                    <asp:Label ID="Lb1" runat="server" Font-Names="Verdana" Font-Size="Medium" 
-                        style="text-align: center; color: #006600;" Font-Bold="True" ForeColor="#FF3300"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style36" style="border-top-style: inherit; border-right-style: inherit; border-bottom-style: inherit; border-left-style: solid; border-top-width: inherit; border-right-width: inherit; border-bottom-width: inherit; border-left-width: thin">
-                                Versão 1.231225.1000</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            </table>
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
-        <br />
-</p>
-    </asp:Content>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header text-center py-3">
+                    <img src="Imagem/Logogrupo.png" alt="JFC" height="60" class="mb-2 bg-white rounded p-1" />
+                    <h3 class="mb-0 text-white" style="font-variant: normal; text-transform: none;">Portal de Pedidos</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="attention-box mb-4">
+                        &nbsp;&nbsp;&nbsp;
+                        <asp:TextBox ID="TextBox4" runat="server" Font-Size="X-Small" Height="123px" TextMode="MultiLine" Width="422px">Nosso site passou por uma série de melhorias com o objetivo de oferecer uma experiência mais moderna, intuitiva e eficiente para todos os usuários.
+Entre as principais atualizações, destacam-se o novo design, mais limpo e organizado, a otimização da velocidade de carregamento das páginas e a melhoria na navegação, facilitando o acesso às informações mais importantes. Além disso, o site agora está mais responsivo, garantindo uma melhor visualização em dispositivos móveis, como smartphones e tablets.</asp:TextBox>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label1" runat="server" BackColor="#99FF33" Font-Size="X-Small" Text="Na Terça-feira 21/04 será feriado, as lojas deverão passar pedidos até às 12:00 h."></asp:Label>
+                    </div>
+
+                    <div class="login-container">
+                        <div class="mb-3">
+                            <label for="<%= TBox1.ClientID %>" class="form-label">CNPJ                        <asp:TextBox ID="TBox1" runat="server" CssClass="form-control" placeholder="00.000.000/0000-00"></asp:TextBox>
+                            <ajaxToolkit:MaskedEditExtender ID="TBox1_MaskedEditExtender" runat="server" 
+                                BehaviorID="TBox1_MaskedEditExtender" Century="2000" Mask="99.999.999/9999-99" 
+                                TargetControlID="TBox1" InputDirection="RightToLeft">
+                            </ajaxToolkit:MaskedEditExtender>
+                        </div>
+                        <div class="mb-3">
+                            <label for="<%= TBox2.ClientID %>" class="form-label">Senha</label>
+                            <asp:TextBox ID="TBox2" runat="server" CssClass="form-control" TextMode="Password" placeholder="Sua senha"></asp:TextBox>
+                        </div>
+                        <div class="mb-4 text-center">
+                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                <img src="Captcha.aspx" alt="Captcha" class="border rounded me-2" height="35" />
+                                <asp:TextBox ID="TBox3" runat="server" CssClass="form-control" Width="100" placeholder="Código"></asp:TextBox>
+                            </div>
+                            <small class="text-muted">Insira os caracteres da imagem acima</small>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <asp:Button ID="Bton1" runat="server" Text="Acessar Portal" CssClass="btn btn-success btn-lg shadow-sm" OnClick="Bton1_Click" />
+                        </div>
+                        <div class="text-center mt-3">
+                            <asp:Label ID="Lb1" runat="server" CssClass="text-danger fw-bold small"></asp:Label>
+                        </div>
+                        <div class="text-center mt-4 text-muted small border-top pt-2">
+                            Versão 1.231225.1000
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </label>
+</asp:Content>

@@ -67,43 +67,73 @@
         <div>
             <table style="width:100%;">
                 <tr>
-                    <td>
+                    <td class="auto-style2">
                     <asp:Label ID="Label2" runat="server" Text="Abertos"></asp:Label>
                     </td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text="Fechados"></asp:Label>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label1" runat="server" Text="Finalizado"></asp:Label>
                     </td>
-                    <td>
+                    <td class="auto-style2">
                     <asp:Label ID="Label3" runat="server" Text="Cancelados"></asp:Label>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style2"></td>
                 </tr>
                 <tr>
                     <td>
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" HorizontalAlign="Left" Font-Size="Small">
+                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" HorizontalAlign="Left" Font-Size="Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                        <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="pedidoID" HeaderText="Pedido" InsertVisible="False" ReadOnly="True" SortExpression="pedidoID" />
                             <asp:BoundField DataField="DTEMISSAO" HeaderText="Emissão" SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Entrega" SortExpression="DTENTREGA" />
                         </Columns>
+                        <FooterStyle BackColor="#CCCC99" />
+                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                        <RowStyle BackColor="#F7F7DE" />
+                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                        <SortedAscendingHeaderStyle BackColor="#848384" />
+                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                        <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
                     </td>
                     <td>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CaptionAlign="Top" DataSourceID="SqlDataSource1" HorizontalAlign="Left" Font-Size="Small">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CaptionAlign="Top" DataSourceID="SqlDataSource1" HorizontalAlign="Left" Font-Size="Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                            <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:BoundField DataField="pedidoID" HeaderText="Pedido" InsertVisible="False" ReadOnly="True" SortExpression="pedidoID" />
                                 <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Entrega" SortExpression="DTENTREGA" />
                                 <asp:BoundField DataField="DTEMISSAO" HeaderText="Emissão" SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy}" />
                             </Columns>
+                            <FooterStyle BackColor="#CCCC99" />
+                            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                            <RowStyle BackColor="#F7F7DE" />
+                            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                            <SortedAscendingHeaderStyle BackColor="#848384" />
+                            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                            <SortedDescendingHeaderStyle BackColor="#575357" />
                         </asp:GridView>
                     </td>
                     <td>
-                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" HorizontalAlign="Left" Font-Size="Small">
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" HorizontalAlign="Left" Font-Size="Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                        <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="pedidoID" HeaderText="Pedido" InsertVisible="False" ReadOnly="True" SortExpression="pedidoID" />
                             <asp:BoundField DataField="DTEMISSAO" HeaderText="Emissão" SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Entrega" SortExpression="DTENTREGA" />
                         </Columns>
+                        <FooterStyle BackColor="#CCCC99" />
+                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                        <RowStyle BackColor="#F7F7DE" />
+                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                        <SortedAscendingHeaderStyle BackColor="#848384" />
+                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                        <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
                     </td>
                     <td>&nbsp;</td>
@@ -135,13 +165,13 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'ABERTO')">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'ABERTO') ORDER BY DTENTREGA DESC" ProviderName="System.Data.SqlClient">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                             <asp:ControlParameter ControlID="TextB1" DbType="Date" Name="DTENTREGA" PropertyName="Text" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTENTREGA, DTEMISSAO FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'FECHADO')">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTENTREGA, DTEMISSAO FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'Finalizado') ORDER BY DTENTREGA DESC" ProviderName="System.Data.SqlClient">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="TextB1" Name="DTENTREGA" PropertyName="Text" />
@@ -167,7 +197,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'CANCELADO')">
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT pedidoID, DTEMISSAO, DTENTREGA FROM PEDIDO WHERE (CGC_CPF = @CGC_CPF) AND (DTENTREGA &gt;= @DTENTREGA) AND (STATUS = 'CANCELADO') ORDER BY DTENTREGA DESC" ProviderName="System.Data.SqlClient">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="TxtBox1" Name="CGC_CPF" PropertyName="Text" Type="String" />
                             <asp:ControlParameter ControlID="TextB1" DbType="Date" Name="DTENTREGA" PropertyName="Text" />

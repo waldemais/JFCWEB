@@ -51,8 +51,8 @@ namespace JFCWEB
                 conn.Close();
             }
             else
-            {
-                string sql = ("INSERT INTO TGFPAR (CODPARC,CGC_CPF, NOMEPARC, EMAIL, UF, ROTA, CODPARSAP) VALUES (@CODPARC, @CGC_CPF, @NOMEPARC, @EMAIL, @UF, @ROTA, @CODPARC)");
+            { 
+                string sql = ("INSERT INTO TGFPAR (CODPARC,CGC_CPF, NOMEPARC, EMAIL, UF, Rota, CODPARSAP, Grupo) VALUES (@CODPARC, @CGC_CPF, @NOMEPARC, @EMAIL, @UF, @ROTA, @CODPARC, @GRUPO)");
                 string ssl = ("INSERT INTO TBLogin (CNPJ, SENHA, NIVEL) VALUES (@CGC_CPF, '123456','Cliente')");
                 SqlCommand comm = new SqlCommand(sql, conn);
                 SqlCommand coms = new SqlCommand(ssl, conn);
@@ -62,6 +62,7 @@ namespace JFCWEB
                 comm.Parameters.AddWithValue("@EMAIL", TextBox5.Text);
                 comm.Parameters.AddWithValue("@UF", TextBox6.Text);
                 comm.Parameters.AddWithValue("@ROTA", TextBox7.Text);
+                comm.Parameters.AddWithValue("@GRUPO", DDList1.SelectedValue.ToString());
                 coms.Parameters.AddWithValue("@CGC_CPF", TextBox3.Text);
                 coms.ExecuteNonQuery();
                 int x = comm.ExecuteNonQuery();
@@ -98,12 +99,12 @@ namespace JFCWEB
             foreach (GridViewRow row in GridView1.Rows)
             {
                 if (!String.IsNullOrEmpty(row.Cells[0].Text))
-                TextBox2.Text = (row.Cells[0].Text).ToString();
-                TextBox3.Text = (row.Cells[1].Text).ToString();
-                TextBox4.Text = (row.Cells[2].Text).ToString();
-                TextBox5.Text = (row.Cells[3].Text).ToString();
-                TextBox6.Text = (row.Cells[4].Text).ToString();
-                TextBox7.Text = (row.Cells[5].Text).ToString();
+                TextBox2.Text = (row.Cells[0].Text.ToString());
+                TextBox3.Text = (row.Cells[2].Text.ToString());
+                TextBox4.Text = (row.Cells[1].Text.ToString());
+                TextBox5.Text = (row.Cells[3].Text.ToString());
+                TextBox6.Text = (row.Cells[4].Text.ToString());
+                TextBox7.Text = (row.Cells[5].Text.ToString());
             }
         }
 

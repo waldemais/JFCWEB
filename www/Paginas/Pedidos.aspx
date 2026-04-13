@@ -1,456 +1,210 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pedidos.aspx.cs" Inherits="JFCWEB.Paginas.Pedidos" %>
+<%@ Page Title="Detalhes do Pedido" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pedidos.aspx.cs" Inherits="JFCWEB.Paginas.Pedidos" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
-        .style3
-        {
-            font-family: Verdana;
-            font-size: x-large;
-            color: #009933;
+        .detail-header {
+            background-color: #f8f9fa;
+            border-left: 5px solid #198754;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
         }
-        .style4
-        {
-            color: #009933;
-            font-family: Verdana;
-        }
-        .style6
-        {
-            font-size: large;
-            color: #3F8949;
-        }
-        .style8
-        {
-            width: 109px;
-        }
-        .style9
-        {
-            font-family: Verdana;
-            font-size: xx-large;
-            color: #009933;
-            width: 295px;
-        }
-        .style10
-        {
-            width: 541px;
-        }
-        .style13
-        {
-            color: #003300;
-        }
-        .style14
-        {
-            color: #009933;
-            font-size: xx-large;
-            font-family: Verdana;
-        }
-        .style15
-        {
-            width: 109px;
-            height: 46px;
-        }
-        .style16
-        {
-            width: 541px;
-            height: 46px;
-        }
-        .style17
-        {
-            height: 46px;
-        }
-        .style18
-        {
-            width: 109px;
-            height: 23px;
-        }
-        .style19
-        {
-            width: 541px;
-            height: 23px;
-        }
-        .style20
-        {
-            height: 23px;
-        }
-        .style22
-        {
-            width: 295px;
-        }
-        .style23
-        {
-            width: 622px;
-        }
-        .auto-style2 {
-            width: 388px;
+        .order-number-box {
+            background-color: #198754;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
             text-align: center;
-            height: 23px;
+            display: inline-block;
         }
-        .auto-style3 {
-            height: 23px;
-            width: 367px;
+        .info-label {
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 0.85rem;
+            text-transform: uppercase;
         }
-        .auto-style5 {
-            width: 150px;
-        }
-        .auto-style6 {
-            font-family: Verdana;
-            font-size: xx-large;
-            color: #009933;
-            width: 150px;
-        }
-        .auto-style8 {
-            width: 111px;
-            height: 46px;
-        }
-        .auto-style9 {
-            width: 111px;
-            height: 23px;
-        }
-        .auto-style10 {
-            height: 26px;
-        }
-        .auto-style11 {
-            height: 1223px;
-        }
-        .auto-style12 {
-            width: 100%;
-        }
-        .auto-style13 {
-            width: 100%;
-            height: 140px;
-        }
-        .auto-style14 {
-            font-size: medium;
-        }
-        .auto-style15 {
-            background-color: #A6FFA6;
-        }
-        .auto-style16 {
-            font-size: medium;
-            color: #666666;
-        }
-        .auto-style17 {
-            width: 150px;
-            height: 83px;
-        }
-        .auto-style18 {
-            width: 622px;
-            height: 83px;
-        }
-        .auto-style19 {
-            height: 83px;
+        .info-value {
+            font-weight: 700;
+            color: #212529;
+            font-size: 1.1rem;
         }
     </style>
-</head>
-<body style="height: 1221px">
-    <form id="form1" runat="server" class="auto-style11" visible="True">
-    <div>
-    
-        ,<br />
-    
-        <table style="width:100%;">
-            <tr>
-                <td class="auto-style17">
-                    <asp:Image ID="Image1" runat="server" Height="50px" 
-                        ImageUrl="~/Imagem/grupo.png" Width="70px" />
-                </td>
-                <td class="auto-style18" style="text-align: center">
-                    <asp:Label ID="Label6" runat="server" Font-Bold="True" ForeColor="#7BB800" style="font-size: large" Text="Pedido Detalhado"></asp:Label>
-                    </td>
-                <td style="text-align: right" class="auto-style19">
-                    <asp:ImageButton ID="ImageButton1" runat="server" Height="50px" 
-                        ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="50px" />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style5">
-                    &nbsp;</td>
-                <td class="style23">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style6">
-                    &nbsp;</td>
-                <td class="style23">
-                    <asp:Button ID="Btt3" runat="server" Text="Enviar Email" onclick="Btt3_Click" 
-                        style="color: #61AC00; font-size: small; background-color: #D4D0C8; font-weight: 700;" 
-                        Height="40px" Width="120px" />
-                    <asp:Button ID="Btt4" runat="server" Text="Cancelar Pedido" Height="40px" 
-                        ONClientClick="Javascript:return confirm('Confirma o Cancelamento do Pedido?');" 
-                        onclick="Btt4_Click" style="font-size: small; color: #61AC00; font-weight: 700;" Width="120px" />
-                    <asp:Button ID="Btt5" runat="server" Text="Duplicar Pedido" Height="40px" 
-                        style="font-size: small; color: #61AC00; font-weight: 700;" Width="120px" 
-                        onclick="Btt5_Click" Visible="False" />
-                </td>
-                <td style="text-align: right">
-                    &nbsp;</td>
-            </tr>
-        </table>
-    
-    </div>
-    <asp:Panel ID="Panel1" runat="server" Height="201px">
-        <table class="auto-style13">
-            <tr>
-                <td class="auto-style9">
-                    </td>
-                <td class="style19">
-                    </td>
-                <td class="style20">
-                    </td>
-            </tr>
-            <tr>
-                <td class="auto-style8">
-                    <asp:TextBox ID="TBox5" runat="server" Enabled="False" Font-Size="Medium" 
-                        ForeColor="White" Height="50px" 
-                        style="color: #FFFFFF; text-align: center; font-weight: 700; background-color: #AA9100; font-size: medium;" 
-                        Width="130px"></asp:TextBox>
-                    <br />
-                    <asp:TextBox ID="TBox6" runat="server" Font-Size="Medium" ForeColor="White" 
-                        Height="50px" 
-                        style="font-size: medium; text-align: center; font-weight: 700; background-color: #AA9100" 
-                        Width="130px"></asp:TextBox>
-                    <br />
-                </td>
-                <td class="style16">
-                    <span class="style3">Cliente<br />
-                    <asp:Label ID="Lbel8" runat="server" 
-                        style="font-family: Verdana; font-size: x-large; color: #639050" Text="Label"></asp:Label>
-                    </span>
-                    <br />
-                    &nbsp;<span class="style4">CNPJ:</span>
-                    <asp:TextBox ID="TxtBox5" runat="server" BorderStyle="None" ReadOnly="True" 
-                        style="font-size: large; color: #009933"></asp:TextBox>
-                    <br />
-                </td>
-                <td class="style17">
-                    <span class="style6">Data de Entrega</span><br />
-                    <asp:Label ID="Lbel7" runat="server" Font-Size="X-Large" ForeColor="#3F8949" 
-                        style="color: #3F8964"></asp:Label>
-                    <br />
-                    <span class="style13">&nbsp;</span><asp:Label ID="Lbel9" runat="server" 
-                        style="color: #3F8949; font-size: large;"></asp:Label>
-                    :
-                    <br />
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style9">
-                    </td>
-                <td class="style19">
-                    <asp:Label ID="Label1" runat="server" 
-                        style="font-family: Verdana; color: #FF0000"></asp:Label>
-                </td>
-                <td class="style20">
-                    </td>
-            </tr>
-        </table>
-    </asp:Panel>
-    <table style="width: 100%; height: 46px;">
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td style="text-align: left" class="style14">
-                <div>
-                    <asp:Label ID="Lab4" runat="server" Font-Size="Medium" Text="Responsável Pelo Cancelamento" Visible="False"></asp:Label>
+</asp:Content>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div class="container py-4">
+        <!-- Título e Ações -->
+        <div class="d-flex justify-content-between align-items-center mb-4 bg-success p-3 rounded shadow-sm">
+            <h2 class="mb-0 fw-bold text-white"><i class="bi bi-file-earmark-text me-2"></i>Pedido Detalhado</h2>
+            <div class="no-print">
+                <asp:LinkButton ID="btnBack" runat="server" CssClass="btn btn-light btn-sm me-2" PostBackUrl="~/Paginas/ConsultaPedido.aspx">
+                    <i class="bi bi-arrow-left me-1"></i>Voltar
+                </asp:LinkButton>
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" CssClass="btn btn-light p-1" Width="40px" ToolTip="Sair" />
+            </div>
+        </div>
+
+        <!-- Barra de Comandos -->
+        <div class="mb-4 d-flex gap-2">
+            <asp:LinkButton ID="Btt3" runat="server" OnClick="Btt3_Click" CssClass="btn btn-outline-success shadow-sm">
+                <i class="bi bi-envelope me-1"></i>Enviar E-mail
+            </asp:LinkButton>
+            <asp:LinkButton ID="Btt4" runat="server" OnClick="Btt4_Click" CssClass="btn btn-outline-danger shadow-sm" 
+                OnClientClick="return confirm('Confirma o Cancelamento do Pedido?');">
+                <i class="bi bi-x-circle me-1"></i>Cancelar Pedido
+            </asp:LinkButton>
+            <asp:LinkButton ID="Btt5" runat="server" OnClick="Btt5_Click" CssClass="btn btn-outline-primary shadow-sm" Visible="False">
+                <i class="bi bi-files me-1"></i>Duplicar Pedido
+            </asp:LinkButton>
+        </div>
+
+        <!-- Cabeçalho de Detalhes -->
+        <div class="detail-header shadow-sm">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-3 text-center border-end">
+                    <div class="order-number-box shadow-sm mb-2">
+                        <div class="small opacity-75">Nº PEDIDO</div>
+                        <asp:Label ID="TBox5" runat="server" CssClass="h3 mb-0 fw-bold"></asp:Label>
+                    </div>
+                    <div class="mt-2 fw-bold text-success">
+                        <asp:Label ID="TBox6" runat="server"></asp:Label>
+                    </div>
                 </div>
-                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" Font-Size="Small">
+                <div class="col-md-6 border-end px-4">
+                    <div class="info-label">CLIENTE</div>
+                    <div class="h4 mb-2 text-success fw-bold"><asp:Label ID="Lbel8" runat="server"></asp:Label></div>
+                    <div class="text-muted small">
+                        <i class="bi bi-hash me-1"></i>CNPJ: <asp:TextBox ID="TxtBox5" runat="server" CssClass="form-control-plaintext d-inline p-0 w-auto" ReadOnly="True"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="col-md-3 ps-4">
+                    <div class="info-label">DATA DE ENTREGA</div>
+                    <div class="h4 mb-0 text-success fw-bold"><asp:Label ID="Lbel7" runat="server"></asp:Label></div>
+                    <div class="text-muted small mt-1">
+                        <asp:Label ID="Lbel9" runat="server"></asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alertas -->
+        <asp:Label ID="Label1" runat="server" CssClass="alert alert-danger d-block mb-4 fw-bold shadow-sm" Visible="False"></asp:Label>
+
+        <!-- Informações de Cancelamento (Se houver) -->
+        <asp:Panel ID="pnlCancelamento" runat="server" CssClass="card border-danger shadow-sm mb-4" Visible="False">
+            <div class="card-header bg-white py-2 border-bottom border-danger">
+                <h6 class="mb-0 fw-bold text-success"><i class="bi bi-exclamation-triangle me-2"></i>Responsável pelo Cancelamento</h6>
+            </div>
+            <div class="card-body p-0">
+                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" 
+                    CssClass="table table-bordered mb-0" GridLines="Both">
+                    <HeaderStyle CssClass="bg-light text-success fw-bold small text-uppercase" />
+                    <RowStyle CssClass="small text-muted" />
                     <Columns>
-                        <asp:BoundField DataField="DataCan" HeaderText="Data" SortExpression="DataCan" DataFormatString="{0:dd/MM/yyyy H:mm:ss}" />
-                        <asp:BoundField DataField="IdNome" HeaderText="Nome " SortExpression="IdNome" />
-                        <asp:BoundField DataField="IdTel" HeaderText="Telefone" SortExpression="IdTel" />
-                        <asp:BoundField DataField="IdEmail" HeaderText="Email" SortExpression="IdEmail" />
-                        <asp:BoundField DataField="IdIP" HeaderText="Dados do Acesso" SortExpression="IdIP" />
+                        <asp:BoundField DataField="DataCan" HeaderText="DATA" SortExpression="DataCan" DataFormatString="{0:dd/MM/yyyy HH:mm:ss}" />
+                        <asp:BoundField DataField="IdNome" HeaderText="NOME" SortExpression="IdNome" />
+                        <asp:BoundField DataField="IdTel" HeaderText="TELEFONE" SortExpression="IdTel" />
+                        <asp:BoundField DataField="IdEmail" HeaderText="EMAIL" SortExpression="IdEmail" />
+                        <asp:BoundField DataField="IdIP" HeaderText="DADOS DO ACESSO" SortExpression="IdIP" />
                     </Columns>
                 </asp:GridView>
-                <br />
-                </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td class="auto-style14">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-        <asp:Panel ID="Panel2" runat="server" Visible="False">
-            <table class="auto-style12">
-                <tr>
-                    <td class="style20">&nbsp;</td>
-                    <td class="style20">
-                        <asp:Label ID="Label3" runat="server" Text="Responsável pelo Cancelamento" Font-Size="Medium"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style20">
-                        <asp:Label ID="Lb1" runat="server" Text="IP de acesso:"></asp:Label>
-                    </td>
-                    <td class="style20">
-                        <asp:Label ID="Lb01" runat="server"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">
-                        <asp:Label ID="Lb2" runat="server" Text="Nome:"></asp:Label>
-                    </td>
-                    <td class="auto-style10">
-                        <asp:TextBox ID="Tb1" runat="server" Width="400px"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">
-                        <asp:Label ID="Lb3" runat="server" Text="Email:"></asp:Label>
-                    </td>
-                    <td class="auto-style10">
-                        <asp:TextBox ID="Tb2" runat="server" TextMode="Email" Width="400px"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">
-                        <asp:Label ID="Lb4" runat="server" Text="Telefone:"></asp:Label>
-                    </td>
-                    <td class="auto-style10">
-                        <asp:TextBox ID="Tb3" runat="server" TextMode="Phone" Width="200px"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">&nbsp;</td>
-                    <td class="auto-style10">
-                        <asp:Button ID="Bt01" runat="server" OnClick="Bt01_Click" Text="Gravar" />
-                    </td>
-                </tr>
-            </table>
+            </div>
         </asp:Panel>
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-    </table>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-    
-            
-            
-        SelectCommand="SELECT DISTINCT [pedidoID], [NOMEPARC], [CGC_CPF], [DTEMISSAO], [DTENTREGA], [STATUS] FROM [PEDIDOS] WHERE ([pedidoID] = @pedidoID) ORDER BY [pedidoID] DESC">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="TBox5" Name="pedidoID" PropertyName="Text" 
-                    Type="Int32" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-        <strong>
-        <asp:Label ID="Label5" runat="server" Font-Size="Large" Text="Itens do Pedido" CssClass="auto-style15"></asp:Label>
-        </strong>
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource2" BorderStyle="None" 
-        onrowdatabound="GridView2_RowDataBound" Width="727px">
-        <Columns>
-            <asp:BoundField DataField="itemID" HeaderText="ID" 
-                SortExpression="itemID" ShowHeader="False" Visible="False" >
-            <ControlStyle Font-Size="8pt" />
-            <HeaderStyle Font-Size="Smaller" />
-            <ItemStyle Font-Size="1pt" />
-            </asp:BoundField>
-            <asp:BoundField DataField="pedidoID" HeaderText="pedidoID" 
-                SortExpression="pedidoID" Visible="False" ReadOnly="True" />
-            <asp:BoundField DataField="CODPROD" HeaderText="Código" 
-                SortExpression="CODPROD" ReadOnly="True" >
-            <ItemStyle Font-Size="Large" />
-            </asp:BoundField>
-            <asp:BoundField DataField="DESCRPROD" HeaderText="Descrição" 
-                SortExpression="DESCRPROD" ReadOnly="True" >
-            <ItemStyle Font-Size="Large" />
-            </asp:BoundField>
-            <asp:BoundField DataField="QTDE" HeaderText="Qtde" 
-                SortExpression="QTDE" >
-            <ControlStyle Font-Size="Large" />
-            <ItemStyle Font-Size="Large" HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="PADRAO" HeaderText="Unid." SortExpression="PADRAO">
-            <ControlStyle Font-Size="Large" />
-            <ItemStyle Font-Size="Large" HorizontalAlign="Right" />
-            </asp:BoundField>
-            <asp:BoundField DataField="TOTAL" HeaderText="Total" SortExpression="TOTAL">
-            <ControlStyle Font-Size="Large" />
-            <ItemStyle Font-Size="Large" HorizontalAlign="Right" />
-            </asp:BoundField>
-        </Columns>
-        <HeaderStyle Font-Size="Small" />
-        <RowStyle BorderStyle="None" Font-Size="X-Large" ForeColor="#003300" />
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        
-        SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE &gt; 0) ORDER BY DESCRPROD" 
-        
-        UpdateCommand="UPDATE ITENS_PEDIDO SET QTDE = @QTDE WHERE (itemID =@itemID)">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="TBox5" Name="pedidoID" PropertyName="Text" 
-                Type="Int32" />
-        </SelectParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="QTDE" />
-            <asp:Parameter Name="itemID" />
-        </UpdateParameters>
-    </asp:SqlDataSource>
-                    <table style="width:100%;">
-                        <tr>
-                            <td class="auto-style3"><strong>
-                                <asp:Label ID="Label2" runat="server" Text="Label" CssClass="auto-style16"></asp:Label>
-                                </strong></td>
-                            <td class="auto-style2">
-                                &nbsp;</td>
-                            <td class="style20"></td>
-                        </tr>
-                        </table>
-        <div>
+
+        <!-- Itens do Pedido -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-light py-3 border-bottom">
+                <h5 class="mb-0 fw-bold text-dark"><i class="bi bi-list-ul me-2"></i>Itens do Pedido</h5>
+            </div>
+            <div class="card-body p-0">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+                    DataSourceID="SqlDataSource2" CssClass="gridview-modern mb-0" GridLines="None" 
+                    OnDataBound="GridView2_DataBound" OnLoad="GridView2_Load">
+                    <Columns>
+                        <asp:BoundField DataField="CODPROD" HeaderText="CÓDIGO" SortExpression="CODPROD" />
+                        <asp:BoundField DataField="DESCRPROD" HeaderText="DESCRIÇÃO" SortExpression="DESCRPROD" />
+                        <asp:BoundField DataField="QTDE" HeaderText="QTDE" SortExpression="QTDE">
+                            <ItemStyle HorizontalAlign="Center" CssClass="fw-bold" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="PADRAO" HeaderText="VLR. UNITÁRIO" SortExpression="PADRAO" DataFormatString="{0:C2}" />
+                        <asp:BoundField DataField="TOTAL" HeaderText="TOTAL" SortExpression="TOTAL" DataFormatString="{0:C2}">
+                            <ItemStyle HorizontalAlign="Right" CssClass="fw-bold text-success" />
+                        </asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <div class="card-footer bg-light py-3 border-0">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted">Total de Itens:</span> 
+                        <asp:Label ID="Label2" runat="server" CssClass="fw-bold ms-1"></asp:Label>
+                    </div>
+                    <div class="col-6 text-end">
+                        <span class="h5 me-2 text-muted">VALOR TOTAL:</span>
+                        <asp:Label ID="Label3" runat="server" CssClass="h4 fw-bold text-success"></asp:Label>
+                    </div>
+                </div>
+            </div>
         </div>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource1" onrowdatabound="GridView1_RowDataBound" Visible="False">
-                        <Columns>
-                            <asp:BoundField DataField="pedidoID" HeaderText="pedidoID" 
-                                SortExpression="pedidoID" />
-                            <asp:BoundField DataField="NOMEPARC" HeaderText="NOMEPARC" 
-                                SortExpression="NOMEPARC" />
-                            <asp:BoundField DataField="CGC_CPF" HeaderText="CGC_CPF" 
-                                SortExpression="CGC_CPF" />
-                            <asp:BoundField DataField="DTEMISSAO" HeaderText="DTEMISSAO" 
-                                SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy H:mm:ss}" />
-                            <asp:BoundField DataField="DTENTREGA" HeaderText="DTENTREGA" 
-                                SortExpression="DTENTREGA" DataFormatString="{0:dd/MMMM/yyyy}" />
-                            <asp:BoundField DataField="STATUS" HeaderText="STATUS" 
-                                SortExpression="STATUS" />
-                        </Columns>
-                    </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT itemID, pedidoID, CODPROD, DESCRPROD, QTDE, STATUS FROM VLISTPRO WHERE (pedidoID = @pedidoID)" UpdateCommand="UPDATE VLISTPRO SET QTDE = @QTDE WHERE (itemID = @itemID)">
+
+        <!-- Formulário de Cancelamento (Oculto inicialmente) -->
+        <asp:Panel ID="Panel2" runat="server" Visible="False" CssClass="card border-warning shadow-sm mb-4">
+            <div class="card-header bg-warning py-2">
+                <h6 class="mb-0 fw-bold"><i class="bi bi-pencil-square me-2"></i>Dados do Cancelamento</h6>
+            </div>
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold small">NOME</label>
+                        <asp:TextBox ID="Tb1" runat="server" CssClass="form-control shadow-sm"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold small">TELEFONE</label>
+                        <asp:TextBox ID="Tb2" runat="server" CssClass="form-control shadow-sm" TextMode="Phone"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold small">E-MAIL</label>
+                        <asp:TextBox ID="Tb3" runat="server" CssClass="form-control shadow-sm" TextMode="Email"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <asp:Button ID="Bton1" runat="server" OnClick="Bton1_Click" Text="Confirmar Cancelamento" CssClass="btn btn-danger w-100 shadow-sm fw-bold" />
+                    </div>
+                </div>
+                <div class="mt-3 small text-muted">
+                    <i class="bi bi-info-circle me-1"></i>IP de acesso registrado: <asp:Label ID="Lb1" runat="server" CssClass="fw-bold"></asp:Label>
+                </div>
+            </div>
+        </asp:Panel>
+
+        <!-- Rodapé do Resumo -->
+        <div class="text-center mt-5 no-print">
+            <p class="text-muted small">JFC Verduras - Portal de Pedidos Web</p>
+        </div>
+
+        <!-- Controles Ocultos -->
+        <div style="display:none;">
+            <asp:TextBox ID="TextBx1" runat="server"></asp:TextBox>
+            <asp:Label ID="Lab4" runat="server"></asp:Label>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" DataSourceID="SqlDataSource1" OnRowDataBound="GridView1_RowDataBound"></asp:GridView>
+        </div>
+
+        <!-- DataSources -->
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT P.CGC_CPF, T.NOMEPARC, P.DTEMISSAO, P.DTENTREGA, P.STATUS, P.CODPARC FROM PEDIDO P INNER JOIN TGFPAR T ON P.CGC_CPF = T.CGC_CPF WHERE (P.pedidoID = @pedidoID)">
             <SelectParameters>
-                <asp:ControlParameter ControlID="TBox5" Name="pedidoID" PropertyName="Text" Type="Int32" />
+                <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" />
             </SelectParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="QTDE" />
-                <asp:Parameter Name="itemID" />
-            </UpdateParameters>
         </asp:SqlDataSource>
-    <div>
-        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [DataCan], [IdNome], [IdTel], [IdEmail], [IdIP] FROM [PedCancelado] WHERE ([PedidoID] = @PedidoID)" ProviderName="System.Data.SqlClient">
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
+            SelectCommand="SELECT DataCan, IdNome, IdTel, IdEmail, IdIP FROM LogCancelamento WHERE (IdPedido = @IdPedido)"
+            OnSelected="SqlDataSource4_Selected">
             <SelectParameters>
-                <asp:ControlParameter ControlID="TBox5" Name="PedidoID" PropertyName="Text" Type="Int32" />
+                <asp:ControlParameter ControlID="TextBx1" Name="IdPedido" PropertyName="Text" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE &lt;&gt; 0) ORDER BY DESCRPROD">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
-    </form>
-    </body>
-</html>
+</asp:Content>

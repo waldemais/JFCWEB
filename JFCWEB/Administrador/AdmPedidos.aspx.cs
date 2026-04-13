@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -17,22 +17,7 @@ namespace JFCWEB.Usuario
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-
-                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='#99FF66'");
-
-                e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor=''");
-
-            }
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string Status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                if (Status == "CANCELADO")
-                    e.Row.Cells[5].ForeColor = System.Drawing.Color.Red;
-                if (Status == "FINALIZADO")
-                    e.Row.Cells[5].ForeColor = System.Drawing.Color.Blue;
-            }
+            // Efeito hover removido pois agora usamos a classe 'table-hover' do Bootstrap
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,22 +30,6 @@ namespace JFCWEB.Usuario
 
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-
-                e.Row.Attributes.Add("onMouseOver", "this.style.backgroundColor='#99FF66'");
-
-                e.Row.Attributes.Add("onMouseOut", "this.style.backgroundColor=''");
-
-            }
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string Status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                if (Status == "CANCELADO")
-                    e.Row.Cells[5].ForeColor = System.Drawing.Color.Red;
-                if (Status == "FINALIZADO")
-                    e.Row.Cells[5].ForeColor = System.Drawing.Color.Blue;
-            }
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +72,18 @@ namespace JFCWEB.Usuario
         protected void Button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        protected string GetStatusClass(string status)
+        {
+            if (string.IsNullOrEmpty(status)) return "status-badge bg-secondary text-white";
+            switch (status.ToUpper())
+            {
+                case "ABERTO": return "status-badge bg-success text-white";
+                case "CANCELADO": return "status-badge bg-danger text-white";
+                case "FINALIZADO": return "status-badge bg-primary text-white";
+                default: return "status-badge bg-secondary text-white";
+            }
         }
     }
 }

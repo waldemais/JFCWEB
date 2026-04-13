@@ -64,6 +64,13 @@
             width: 227px;
             height: 26px;
         }
+        .auto-style6 {
+            height: 23px;
+        }
+        .auto-style7 {
+            width: 227px;
+            height: 23px;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +94,7 @@
                 </tr>
                 <tr>
                     <td class="style6">
-                    </td>
+                        &nbsp;</td>
                     <td class="style6">
                         <p class="style5" title="Parceiro">
                             <strong>&nbsp;<span class="style8">Cadastro de Parceiros</span></strong></p>
@@ -104,19 +111,20 @@
                     <td class="style2">
                         &nbsp;</td>
                     <td class="style3">
+                    &nbsp;
+                        &nbsp;<asp:Button ID="Btton02" runat="server" onclick="Btton02_Click" Text="Novo" 
+                            Width="100px" 
+                            style="color: #006600; font-weight: 700; background-color: #FFFFFF" />
+                            <asp:Button ID="Btton04" runat="server" OnClick="Btton04_Click" Text="Alterar" Width="100px" Visible="False" />
+                        &nbsp;<div>
+                        </div>
+                        <br />
+                        <div style="width: 546px">
                         <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 0px" 
                             Width="95px" onload="TextBox1_Load"></asp:TextBox>
                         <asp:Button ID="Button1" runat="server" Text="PESQUISAR" 
                             style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
                             Width="99px" OnClick="Button1_Click1" />
-                    &nbsp;
-                        &nbsp;
-                        <br />
-                        <div style="width: 546px">
-                        <asp:Button ID="Btton02" runat="server" onclick="Btton02_Click" Text="Cadastrar" 
-                            Width="100px" 
-                            style="color: #006600; font-weight: 700; background-color: #FFFFFF" />
-                            <asp:Button ID="Btton04" runat="server" OnClick="Btton04_Click" Text="Alterar" Width="100px" Visible="False" />
                         </div>
                         <asp:Label ID="Lbel04" runat="server" style="color: #006600"></asp:Label>
                     </td>
@@ -148,9 +156,15 @@
                                 <asp:TextBox ID="TextBox5" runat="server" Width="392px"></asp:TextBox>
                                 <table style="width:100%;">
                                     <tr>
-                                        <td>UF</td>
-                                        <td class="auto-style3">Rota</td>
-                                        <td>&nbsp;</td>
+                                        <td>
+                                            <asp:Label ID="Label3" runat="server" Text="UF"></asp:Label>
+                                        </td>
+                                        <td class="auto-style3">
+                                            <asp:Label ID="Label2" runat="server" Text="Rota"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="Label1" runat="server" Text="Grupo"></asp:Label>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style4">
@@ -159,12 +173,21 @@
                                         <td class="auto-style5">
                                             <asp:TextBox ID="TextBox7" runat="server" Width="57px"></asp:TextBox>
                                         </td>
-                                        <td class="auto-style4"></td>
+                                        <td class="auto-style4">
+                                            <asp:DropDownList ID="DDList1" runat="server">
+                                                <asp:ListItem Value="0">Selecione</asp:ListItem>
+                                                <asp:ListItem Value="01">Burger King</asp:ListItem>
+                                                <asp:ListItem Value="02">Subway</asp:ListItem>
+                                                <asp:ListItem Value="03">Bob´s</asp:ListItem>
+                                                <asp:ListItem Value="04">Mania</asp:ListItem>
+                                                <asp:ListItem Value="05">Kfc/SH</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
-                                        <td class="auto-style3">&nbsp;</td>
-                                        <td>&nbsp;</td>
+                                        <td class="auto-style6"></td>
+                                        <td class="auto-style7"></td>
+                                        <td class="auto-style6"></td>
                                     </tr>
                                     <tr>
                                         <td align="center">
@@ -193,29 +216,24 @@
                                 </tr>
                             </table>
                         </asp:Panel>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                            DataSourceID="SqlDataSource1" Width="900px" Height="30px" BackColor="White" BorderColor="#999999" BorderWidth="1px" CellPadding="3" GridLines="Vertical" BorderStyle="None" Font-Size="Small">
-                            <AlternatingRowStyle BackColor="#DCDCDC" />
-                            <Columns>
-                                <asp:BoundField DataField="CODPARSAP" HeaderText="Cód.SAP" SortExpression="CODPARSAP" />
-                                <asp:BoundField DataField="CGC_CPF" HeaderText="Cgc/Cpf" 
-                                    SortExpression="CGC_CPF" />
-                                <asp:BoundField DataField="NOMEPARC" HeaderText="Descrição" 
-                                    SortExpression="NOMEPARC" />
-                                <asp:BoundField DataField="EMAIL" HeaderText="Email" SortExpression="EMAIL" />
-                                <asp:BoundField DataField="UF" DataFormatString="{0:@}" HeaderText="UF" SortExpression="UF" />
-                                <asp:BoundField DataField="ROTA" HeaderText="ROTA" SortExpression="ROTA" />
-                            </Columns>
-                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-                            <SelectedRowStyle BackColor="#008A8C" ForeColor="White" Font-Bold="True" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#000065" />
+                        <asp:GridView ID="GridView1" runat="server" 
+                            DataSourceID="SqlDataSource1" Width="900px" Height="30px" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" GridLines="Vertical" Font-Size="Small" ForeColor="Black" BorderStyle="None">
+                            <AlternatingRowStyle BackColor="White" />
+                            <FooterStyle BackColor="#CCCC99" />
+                            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                            <RowStyle BackColor="#F7F7DE" />
+                            <SelectedRowStyle BackColor="#CE5D5A" ForeColor="White" Font-Bold="True" />
+                            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                            <SortedAscendingHeaderStyle BackColor="#848384" />
+                            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                            <SortedDescendingHeaderStyle BackColor="#575357" />
                         </asp:GridView>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                        <asp:Label ID="Label4" runat="server" Text="Itens deste Cliente"></asp:Label>
                         <br />
                         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
                             DataSourceID="SqlDataSource2" GridLines="Horizontal" ShowHeader="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" Font-Size="Small">
@@ -252,33 +270,10 @@
             <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        DeleteCommand="DELETE FROM TGFPAR WHERE (CODPARC = @CODPARC)" 
-        InsertCommand="INSERT INTO TGFPAR(CODPARC, NOMEPARC, CGC_CPF, CODPARSAP) VALUES (@CODPARC, @NOMEPARC, @CGC_CPF, @CODPARSAP)" 
-        SelectCommand="SELECT DISTINCT CODPARC, CGC_CPF, NOMEPARC, EMAIL, UF, ROTA, CODPARSAP FROM TGFPAR WHERE (CODPARC = @CODPARC)" 
-        
-        
-        
-        
-        
-                
-                
-                UpdateCommand="UPDATE TGFPAR SET  EMAIL = @EMAIL WHERE (CODPARC = @CODPARC)">
-        <DeleteParameters>
-            <asp:Parameter Name="CODPARC" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="CODPARC" />
-            <asp:Parameter Name="NOMEPARC" />
-            <asp:Parameter Name="CGC_CPF" />
-            <asp:Parameter Name="CODPARSAP" />
-        </InsertParameters>
+        SelectCommand="SELECT CODPARC, NOMEPARC, CGC_CPF, EMAIL, UF, ROTA, CODPARSAP, Grupo FROM TGFPAR WHERE (CODPARC = @CODPARC)" ProviderName="System.Data.SqlClient">
         <SelectParameters>
             <asp:ControlParameter ControlID="TextBox1" Name="CODPARC" PropertyName="Text" Type="String" />
         </SelectParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="EMAIL" />
-            <asp:Parameter Name="CODPARC" />
-        </UpdateParameters>
     </asp:SqlDataSource>
             <br />
         </div>

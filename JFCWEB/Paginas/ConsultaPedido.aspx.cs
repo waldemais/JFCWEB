@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -64,6 +64,19 @@ namespace JFCWEB.Paginas
         protected void TextBox1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        protected string GetStatusClass(string status)
+        {
+            if (string.IsNullOrEmpty(status)) return "status-badge";
+            
+            switch (status.ToUpper())
+            {
+                case "ABERTO": return "status-badge status-aberto";
+                case "CANCELADO": return "status-badge status-cancelado";
+                case "FINALIZADO": return "status-badge status-finalizado";
+                default: return "status-badge";
+            }
         }
     }
 }

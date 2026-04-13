@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,16 +11,37 @@ namespace JFCWEB
 {
     public partial class DtEntrega : System.Web.UI.Page
     {
-        protected void TxtBx_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            TxtBx.Text = Session["cgc"].ToString();
-            string CGC_CPF = " ";
-            CGC_CPF = TxtBx.Text;
-           // strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
-         //   conn = new SqlConnection(strcon);
-         //   conn.Open();
-            //
+            if (!IsPostBack)
+            {
+                if (Session["cgc"] != null)
+                {
+                    string cnpj = Session["cgc"].ToString();
+                    TxtBx.Text = cnpj;
+                    Lb1.Text = cnpj;
+
+                    strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                    using (conn = new SqlConnection(strcon))
+                    {
+                        conn.Open();
+                        string sql = "SELECT NOMEPARC FROM TGFPAR WHERE CGC_CPF=@cnpj";
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@cnpj", cnpj);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            Lb2.Text = result.ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
         }
+        
         public string strcon { get; set; }
         public SqlConnection conn { get; set; }
 

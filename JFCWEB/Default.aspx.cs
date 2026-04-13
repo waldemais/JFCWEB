@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +17,7 @@ namespace JFCWEB
            
         }
 
-        protected void Btt1_Click(object sender, EventArgs e)
+        protected void Bton1_Click(object sender, EventArgs e)
         {
             string nomecgc = " ";
             string senhausu = " ";
@@ -64,9 +64,9 @@ namespace JFCWEB
                 return;
             }
 
-            if (TextBox1.Text != Session["CaptchaValue"].ToString())
+            if (TBox3.Text != Session["CaptchaValue"].ToString())
             {
-                TextBox1.Text = "";
+                TBox3.Text = "";
                 Lb1.Text = "Captcha Inválido, tente novamente!";
                 return;
             }
@@ -96,5 +96,10 @@ namespace JFCWEB
         }
         public string strcon { get; set; }
         public SqlConnection conn { get; set; }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

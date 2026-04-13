@@ -1,103 +1,48 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Menu1.aspx.cs" Inherits="JFCWEB.Administrador.Menu1" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Menu1.aspx.cs" Inherits="JFCWEB.Administrador.Menu1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <style type="text/css">
-        .style3
-        {
-            height: 21px;
-            text-align: center;
-            width: 338px;
-        }
-        .style4
-        {
-            width: 234px;
-            text-align: center;
-        }
-        .style5
-        {
-            width: 234px;
-            height: 21px;
-            text-align: center;
-        }
-        .style6
-        {
-            text-align: center;
-            width: 338px;
-        }
-        .style8
-        {
-            width: 338px;
-        }
-        .style9
-        {
-            text-align: center;
-            width: 397px;
-        }
-        .style10
-        {
-            height: 21px;
-            text-align: center;
-            width: 397px;
-        }
-        .style11
-        {
-            text-align: center;
-            width: 280px;
-        }
-        .style12
-        {
-            height: 21px;
-            text-align: center;
-            width: 280px;
-        }
-        .style13
-        {
-            width: 280px;
-        }
-        .auto-style1 {
-            height: 42px;
-        }
-        .auto-style2 {
-            font-size: x-large;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" runat="server" contentplaceholderid="MainContent">
-    <p align="center" title="Administrador">
-                    &nbsp;<asp:ImageButton ID="ImageButton9" runat="server" ImageAlign="Right" 
-                        ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="49px" />
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/ntsalads.png" 
-                        Width="75px" />
-                </p>
-    <div class="auto-style1">
-        <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Menu Usuários"></asp:Label>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0 fw-bold text-success">Menu Usuário</h2>
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" CssClass="btn btn-outline-danger p-1" Width="40px" ToolTip="Sair" />
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Pedidos.aspx") %>';">
+                    <i class="bi bi-receipt menu-icon"></i>
+                    <h5 class="card-title fw-bold">Gestão de Pedidos</h5>
+                    <p class="card-text text-muted small">Consultar e gerenciar ordens</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Relatorio.aspx") %>';">
+                    <i class="bi bi-file-earmark-bar-graph menu-icon"></i>
+                    <h5 class="card-title fw-bold">Relatórios</h5>
+                    <p class="card-text text-muted small">Extração de dados e análises</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Menucrm.aspx") %>';">
+                    <i class="bi bi-headset menu-icon"></i>
+                    <h5 class="card-title fw-bold">CRM</h5>
+                    <p class="card-text text-muted small">Atendimento ao cliente</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card menu-card shadow-sm text-center p-4" onclick="window.location.href='<%= ResolveUrl("~/Paginas/Perfil.aspx") %>';">
+                    <i class="bi bi-person-lock menu-icon"></i>
+                    <h5 class="card-title fw-bold">Meu Perfil</h5>
+                    <p class="card-text text-muted small">Alterar senha e dados</p>
+                </div>
+            </div>
+        </div>
     </div>
-        <div class="clear">
-            <div>
-                <div style="height: 0px">
-                    <table align="center" frame="above">
-                        <tr>
-                            <td class="style9">
-                                <asp:ImageButton ID="ImageButton3" runat="server" 
-                                    ImageUrl="~/Imagem/icons8-profile-filled-50.png" 
-                                    PostBackUrl="~/Paginas/Parceiro.aspx" Visible="False" />
-                            </td>
-                            <td class="style4">
-                                &nbsp;
-                                <asp:ImageButton ID="ImageButton2" runat="server" 
-                                    ImageUrl="~/Imagem/icons8-document-48.png" style="margin-left: 19px" 
-                                    PostBackUrl="~/Paginas/Produto.aspx" Visible="False" />
-                            </td>
-                            <td class="style11">
-                                <asp:ImageButton ID="ImageButton7" runat="server" Height="54px" 
-                                    ImageUrl="~/Imagem/Icons_250x250px-27.png" 
-                                    PostBackUrl="~/Paginas/Tabproduto.aspx" Width="73px" Visible="False" />
-                            </td>
-                            <td class="style6">
-                                <asp:ImageButton ID="ImageButton1" runat="server" 
-                                    ImageUrl="~/Imagem/icons8-create-filled-48.png" 
-                                    PostBackUrl="~/Administrador/Grade1.aspx" Visible="False" />
-                            </td>
-                        </tr>
+</asp:Content>
                         <tr>
                             <td class="style9">
                                 Parceiros</td>

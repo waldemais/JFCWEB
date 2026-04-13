@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,18 +12,150 @@ using System.IO;
 using System.Net.Mime;
 using System.Net.Configuration;
 using AjaxControlToolkit;
+using System.Globalization;
 
 
 namespace JFCWEB.Paginas
 {
     public partial class Relatorio : System.Web.UI.Page
     {
+        private static decimal ParsePtBrDecimal(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return 0m;
+            }
+
+            var decoded = HttpUtility.HtmlDecode(input) ?? string.Empty;
+            decoded = decoded.Replace("\u00A0", " ").Trim();
+
+            if (decoded == "&nbsp;")
+            {
+                return 0m;
+            }
+
+            var styles = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
+            var culture = CultureInfo.GetCultureInfo("pt-BR");
+
+            if (decimal.TryParse(decoded, styles, culture, out var value))
+            {
+                return value;
+            }
+
+            decoded = decoded.Replace("R$", string.Empty).Trim();
+            if (decimal.TryParse(decoded, NumberStyles.Number, culture, out value))
+            {
+                return value;
+            }
+
+            return 0m;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBx1.Text = Session["Ped"].ToString();
-            Labe1.Text = (GridView1.Rows[0].Cells[0].Text);
-            Labe2.Text = (GridView3.Rows[0].Cells[1].Text);
-            //******
+            if (!IsPostBack)
+            {
+                if (Session["Ped"] != null)
+                {
+                    string orderId = Session["Ped"].ToString();
+                    TextBx1.Text = orderId;
+                    litOrderNum.Text = orderId;
+                    litOrderNumHeader.Text = orderId;
+                    
+                    // Bind data first to access values
+                    GridView1.DataBind();
+                    
+                    if (GridView1.Rows.Count > 0)
+                    {
+                        Labe1.Text = GridView1.Rows[0].Cells[0].Text;
+                        litCnpj.Text = GridView1.Rows[0].Cells[0].Text;
+                        litNomeParc.Text = GridView1.Rows[0].Cells[1].Text;
+                        litDataPedido.Text = GridView1.Rows[0].Cells[2].Text;
+                        litDataEntrega.Text = GridView1.Rows[0].Cells[3].Text;
+                        litStatus.Text = GridView1.Rows[0].Cells[4].Text;
+                    }
+
+                    // Bind email source
+                    GridView3.DataBind();
+                    if (GridView3.Rows.Count > 0)
+                    {
+                        Labe2.Text = GridView3.Rows[0].Cells[1].Text;
+                    }
+
+                    if (string.Equals(Request.QueryString["sendEmail"], "1", StringComparison.Ordinal))
+                    {
+                        TrySendEmailAndRedirect();
+                        return;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Cliente/Menu4.aspx");
+                }
+            }
+        }
+
+        private void TrySendEmailAndRedirect()
+        {
+            string assunto = TextBx1.Text;
+            string destino = (Labe2.Text ?? string.Empty).Trim();
+
+            if (string.IsNullOrWhiteSpace(destino))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "email-vazio", "alert('Email do cliente não cadastrado. Atualize o cadastro antes de enviar.');", true);
+                return;
+            }
+
+            try
+            {
+                var _ = new MailAddress(destino);
+            }
+            catch
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "email-invalido", "alert('Email inválido, verifique o email cadastrado!');", true);
+                return;
+            }
+
+            if (Session["EmailEnviadoPedidoId"] != null && string.Equals(Session["EmailEnviadoPedidoId"].ToString(), assunto, StringComparison.Ordinal))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "email-ja-enviado", "alert('E-mail já foi enviado para este pedido nesta sessão.');", true);
+                return;
+            }
+
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
+            string corpo = GridViewToHtml(GridView1);
+            string corpo2 = GridViewToHtml(GridView2);
+            string itens = Label2.Text;
+            string total = Label3.Text;
+
+            mailMessage.From = new System.Net.Mail.MailAddress("naoresponda@jfcverduras.com.br");
+            mailMessage.To.Add(new System.Net.Mail.MailAddress(destino));
+            mailMessage.CC.Add(new System.Net.Mail.MailAddress("pedidos@jfcverduras.com.br"));
+            mailMessage.Subject = "Pedido JFC nº " + assunto;
+            mailMessage.Body = corpo + "<br>" + corpo2 + "<br>" + "Total de Itens: " + itens + "<br>" + "Valor Total: R$" + total;
+            mailMessage.IsBodyHtml = true;
+
+            try
+            {
+                using (var smtp = new System.Net.Mail.SmtpClient())
+                {
+                    smtp.Host = "smtp.kinghost.net";
+                    smtp.Port = 25;
+                    smtp.EnableSsl = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("naoresponda@jfcverduras.com.br", "Jfc$0904");
+                    smtp.Send(mailMessage);
+                }
+
+                Session["EmailEnviadoPedidoId"] = assunto;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "email-ok", "alert('Foi enviado uma cópia para o email cadastrado!');", true);
+
+                Response.Redirect("Relatorio.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+            catch
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "email-erro", "alert('Ocorreu um erro ao enviar o e-mail. Tente novamente.');", true);
+            }
         }
         private string GridViewToHtml(GridView gv)
         {
@@ -54,51 +186,7 @@ namespace JFCWEB.Paginas
 
         protected void GridView3_Load(object sender, EventArgs e)
         {
-          //  ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "confirm('Foi enviado um TESTE!')", true);
-              
-            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
-                string assunto = TextBx1.Text;
-                string destino = Labe2.Text;
-                string corpo = GridViewToHtml(GridView1);
-                string corpo2 = GridViewToHtml(GridView2);
-                string itens = Label2.Text;
-                string total = Label3.Text;
-                mailMessage.From = new System.Net.Mail.MailAddress("naoresponda@jfcverduras.com.br");
-                mailMessage.To.Add(new System.Net.Mail.MailAddress(destino));
-                mailMessage.CC.Add(new System.Net.Mail.MailAddress("pedidos@jfcverduras.com.br"));
-
-                //Cópia oculta:
-                //mailMessage.Bcc.Add(new System.Net.Mail.MailAddress("copia.oculta@email.com"));
-
-                mailMessage.Subject = "Pedido JFC nº " + assunto;
-                mailMessage.Body = corpo + "<br>" + corpo2 + "<br>" + "Total de Itens: " + itens + "<br>" + "Valor Total: R$" + total;
-                mailMessage.IsBodyHtml = true;
-
-                using (var smtp = new System.Net.Mail.SmtpClient())
-                {
-                    smtp.Host = "smtp.kinghost.net";
-                    smtp.Port = 25;
-                    smtp.EnableSsl = false;
-                    smtp.Credentials = new System.Net.NetworkCredential("naoresponda@jfcverduras.com.br", "Jfc$0904");
-                    smtp.Send(mailMessage);
-
-                }
-                try
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Foi enviado uma cópia para o email cadastrado!')", true);
-                    // Labe1.Text = "Email enviado com sucesso!";
-                }
-                catch
-                {
-                    // Labe1.Text = "Ocorreu um erro ao enviar o Email.";
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sua-mensagem", "alert('Email inválido, verifique o email cadastrado!')", true);
-                    //Labe2.Text = " ";
-                }
-                finally
-                {
-
-                
-            }
+            GridView3.DataBind();
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
@@ -120,9 +208,15 @@ namespace JFCWEB.Paginas
             {
                if(row.RowType==DataControlRowType.DataRow)
                 {
-                    if (!string.IsNullOrEmpty(row.Cells[4].Text))
-                        Total += Decimal.Parse(row.Cells[4].Text);
-                        TotalVlr += Decimal.Parse(row.Cells[6].Text);
+                    if (row.Cells.Count > 2 && !string.IsNullOrWhiteSpace(row.Cells[2].Text))
+                    {
+                        Total += ParsePtBrDecimal(row.Cells[2].Text);
+                    }
+
+                    if (row.Cells.Count > 4 && !string.IsNullOrWhiteSpace(row.Cells[4].Text))
+                    {
+                        TotalVlr += ParsePtBrDecimal(row.Cells[4].Text);
+                    }
                     Label2.Text = Total.ToString();
                     Label3.Text = TotalVlr.ToString("C2");
 

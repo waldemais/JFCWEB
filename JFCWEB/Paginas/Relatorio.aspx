@@ -1,270 +1,174 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Relatorio.aspx.cs" Inherits="JFCWEB.Paginas.Relatorio" %>
+<%@ Page Title="Resumo do Pedido" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Relatorio.aspx.cs" Inherits="JFCWEB.Paginas.Relatorio" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
-        #form1
-        {
-            text-align: center;
+        .order-summary-card {
+            border-top: 5px solid #198754;
         }
-        .style1
-        {
-            width: 428px;
-            text-align: left;
+        .order-info-label {
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
-        .style4
-        {
-            font-size: x-large;
-            font-family: Verdana;
-            color: #2A6137;
+        .order-info-value {
+            font-weight: 700;
+            color: #212529;
+            font-size: 1.1rem;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
             }
-        .style6
-        {
-            font-size: x-large;
-            font-family: Verdana;
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .card {
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+            }
         }
-        .style7
-        {
-            text-align: left;
-        }
-        .auto-style1 {
-            text-align: center;
-        }
-        .auto-style2 {
-            width: 33px;
-        }
-        .auto-style3 {
-            width: 437px;
-        }
-        .auto-style9 {
-            width: 100%;
-        }
-        .auto-style10 {
-            width: 295px;
-            text-align: right;
-            height: 23px;
-        }
-        .auto-style12 {
-            width: 116px;
-            text-align: right;
-            height: 23px;
-        }
-        .auto-style13 {
-            width: 33px;
-            height: 23px;
-        }
-        .auto-style14 {
-            width: 124px;
-            text-align: right;
-            height: 23px;
-        }
-        .auto-style15 {
-            width: 132px;
-            text-align: right;
-            height: 23px;
-        }
-        .auto-style18 {
-            width: 73px;
-        }
-        .auto-style19 {
-            width: 75px;
-        }
-        .auto-style20 {
-            width: 55px;
-        }
-        .auto-style21 {
-            color: #FFFFFF;
-        }
-        .auto-style22 {
-            width: 641px;
-            text-align: left;
-        }
-        .auto-style23 {
-            width: 166px;
-        }
-        </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div class="style7">
-    
-        <table style="width: 100%; background-color: #77A364;">
-            <tr>
-                <td class="auto-style20">
-    <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagem/Logos _JFC.jpg" Height="30px" Width="40px" />
-                </td>
-                <td class="auto-style19">
-                    <asp:Button ID="Button2" runat="server" Height="30px" PostBackUrl="~/Cliente/Menu4.aspx" Text="Menu" Width="80px" />
-                </td>
-                <td class="auto-style18">
-                    <asp:Button ID="Button3" runat="server" Height="30px" PostBackUrl="~/Paginas/Pedidos.aspx" Text="Consultar" Width="80px" />
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <asp:ImageButton ID="ImageButton1" runat="server" Height="30px" ImageAlign="Right" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" Width="30px" />
-                </td>
-            </tr>
-        </table>
-    
-    </div>
-    <h1 class="style4" align="left">
-    Pedido Nº: <asp:TextBox ID="TextBx1" runat="server" BorderStyle="None" Enabled="False" 
-                    Height="23px" 
-            style="font-size: x-large; color: #006600; font-family: Verdana;" Width="117px"></asp:TextBox>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </h1>
-    <table style="width:100%;">
-        <tr class="style7">
-            <td class="auto-style22" 
-                style="text-align: left; font-size: medium; color: #006600; font-weight: 700;">
-                &nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Pedido enviado para o mail cadastrado --&gt;&gt;" BackColor="#77A364" CssClass="auto-style21" Height="30px" Enabled="False" Width="265px" />
-                <asp:Label ID="Labe2" runat="server" Text="Label" Enabled="False" Height="30px" Width="324px"></asp:Label>
-            </td>
-            <td class="auto-style23">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        </table>
-        <div class="style7">
-            <asp:Label ID="Labe1" runat="server" Text="Label" 
-            style="font-size: large" Visible="False"></asp:Label>
-    <br />
+    </style>
+</asp:Content>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div class="container py-4">
+        <!-- Barra de Ações -->
+        <div class="d-flex justify-content-between align-items-center mb-4 no-print">
+            <div>
+                <asp:LinkButton ID="btnBack" runat="server" CssClass="btn btn-outline-secondary me-2" PostBackUrl="~/Cliente/Menu4.aspx">
+                    <i class="bi bi-house-door me-1"></i>Menu
+                </asp:LinkButton>
+                <asp:LinkButton ID="btnConsult" runat="server" CssClass="btn btn-outline-primary" PostBackUrl="~/Paginas/Pedidos.aspx">
+                    <i class="bi bi-search me-1"></i>Consultar Pedidos
+                </asp:LinkButton>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success" onclick="window.print();">
+                    <i class="bi bi-printer me-1"></i>Imprimir Resumo
+                </button>
+            </div>
         </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1" BorderStyle="None" GridLines="None" 
-        style="font-size: small" Width="744px" 
-        onload="GridView1_Load" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField DataField="CGC_CPF" HeaderText="CNPJ:" 
-                SortExpression="CGC_CPF" />
-            <asp:BoundField DataField="NOMEPARC" HeaderText="Cliente" 
-                SortExpression="NOMEPARC" />
-            <asp:BoundField DataField="DTEMISSAO" HeaderText="Data do Pedido" 
-                SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy H:mm:ss}" />
-            <asp:BoundField DataField="DTENTREGA" HeaderText=" Data da Entrega" 
-                SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
-            <asp:BoundField DataField="STATUS" HeaderText="STATUS" 
-                SortExpression="STATUS" />
-        </Columns>
-        <HeaderStyle Font-Size="Medium" />
-    </asp:GridView>
-    <div class="style7">
-        <br />
-        <asp:Label ID="Label1" runat="server" 
-            style="font-weight: 700; color: #006600; font-size: large; font-family: Arial, Helvetica, sans-serif" 
-            Text="Produtos Solicitados"></asp:Label>
-        <span class="style4"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Itens do Pedido<br />
-        </span><br class="style6" />
-    </div>
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#999999" 
-        BorderStyle="None" BorderWidth="1px" CellPadding="3" ForeColor="#003300" 
-        GridLines="None" style="font-size: small" Width="606px" OnDataBound="GridView2_DataBound" OnLoad="GridView2_Load">
-        <AlternatingRowStyle BackColor="#CCCCCC" />
-        <Columns>
-            <asp:BoundField DataField="itemID" 
-                SortExpression="itemID" ShowHeader="False" >
-            <HeaderStyle BackColor="White" BorderStyle="None" />
-            <ItemStyle BackColor="White" ForeColor="White" />
-            </asp:BoundField>
-            <asp:BoundField 
-                SortExpression="pedidoID" >
-            <HeaderStyle BackColor="White" />
-            <ItemStyle BackColor="White" ForeColor="White" />
-            </asp:BoundField>
-            <asp:BoundField DataField="CODPROD" HeaderText="Código" 
-                SortExpression="CODPROD" />
-            <asp:BoundField DataField="DESCRPROD" HeaderText="Descrição" 
-                SortExpression="DESCRPROD" HtmlEncode="False" >
-            <ItemStyle HorizontalAlign="Left" />
-            </asp:BoundField>
-            <asp:BoundField DataField="QTDE" HeaderText="Qtde" 
-                SortExpression="QTDE" >
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="PADRAO" HeaderText="Unit." SortExpression="PADRAO" >
-            <ItemStyle HorizontalAlign="Right" />
-            </asp:BoundField>
-            <asp:BoundField DataField="TOTAL" HeaderText="Total" SortExpression="TOTAL" >
-            <ItemStyle HorizontalAlign="Right" />
-            </asp:BoundField>
-        </Columns>
-        <FooterStyle BackColor="#CCCCCC" />
-        <HeaderStyle BackColor="#97FF97" Font-Bold="True" ForeColor="#003300" 
-            HorizontalAlign="Left" />
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="Gray" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#383838" />
-    </asp:GridView>
-        <div class="auto-style1">
-            <table class="auto-style9">
-                <tr>
-                    <td class="auto-style13"></td>
-                    <td class="auto-style10">
-                    </td>
-                    <td class="auto-style14">
-                        <asp:Label ID="Label2" runat="server" Font-Bold="False" Font-Size="Small"></asp:Label>
-                    </td>
-                    <td class="auto-style15">
-                        <asp:Label ID="Label3" runat="server" Font-Size="Small"></asp:Label>
-                    </td>
-                    <td class="auto-style12">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style3" colspan="4">&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
+
+        <!-- Alerta de Envio -->
+        <div class="alert alert-success d-flex align-items-center mb-4 no-print" role="alert">
+            <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+            <div>
+                <strong>Pedido nº <asp:Literal ID="litOrderNum" runat="server"></asp:Literal> gravado com sucesso!</strong><br />
+                Uma cópia foi enviada para o e-mail: <asp:Label ID="Labe2" runat="server" CssClass="fw-bold"></asp:Label>
+            </div>
         </div>
-        <hr />
-    <br />
-    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource3" onload="GridView3_Load" 
-        onselectedindexchanged="GridView3_SelectedIndexChanged" Visible="False">
-        <Columns>
-            <asp:BoundField DataField="CGC_CPF" HeaderText="CGC_CPF" 
-                SortExpression="CGC_CPF" />
-            <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
-        </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        SelectCommand="SELECT DISTINCT [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="Labe1" Name="CGC_CPF" PropertyName="Text" 
-                Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-    <br />
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        
-        SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE &lt;&gt; 0) ORDER BY DESCRPROD">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" 
-                Type="Int32" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-        SelectCommand="SELECT DISTINCT [CGC_CPF], [NOMEPARC], [DTENTREGA], [DTEMISSAO], [STATUS] FROM [PEDIDOS] WHERE ([pedidoID] = @pedidoID)">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" 
-                Type="Int32" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-    </form>
-    </body>
-</html>
+
+        <!-- Card Principal do Pedido -->
+        <div class="card order-summary-card shadow-sm mb-4">
+            <div class="card-header bg-white py-3">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="mb-0 text-success fw-bold">Pedido Nº <asp:Literal ID="litOrderNumHeader" runat="server"></asp:Literal></h3>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                        <span class="badge bg-success fs-6">STATUS: <asp:Literal ID="litStatus" runat="server"></asp:Literal></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-md-3 col-sm-6 border-end-md">
+                        <div class="order-info-label">CNPJ do Cliente</div>
+                        <div class="order-info-value"><asp:Literal ID="litCnpj" runat="server"></asp:Literal></div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 border-end-md">
+                        <div class="order-info-label">Nome Fantasia</div>
+                        <div class="order-info-value"><asp:Literal ID="litNomeParc" runat="server"></asp:Literal></div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 border-end-md">
+                        <div class="order-info-label">Data do Pedido</div>
+                        <div class="order-info-value"><asp:Literal ID="litDataPedido" runat="server"></asp:Literal></div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="order-info-label text-success">Previsão de Entrega</div>
+                        <div class="order-info-value text-success"><asp:Literal ID="litDataEntrega" runat="server"></asp:Literal></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Itens -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-light py-3">
+                <h5 class="mb-0 fw-bold text-dark"><i class="bi bi-list-ul me-2"></i>Itens do Pedido</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+                        DataSourceID="SqlDataSource2" CssClass="gridview-modern mb-0" GridLines="None" 
+                        OnDataBound="GridView2_DataBound" OnLoad="GridView2_Load">
+                        <Columns>
+                            <asp:BoundField DataField="CODPROD" HeaderText="CÓDIGO" SortExpression="CODPROD" />
+                            <asp:BoundField DataField="DESCRPROD" HeaderText="DESCRIÇÃO" SortExpression="DESCRPROD" HtmlEncode="False" />
+                            <asp:BoundField DataField="QTDE" HeaderText="QUANTIDADE" SortExpression="QTDE">
+                                <ItemStyle HorizontalAlign="Center" CssClass="fw-bold" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="PADRAO" HeaderText="VLR. UNITÁRIO" SortExpression="PADRAO" DataFormatString="{0:C2}">
+                                <ItemStyle HorizontalAlign="Right" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TOTAL" HeaderText="TOTAL" SortExpression="TOTAL" DataFormatString="{0:C2}">
+                                <ItemStyle HorizontalAlign="Right" CssClass="fw-bold text-success" />
+                            </asp:BoundField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+            <div class="card-footer bg-light border-0 py-3">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted">Total de Itens:</span> 
+                        <asp:Label ID="Label2" runat="server" CssClass="fw-bold ms-1"></asp:Label>
+                    </div>
+                    <div class="col-6 text-end">
+                        <span class="fs-5 me-2">Valor Total do Pedido:</span>
+                        <asp:Label ID="Label3" runat="server" CssClass="fs-4 fw-bold text-success"></asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé do Resumo -->
+        <div class="text-center mt-5 no-print">
+            <p class="text-muted small">JFC Verduras - Portal de Pedidos Web</p>
+        </div>
+
+        <!-- Controles Ocultos para Lógica Existente -->
+        <div style="display:none;">
+            <asp:TextBox ID="TextBx1" runat="server"></asp:TextBox>
+            <asp:Label ID="Labe1" runat="server"></asp:Label>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" onload="GridView1_Load"></asp:GridView>
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" Visible="False"></asp:GridView>
+        </div>
+
+        <!-- DataSources -->
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
+            SelectCommand="SELECT DISTINCT [CGC_CPF], [EMAIL] FROM [TGFPAR] WHERE ([CGC_CPF] = @CGC_CPF)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="Labe1" Name="CGC_CPF" PropertyName="Text" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
+            SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE <> 0) ORDER BY DESCRPROD" ProviderName="System.Data.SqlClient">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
+            SelectCommand="SELECT DISTINCT [CGC_CPF], [NOMEPARC], [DTENTREGA], [DTEMISSAO], [STATUS] FROM [PEDIDOS] WHERE ([pedidoID] = @pedidoID)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </div>
+</asp:Content>

@@ -413,7 +413,7 @@ namespace JFCWEB.Administrador
                 this.BindGrid();
 
                 dgv5.HeaderRow.BackColor = Color.White;
-                foreach (TableCell cell in dgv2.HeaderRow.Cells)
+                foreach (TableCell cell in dgv5.HeaderRow.Cells)
                 {
                     cell.BackColor = dgv5.HeaderStyle.BackColor;
                 }

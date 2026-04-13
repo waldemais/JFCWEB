@@ -24,7 +24,7 @@ namespace JFCWEB.Administrador
         }
         private void BindGrid()
         {
-    string strConnstring = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Integrated Security=True;Pooling=False";
+    string strConnstring = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;Integrated Security=True;Pooling=False";
             using (SqlConnection con = new SqlConnection(strConnstring))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM Customers"))
@@ -81,7 +81,7 @@ namespace JFCWEB.Administrador
                         }
                         cell.CssClass = "textmode";
                     }
-                    strconrj = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                    strconrj = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
                     connrj = new SqlConnection(strconrj);
                     connrj.Open();
                     string sqlrj = ("UPDATE PEDIDO SET STATUS = 'FINALIZADO' WHERE pedidoID = ANY (SELECT pedidoID from Exporta WHERE DTENTREGA = @ENTREGA AND QTDE <> 0 AND UF IN('RJ', 'MG', 'NULL') AND NOMEPARC LIKE('%SUBWAY%') AND STATUS = 'ABERTO')");
@@ -145,7 +145,7 @@ namespace JFCWEB.Administrador
                         }
                         cell.CssClass = "textmode";
                     }
-                    strconsp = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                    strconsp = "Data Source=mssql.jfcverduras.com.br;Initial Catalog=jfcverduras;User ID=jfcverduras;Password=jfc102030";
                     connsp = new SqlConnection(strconsp);
                     connsp.Open();
                     string sqlsp = ("UPDATE PEDIDO SET STATUS = 'FINALIZADO' WHERE pedidoID = ANY (SELECT pedidoID from Exporta WHERE DTENTREGA = @ENTREGA AND QTDE <> 0 AND UF IN('SP') AND NOMEPARC LIKE('%SUBWAY%') AND STATUS = 'ABERTO')");
@@ -339,6 +339,108 @@ namespace JFCWEB.Administrador
 
             }
             dgv3.DataBind();
+        }
+
+        protected void BtnExcel4_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Subway_SAP_PR.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //Para Exportar todas as páginas
+                dgv4.AllowPaging = false;
+                this.BindGrid();
+
+                dgv4.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in dgv4.HeaderRow.Cells)
+                {
+                    cell.BackColor = dgv4.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in dgv4.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = dgv4.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = dgv4.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+
+                }
+
+                dgv4.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+            }
+            dgv4.DataBind();
+        }
+
+        protected void BtnExcel5_Click(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Subway_SAP_PR.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //Para Exportar todas as páginas
+                dgv5.AllowPaging = false;
+                this.BindGrid();
+
+                dgv5.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in dgv5.HeaderRow.Cells)
+                {
+                    cell.BackColor = dgv5.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in dgv5.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = dgv5.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = dgv5.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+
+                }
+
+                dgv5.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+            }
+            dgv5.DataBind();
         }
     }
 }

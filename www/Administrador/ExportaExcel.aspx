@@ -73,9 +73,6 @@
             width: 240px;
             height: 157px;
         }
-        .auto-style10 {
-            color: #006600;
-        }
         .auto-style11 {
             font-size: large;
         }
@@ -84,11 +81,7 @@
             width: 474px;
         }
         .auto-style13 {
-            text-align: justify;
-        }
-        .auto-style14 {
-            height: 33px;
-            text-align: center;
+            text-align: left;
         }
         .auto-style15 {
             color: #009933;
@@ -141,31 +134,39 @@
         .auto-style28 {
             width: 254px;
         }
-        .auto-style29 {
-            margin-right: 0px;
-        }
         .auto-style30 {
             font-size: small;
         }
         .auto-style31 {
             width: 344px;
         }
-        .auto-style32 {
-            width: 16px;
-        }
-        .auto-style33 {
+        .auto-style38 {
             height: 46px;
+            width: 768px;
         }
-        .auto-style34 {
-            width: 16px;
+        .auto-style39 {
+            height: 50px;
+            width: 768px;
+        }
+        .auto-style40 {
+            width: 768px;
+        }
+        .auto-style41 {
+            width: 160px;
+        }
+        .auto-style42 {
+            width: 446px;
+        }
+        .auto-style44 {
             height: 46px;
+            width: 159px;
         }
-        .auto-style35 {
+        .auto-style45 {
             height: 50px;
+            width: 159px;
         }
-        .auto-style36 {
-            width: 16px;
-            height: 50px;
+        .auto-style46 {
+            width: 159px;
         }
         </style>
 </head>
@@ -192,11 +193,12 @@
                 </tr>
                 <tr>
                     <td class="auto-style31">&nbsp;</td>
-                    <td class="auto-style24">&nbsp;</td>
+                    <td class="auto-style24">
+                        <asp:Label ID="Label7" runat="server" Text="Exporta para Excel"></asp:Label>
+                    </td>
                     <td class="auto-style28">&nbsp;</td>
                     <td>
-                        <asp:ImageButton ID="ImageButton3" runat="server" CssClass="auto-style29" ImageAlign="Right" ImageUrl="~/Imagem/Voltar.png" OnClientClick="JavaScript:window.history.back(1); return false" Width="30px" />
-                    </td>
+                        &nbsp;</td>
                 </tr>
             </table>
             <hr />
@@ -204,19 +206,10 @@
         <h2 class="style3">
             <table style="width:100%;">
                 <tr>
-                    <td class="auto-style14">
-                        </td>
-                    <td class="auto-style14">
-                        <asp:Label ID="Label7" runat="server" Text="Planilhas para o SAP"></asp:Label>
+                    <td class="auto-style46">
+                        <asp:Button ID="Button1" runat="server" Height="27px" PostBackUrl="~/Administrador/Menu1.aspx" Text="Menu Principal" Width="150px" />
                     </td>
-                    <td class="auto-style14">
-                        </td>
-                </tr>
-            </table>
-            <table style="width:100%;">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>
+                    <td class="auto-style40">
                         <strong>
                 <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" 
                         Text="Pedidos RJ-MG" 
@@ -227,51 +220,79 @@
                         <asp:Button ID="btnExcel3" runat="server" BorderColor="#009933" Font-Bold="True" ForeColor="#009933" Height="27px" OnClick="btnExcel3_Click" Text="Pedidos PR" Width="181px" style="background-color: #CCCCCC" />
                         </strong>
                     </td>
-                    <td class="auto-style32">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style33"></td>
-                    <td class="auto-style33">
+                    <td class="auto-style44">
+                        <asp:Button ID="Button2" runat="server" Height="27px" PostBackUrl="~/Administrador/AdmPedidos.aspx" Text="Pedidos" Width="150px" />
+                    </td>
+                    <td class="auto-style38">
                         <asp:Button ID="btnExcel2" runat="server" Font-Bold="False" Text=" SAP RJ &amp; Minas" Height="27px" OnClick="btnExcel2_Click" Width="150px" style="color: #003366; font-weight: 700; background-color: #999999" />
                         <asp:Button ID="btnExcel4" runat="server" Font-Bold="False" Height="27px" OnClick="btnExcel4_Click" style="color: #003366; font-weight: 700; background-color: #999999" Text="SAP Sao Paulo" Width="150px" />
                         <asp:Button ID="BtnExcel5" runat="server" Height="27px" OnClick="BtnExcel5_Click" style="color: #003366; font-weight: 700; background-color: #999999" Text="SAP Paraná" Width="150px" />
                     </td>
-                    <td class="auto-style34"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style35"></td>
-                    <td class="auto-style35">
+                    <td class="auto-style45">
+                        <asp:Button ID="Button3" runat="server" Height="27px" Text="Sair" Width="150px" />
+                    </td>
+                    <td class="auto-style39">
                     <asp:Button ID="BtnPrevia" runat="server" Height="27px" 
                         onclick="BtnPrevia_Click" 
                         style="color: #003300; font-weight: 700; font-family: Verdana; background-color: #999999; text-align: center;" 
                         Text="Prévia p/ Fábrica" Width="150px" />
                     </td>
-                    <td class="auto-style36"></td>
                 </tr>
+                </table>
+        </h2>
+            <hr />
+        <h2 class="style3">
+            <p>
+            </p>
+            <table style="width:100%;">
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>
-                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
-                    BorderColor="Black" Font-Names="Verdana" Font-Size="9pt" 
-                    ForeColor="Black" Height="250px" Width="330px" CaptionAlign="Top" 
-                    FirstDayOfWeek="Sunday" style="text-align: center" 
-                    onselectionchanged="Calendar1_SelectionChanged" BorderStyle="Solid" CellSpacing="1" NextPrevFormat="ShortMonth">
-                    <DayHeaderStyle ForeColor="#333333" Height="8pt" Font-Bold="True" Font-Size="8pt" />
-                    <DayStyle BackColor="#CCCCCC" />
-                    <NextPrevStyle Font-Size="8pt" ForeColor="White" Font-Bold="True" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                    <TitleStyle BackColor="#333399" 
-                        Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="12pt" BorderStyle="Solid" />
-                    <TodayDayStyle BackColor="#999999" ForeColor="White" />
-                </asp:Calendar>
-                <strong>
+                    <td class="auto-style41" style="text-align: center">
+                        <strong>
                 <asp:Label ID="Lbel01" runat="server" 
-                    style="font-family: Arial, Helvetica, sans-serif; " CssClass="auto-style17" Font-Size="X-Large"></asp:Label>
+                    style="font-family: Arial, Helvetica, sans-serif; " CssClass="auto-style17" Font-Size="Medium"></asp:Label>
                 </strong>
+                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
+                    BorderColor="#999999" Font-Names="Verdana" Font-Size="8pt" 
+                    ForeColor="Black" Height="180px" Width="200px" CaptionAlign="Top" 
+                    FirstDayOfWeek="Sunday" 
+                    onselectionchanged="Calendar1_SelectionChanged" CellPadding="4" DayNameFormat="Shortest" Font-Bold="False">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="7pt" BackColor="#CCCCCC" />
+                    <NextPrevStyle VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#808080" />
+                    <SelectedDayStyle BackColor="#666666" ForeColor="White" Font-Bold="True" />
+                    <SelectorStyle BackColor="#CCCCCC" />
+                    <TitleStyle BackColor="#999999" 
+                        Font-Bold="True" BorderColor="Black" />
+                    <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                    <WeekendDayStyle BackColor="#FFFFCC" />
+                </asp:Calendar>
                         <br />
                     </td>
-                    <td class="auto-style32">&nbsp;</td>
+                    <td class="auto-style42" style="text-align: left">
+                        <asp:Label ID="Label9" runat="server" Font-Size="Small" style="text-align: left" Text="Qtde. lojas do dia" Width="201px"></asp:Label>
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource8" Font-Size="Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Font-Bold="False">
+                            <AlternatingRowStyle BackColor="White" />
+                            <Columns>
+                                <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Dtentrega" SortExpression="DTENTREGA" />
+                                <asp:BoundField DataField="UF" HeaderText="UF" SortExpression="UF" />
+                                <asp:BoundField DataField="STATUS" HeaderText="Status" SortExpression="STATUS" />
+                                <asp:BoundField DataField="Expr1" HeaderText="Total" ReadOnly="True" SortExpression="Expr1" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCC99" />
+                            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                            <RowStyle BackColor="#F7F7DE" />
+                            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                            <SortedAscendingHeaderStyle BackColor="#848384" />
+                            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                            <SortedDescendingHeaderStyle BackColor="#575357" />
+                        </asp:GridView>
+                    </td>
                 </tr>
             </table>
         </h2>
@@ -280,23 +301,14 @@
     <table style="width:100%;">
         <tr>
             <td class="auto-style5" align="char">
-                <br />
-                <span class="auto-style10"><strong><br />
-                <br />
-                </strong></span>
-                <br />
-            </td>
-            <td class="auto-style8" align="char">
                 <div class="auto-style12">
                     <strong>
                 <asp:Label ID="Lbel2" runat="server" 
                     style="color: #009933; font-family: Arial, Helvetica, sans-serif; " CssClass="auto-style11" Visible="False" Font-Size="X-Small">Prévia de Total de Pedidos</asp:Label>
                     </strong>
-                    <br />
                 </div>
-                <div class="auto-style13">
                 <asp:GridView ID="Gprev" runat="server" AutoGenerateColumns="False" 
-                    DataSourceID="SqlDataSource2" style="color: #009933" Width="500px" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Size="X-Small">
+                    DataSourceID="SqlDataSource2" style="color: #009933" Width="500px" CellPadding="4" ForeColor="Black" GridLines="Vertical" Font-Size="X-Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="CODPROD" HeaderText="CÓDIGO" 
@@ -310,33 +322,34 @@
                         <ItemStyle HorizontalAlign="Right" />
                         </asp:BoundField>
                     </Columns>
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
+            </td>
+            <td class="auto-style8" align="char">
+                <div class="auto-style13">
                 </div>
             </td>
         </tr>
         <tr>
             <td class="auto-style3" colspan="2">
                 <div class="auto-style21">
-                    <hr />
                 </div>
                 <strong>
                 <asp:Label ID="Label1" runat="server" ForeColor="#1C5E55" Text="PEDIDOS RIO DE JANEIRO" Visible="False" CssClass="auto-style16" Font-Size="X-Small"></asp:Label>
                 </strong>
                 <asp:GridView ID="dgv" runat="server" 
                     AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" 
-                    ForeColor="#333333" GridLines="None" 
+                    ForeColor="Black" GridLines="Vertical" 
                     onpageindexchanging="dgv_PageIndexChanging" CaptionAlign="Top" 
-                    Width="800px" Font-Size="X-Small">
+                    Width="800px" Font-Size="X-Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="pedidoID" HeaderText="Nº Ped." 
@@ -356,27 +369,25 @@
                         <asp:BoundField DataField="UF" HeaderText="UF" SortExpression="UF" />
                         <asp:BoundField DataField="ROTA" HeaderText="Rota" SortExpression="ROTA" />
                     </Columns>
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
                 <div class="auto-style18">
-                    <hr />
                 </div>
                 <br />
                 <strong>
                 <asp:Label ID="Label2" runat="server" ForeColor="#4A3C8C" Text="PEDIDOS SÃO PAULO" Visible="False" CssClass="auto-style11" Font-Size="X-Small"></asp:Label>
                 </strong>
                 <br />
-                <asp:GridView ID="dgv1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource3" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Size="X-Small" Width="800px">
-                    <AlternatingRowStyle BackColor="#F7F7F7" />
+                <asp:GridView ID="dgv1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource3" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Font-Size="X-Small" Width="800px" ForeColor="Black">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="pedidoID" HeaderText="Nº Ped" SortExpression="pedidoID" />
                         <asp:BoundField DataField="DTENTREGA" HeaderText="Dt.Entrega" SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
@@ -390,23 +401,22 @@
                         <asp:BoundField DataField="UF" HeaderText="UF" SortExpression="UF" />
                         <asp:BoundField DataField="ROTA" HeaderText="Rota" SortExpression="ROTA" />
                     </Columns>
-                    <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                    <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                    <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                    <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                    <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                    <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                    <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                    <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
                 <div class="auto-style19">
-                    <hr />
                 </div>
                 <br />
                 <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="X-Small" ForeColor="#000084" Text="PEDIDOS PARANÁ"></asp:Label>
-                <asp:GridView ID="dgv3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="auto-style30" DataSourceID="SqlDataSource5" Font-Size="X-Small" GridLines="Vertical" Width="800px">
-                    <AlternatingRowStyle BackColor="#DCDCDC" />
+                <asp:GridView ID="dgv3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" CssClass="auto-style30" DataSourceID="SqlDataSource5" Font-Size="X-Small" GridLines="Vertical" Width="800px" ForeColor="Black">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="pedidoID" HeaderText="Nº Ped" SortExpression="pedidoID" />
                         <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Dt.Entrega" SortExpression="DTENTREGA" />
@@ -418,29 +428,23 @@
                         <asp:BoundField DataField="UF" HeaderText="UF" SortExpression="UF" />
                         <asp:BoundField DataField="ROTA" HeaderText="Rota" SortExpression="ROTA" />
                     </Columns>
-                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                    <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-                    <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                    <SortedAscendingHeaderStyle BackColor="#0000A9" />
-                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                    <SortedDescendingHeaderStyle BackColor="#000065" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [DTENTREGA], [CODPARC], [NOMEPARC], [CODPROD], [DESCRPROD], [QTDE], [UF], [ROTA] FROM [Exporta] WHERE ([DTENTREGA] = @DTENTREGA) AND (STATUS = 'ABERTO') AND (QTDE &lt;&gt; 0) AND (UF = 'PR') AND (NOMEPARC LIKE '%BK%') ORDER BY CODPARC">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="DTENTREGA" PropertyName="SelectedDate" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
                 <br />
-                <hr style="width: 806px" />
                 <br />
                 <strong>
                 <asp:Label ID="Label3" runat="server" Text="BK SAP RJ &amp; Minas" CssClass="auto-style16" Font-Size="Small" ForeColor="#0033CC"></asp:Label>
                 </strong>
                 <br />
-                <asp:GridView ID="dgv2" runat="server" DataSourceID="SqlDataSource4" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="800px" CssClass="auto-style30" Font-Size="X-Small">
+                <asp:GridView ID="dgv2" runat="server" DataSourceID="SqlDataSource4" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="800px" CssClass="auto-style30" Font-Size="X-Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="DATA" SortExpression="DTENTREGA" />
@@ -457,23 +461,21 @@
                         <ItemStyle HorizontalAlign="Right" />
                         </asp:BoundField>
                     </Columns>
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
                 <div class="auto-style20">
-                    <hr />
                     <br />
                     <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#0033CC" Text="BK SAP São Paulo"></asp:Label>
                 </div>
-                <asp:GridView ID="dgv4" runat="server" DataSourceID="SqlDataSource6" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="800px" CssClass="auto-style30" Font-Size="X-Small">
+                <asp:GridView ID="dgv4" runat="server" DataSourceID="SqlDataSource6" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="800px" CssClass="auto-style30" Font-Size="X-Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="DATA" SortExpression="DTENTREGA" />
@@ -490,22 +492,20 @@
                         <ItemStyle HorizontalAlign="Right" />
                         </asp:BoundField>
                     </Columns>
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
-                <hr style="height: 0px; width: 800px" />
                 <br />
                 <br />
                 <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#0033CC" Text="BK SAP Paraná"></asp:Label>
-                <asp:GridView ID="dgv5" runat="server" DataSourceID="SqlDataSource7" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="800px" CssClass="auto-style30" Font-Size="X-Small">
+                <asp:GridView ID="dgv5" runat="server" DataSourceID="SqlDataSource7" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Vertical" Width="800px" CssClass="auto-style30" Font-Size="X-Small" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="DATA" SortExpression="DTENTREGA" />
@@ -522,18 +522,16 @@
                         <ItemStyle HorizontalAlign="Right" />
                         </asp:BoundField>
                     </Columns>
-                    <EditRowStyle BackColor="#7C6F57" />
-                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#E3EAEB" />
-                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                    <SortedAscendingHeaderStyle BackColor="#246B61" />
-                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
                 </asp:GridView>
-                <hr style="width: 800px" />
                 <br />
             </td>
         </tr>
@@ -582,6 +580,16 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DTENTREGA, pedidoID, CODPARSAP, CODPARC, CODPROSAP, DESCRPROD, QTDE, PADRAO, STATUS, NOMEPARC, UF FROM ExportaSap WHERE (DTENTREGA = @DTENTREGA) AND (QTDE &gt; 0) AND (STATUS &lt;&gt; 'CANCELADO') AND (NOMEPARC LIKE '%BK%') AND UF = 'PR' ORDER BY CODPARC">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="Calendar1" Name="DTENTREGA" PropertyName="SelectedDate" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT DISTINCT [pedidoID], [DTENTREGA], [CODPARC], [NOMEPARC], [CODPROD], [DESCRPROD], [QTDE], [UF], [ROTA] FROM [Exporta] WHERE ([DTENTREGA] = @DTENTREGA) AND (STATUS = 'ABERTO') AND (QTDE &lt;&gt; 0) AND (UF = 'PR') AND (NOMEPARC LIKE '%BK%') ORDER BY CODPARC">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="DTENTREGA" PropertyName="SelectedDate" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;Encrypt=False" ProviderName="System.Data.SqlClient" SelectCommand="SELECT COUNT(*) AS Expr1, DTENTREGA, UF, STATUS FROM ListaPedidos GROUP BY DTENTREGA, UF, Grupo, STATUS HAVING (Grupo = '01') AND (DTENTREGA = @DTENTREGA) AND (STATUS IN ('ABERTO', 'FINALIZADO'))">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="Calendar1" Name="DTENTREGA" PropertyName="SelectedDate" />
                     </SelectParameters>

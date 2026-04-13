@@ -212,7 +212,8 @@ namespace JFCWEB.Paginas
             Lab10.Text = xcodp.ToString();
             Text2.Text = xemai.ToString();
             Label12.Text = xufe.ToString();
-            Lab7.Text = TxtBox1.Text;
+            var cgc = TxtBox1.Text;
+            Lab7.Text = Convert.ToDouble(cgc).ToString(@"00\.000\.000\/0000\-00");
             //======================================================================
             string sqldel = ("DELETE FROM ENTREGA WHERE CGC_CPF = @deleta");
             SqlCommand commdel = new SqlCommand(sqldel, conn);
@@ -752,10 +753,10 @@ namespace JFCWEB.Paginas
                             string Ped1 = ("DELETE FROM ENTREGA WHERE CGC_CPF=@CGC AND DTENTREGA<@ENTREGA");
                             SqlCommand comm1 = new SqlCommand(Ped1, conn);
                             comm1.Parameters.AddWithValue("@CGC", TxtBox1.Text);
-                            comm1.Parameters.AddWithValue("@ENTREGA", dtx0.ToString());
+                            comm1.Parameters.AddWithValue("@ENTREGA", dt0.ToString());
                             comm1.ExecuteNonQuery();
                             Label5.Text = "4.0 RJ- PEDIDOS PARA O DIA " + dt0 + " ENCERROU AS " + hh2;
-                           // hh2 = hh3;
+                           // alterado em 23/03/2026
                           //  test2 = test3;
                         }
                         if (hh1 > hh2 && Xteste == 1)
@@ -1028,20 +1029,27 @@ namespace JFCWEB.Paginas
 
         protected void GrdV2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           vlr = (GrdV2.SelectedRow.Cells[5].Text).ToString();
-           Decimal tot = Convert.ToDecimal(vlr) * Convert.ToDecimal(inn);
-            idd = (GrdV2.SelectedRow.Cells[0].Text).ToString();
-            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
-            conn = new SqlConnection(strcon);
-            conn.Open();
-            string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde,STATUS='1', TOTAL= @total WHERE itemID=@itemID");
-            SqlCommand comm1 = new SqlCommand(item, conn);
-            comm1.Parameters.AddWithValue("@qtde", Convert.ToInt32(inn));
-            comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
-            comm1.Parameters.AddWithValue("@total", Convert.ToDecimal(tot));
-            comm1.ExecuteNonQuery();
-            GrdV2.DataBind();
-            conn.Close();
+            vlr = (GrdV2.SelectedRow.Cells[5].Text).Replace("R$", "").Trim();
+            Decimal valorUnitario;
+            Decimal quantidade;
+            
+            if (Decimal.TryParse(vlr, out valorUnitario) && Decimal.TryParse(inn, out quantidade))
+            {
+                Decimal tot = valorUnitario * quantidade;
+                idd = (GrdV2.SelectedRow.Cells[0].Text).ToString();
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                using (conn = new SqlConnection(strcon))
+                {
+                    conn.Open();
+                    string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde, STATUS='1', TOTAL= @total WHERE itemID=@itemID");
+                    SqlCommand comm1 = new SqlCommand(item, conn);
+                    comm1.Parameters.AddWithValue("@qtde", (int)quantidade);
+                    comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
+                    comm1.Parameters.AddWithValue("@total", tot);
+                    comm1.ExecuteNonQuery();
+                }
+                GrdV2.DataBind();
+            }
         }
 
            protected void GrdView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1075,11 +1083,18 @@ namespace JFCWEB.Paginas
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    if (!String.IsNullOrEmpty(row.Cells[6].Text))
-                        ValorTotal += Decimal.Parse(row.Cells[6].Text);
-                    Lbl11.Text = "Valor Total: "+ ValorTotal.ToString();
+                    string totalText = row.Cells[6].Text.Replace("R$", "").Trim();
+                    if (!String.IsNullOrEmpty(totalText) && totalText != "&nbsp;")
+                    {
+                        Decimal valor;
+                        if (Decimal.TryParse(totalText, out valor))
+                        {
+                            ValorTotal += valor;
+                        }
+                    }
                 }
             }
+            Lbl11.Text = "Valor Total: " + ValorTotal.ToString("C");
         }
 
         protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
@@ -1094,11 +1109,18 @@ namespace JFCWEB.Paginas
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
-                    if (!String.IsNullOrEmpty(row.Cells[6].Text))
-                        ValorTotal += Decimal.Parse(row.Cells[6].Text);
-                    Lbl12.Text = "Valor Total: " + ValorTotal.ToString();
+                    string totalText = row.Cells[6].Text.Replace("R$", "").Trim();
+                    if (!String.IsNullOrEmpty(totalText) && totalText != "&nbsp;")
+                    {
+                        Decimal valor;
+                        if (Decimal.TryParse(totalText, out valor))
+                        {
+                            ValorTotal += valor;
+                        }
+                    }
                 }
             }
+            Lbl12.Text = "Valor Total: " + ValorTotal.ToString("C");
         }
 
         protected void GrdV3_Load(object sender, EventArgs e)
@@ -1136,20 +1158,27 @@ namespace JFCWEB.Paginas
 
         protected void GrdV3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            vlr = (GrdV3.SelectedRow.Cells[5].Text).ToString();
-            Decimal tot = Convert.ToDecimal(vlr) * Convert.ToDecimal(inn);
-            idd = (GrdV3.SelectedRow.Cells[0].Text).ToString();
-            strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
-            conn = new SqlConnection(strcon);
-            conn.Open();
-            string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde,STATUS='1', TOTAL= @total WHERE itemID=@itemID");
-            SqlCommand comm1 = new SqlCommand(item, conn);
-            comm1.Parameters.AddWithValue("@qtde", Convert.ToInt32(inn));
-            comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
-            comm1.Parameters.AddWithValue("@total", Convert.ToDecimal(tot));
-            comm1.ExecuteNonQuery();
-            GrdV3.DataBind();
-            conn.Close();
+            vlr = (GrdV3.SelectedRow.Cells[5].Text).Replace("R$", "").Trim();
+            Decimal valorUnitario;
+            Decimal quantidade;
+
+            if (Decimal.TryParse(vlr, out valorUnitario) && Decimal.TryParse(inn, out quantidade))
+            {
+                Decimal tot = valorUnitario * quantidade;
+                idd = (GrdV3.SelectedRow.Cells[0].Text).ToString();
+                strcon = "Data Source=mssql02-farm22.kinghost.net;Initial Catalog=jfcverduras;Persist Security Info=True;User ID=jfcverduras;Password=Campanha#2025;TrustServerCertificate=True";
+                using (conn = new SqlConnection(strcon))
+                {
+                    conn.Open();
+                    string item = ("UPDATE ITENS_PEDIDO SET QTDE = @qtde, STATUS='1', TOTAL= @total WHERE itemID=@itemID");
+                    SqlCommand comm1 = new SqlCommand(item, conn);
+                    comm1.Parameters.AddWithValue("@qtde", (int)quantidade);
+                    comm1.Parameters.AddWithValue("@itemID", Convert.ToInt64(idd));
+                    comm1.Parameters.AddWithValue("@total", tot);
+                    comm1.ExecuteNonQuery();
+                }
+                GrdV3.DataBind();
+            }
         }
 
         protected void Butt3_Click(object sender, EventArgs e)
