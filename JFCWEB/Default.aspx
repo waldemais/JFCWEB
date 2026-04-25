@@ -38,8 +38,8 @@
                         <p class="small mb-2">Nosso site passou por melhorias para oferecer uma experiência mais moderna e eficiente. Novo design, maior velocidade e totalmente responsivo.</p>
                         <hr class="my-2 border-dark opacity-25">
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-calendar-event text-danger me-2"></i>
-                            <span class="small fw-bold text-danger">Aviso: Terça-feira 21/04 será feriado. Pedidos até às 12:00h.</span>
+              <%--       <i class="bi bi-calendar-event text-danger me-2"></i> --%>
+              <%--       <span class="small fw-bold text-danger">Aviso: Terça-feira 21/04 será feriado. Pedidos até às 12:00h.</span> --%>
                         </div>
                     </div>
 
@@ -70,8 +70,7 @@
                             <asp:Label ID="Lb1" runat="server" CssClass="text-danger fw-bold small"></asp:Label>
                         </div>
                         <div class="text-center mt-4 text-muted small border-top pt-2">
-                            Versão 1.231225.1000
-                        </div>
+                            Versão 2.0.1</div>
                     </div>
                 </div>
             </div>

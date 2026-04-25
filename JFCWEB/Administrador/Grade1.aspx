@@ -1,10 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Grade1.aspx.cs" Inherits="JFCWEB.Grade1" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Grade1.aspx.cs" Inherits="JFCWEB.Grade1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Programação</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <style type="text/css">
         .style34
         {
@@ -563,26 +566,167 @@
             width: 176px;
             height: 27px;
         }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: #f6f7fb;
+            color: #111827;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        #form1.page-form {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px;
+            background: transparent !important;
+            height: auto !important;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border: 1px solid #86efac;
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .page-title {
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            color: #064e3b;
+            font-size: 20px;
+            line-height: 1.2;
+            text-align: center;
+            flex: 1 1 auto;
+        }
+
+        .header-side {
+            width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(6, 95, 70, 0.15);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            margin-bottom: 14px;
+        }
+
+        .content-card table {
+            max-width: 100%;
+        }
+
+        .auto-style150,
+        .auto-style151 {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .page-form select {
+            max-width: 140px;
+            padding: 6px 10px;
+            border: 1px solid #d1d5db;
+            background: #ffffff;
+            color: #111827;
+        }
+
+        .page-form input[type="checkbox"] {
+            accent-color: #16a34a;
+        }
+
+        table[frame="above"] {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 8px;
+            margin: 0;
+        }
+
+        table[frame="above"] td {
+            background: #ffffff;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 10px;
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+
+        table[frame="above"] tr:first-child td {
+            background: #f0fdf4;
+            color: #065f46;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        table[frame="above"] tr:nth-child(2) td {
+            background: #f9fafb;
+            color: #374151;
+            text-align: center;
+        }
+
+        .page-form input[type="submit"],
+        .page-form input[type="button"] {
+            border-radius: 10px;
+        }
+
+        .page-form select {
+            border-radius: 10px;
+        }
+
+        #RBList1 {
+            border: 1px solid #e5e7eb !important;
+            border-radius: 12px;
+            background: #ffffff;
+            padding: 10px 12px;
+        }
+
+        #RBList1 td {
+            border: none !important;
+            padding: 4px 6px;
+        }
+
+        #TxtBox1 {
+            max-width: 220px;
+        }
         </style>
 </head>
-<body bgcolor="#ffffff">
-    <form id="form1" runat="server" style="background-color: #FFFFFF; margin-bottom: 149px;" 
-    title="Programa" class="auto-style153" defaultbutton="Btn1" defaultfocus="TxtBox1">
-    <div style="text-align: center; background-color: #99FF66; font-size: xx-small;" class="auto-style154">
-    
-        <asp:ImageButton ID="ImageButton1" runat="server" CssClass="style135" 
-            ImageAlign="Left" ImageUrl="~/Imagem/icons8-menu-48.png" 
-            PostBackUrl="~/Administrador/Menu1.aspx" />
-        <asp:ImageButton ID="ImageButton2" runat="server" CssClass="style135" 
-            ImageAlign="Right" ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" 
-            Width="48px" />
-        <span class="style135">PROGRAMAÇÃO DE ENTREGA</span><br class="style135" />
-        <br />
-        <br />
+<body>
+    <form id="form1" runat="server" title="Programa" class="page-form" defaultbutton="Btn1" defaultfocus="TxtBox1">
+    <div class="page-header">
+        <div class="header-side">
+            <asp:ImageButton ID="ImageButton1" runat="server" CssClass="header-btn"
+                ImageUrl="~/Imagem/icons8-menu-48.png"
+                PostBackUrl="~/Administrador/Menu1.aspx" />
+        </div>
+        <div class="page-title">PROGRAMAÇÃO DE ENTREGA</div>
+        <div class="header-side">
+            <asp:ImageButton ID="ImageButton2" runat="server" CssClass="header-btn"
+                ImageUrl="~/Imagem/sair.jpg" PostBackUrl="~/Default.aspx" />
+        </div>
     </div>
-    <div style="background-color: #FFFFFF;" class="auto-style150">
-        &nbsp; -<table align="left" 
-            style="background-color: #FFFFFF;" class="auto-style151">
+
+    <div class="content-card">
+        <table align="left" style="background-color: #FFFFFF;" class="auto-style151">
             <tr>
                 <td class="auto-style143">
                     <table style="width:100%;">
@@ -590,22 +734,19 @@
                             <td class="auto-style162">
                                 <asp:Label ID="Label1" runat="server" Text="Código do Cliente"></asp:Label>
                                 <br />
-        <asp:TextBox ID="TxtBox1" runat="server" Width="150px" onload="TxtBox1_Load" 
-                        style="margin-right: 2px; font-size: large;"></asp:TextBox>
+        <asp:TextBox ID="TxtBox1" runat="server" onload="TxtBox1_Load" CssClass="form-control form-control-lg"></asp:TextBox>
                                 <br />
                                 <br />
                     <asp:Label ID="Lbl01" runat="server" 
                         style="font-weight: 700; " Font-Size="Small" CssClass="auto-style157"></asp:Label>
                             </td>
                             <td class="auto-style162">
-        <asp:Button ID="Btn1" runat="server" Text="SELECIONAR" 
-                        style="margin-left: 0px; color: #006600; font-weight: 700; background-color: #FFFFFF;" 
-                        onclick="Btn1_Click" Width="100px" Height="25px" />
+        <asp:Button ID="Btn1" runat="server" Text="SELECIONAR" onclick="Btn1_Click" CssClass="btn btn-success btn-sm" />
                             </td>
                             <td class="auto-style158">
                                 <strong>
                                 <br />
-                                <asp:Button ID="Btn3" runat="server" CssClass="auto-style161" Height="25px" OnClick="Btn3_Click" Text="LIMPAR TELA" Width="100px" />
+                                <asp:Button ID="Btn3" runat="server" OnClick="Btn3_Click" Text="LIMPAR TELA" CssClass="btn btn-outline-secondary btn-sm" />
                                 <br />
                                 </strong>
                                 <br />
@@ -623,7 +764,7 @@
         <asp:GridView ID="GridView9" runat="server" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource8" GridLines="None" Width="275px" 
                         style="margin-left: 0px; background-color: #FFFFFF; text-align: left;" 
-                        BorderStyle="None" CaptionAlign="Top" Height="49px" ShowHeader="False" CssClass="auto-style155">
+                        BorderStyle="None" CaptionAlign="Top" Height="49px" ShowHeader="False" CssClass="table table-sm mb-0">
             <Columns>
                 <asp:BoundField DataField="NOMEPARC" SortExpression="NOMEPARC" >
                 <ItemStyle Font-Size="Small" />
@@ -654,14 +795,14 @@
                     <br />
                 </td>
                 <td class="auto-style145">
-                    &nbsp;<asp:Button ID="Button1" runat="server" PostBackUrl="~/Administrador/Programa.aspx" Text="Ver Entregas BK" />
+                    <asp:Button ID="Button1" runat="server" PostBackUrl="~/Administrador/Programa.aspx" Text="Ver Entregas BK" CssClass="btn btn-outline-primary btn-sm" />
                     <br />
                     <br />
                     <br />
                             <strong>
                     <asp:Button ID="Btn2" runat="server" onclick="Btn2_Click" 
                         style="color: #006600; font-weight: 700; background-color: #FFFFFF" 
-                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="#CCCCCC" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" />
+                        Text="CLIENTE NOVO" Height="25px" Width="150px" BackColor="#CCCCCC" BorderColor="#CCCCCC" OnClientClick="Javascript:return confirm('Confirma Nova Entrega?');" Visible="False" CssClass="btn btn-warning btn-sm" />
                                 </strong>
                     <br />
                     <br />
@@ -684,14 +825,8 @@
                 </td>
             </tr>
             </table>
-&nbsp;
-        <div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
     </div>
+    <div class="content-card">
              <table align="left" frame="above">
                 <tr>
                     <td class="auto-style140" style="border: thin solid #00FF00;">
@@ -1134,22 +1269,7 @@
                         <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [hora] FROM [Tempo]"></asp:SqlDataSource>
                         <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" SelectCommand="SELECT [nome] FROM [Semana] ORDER BY [dia]"></asp:SqlDataSource>
                </table>
-        <div>
-                    </div>
-        <div>
-                    </div>
-        <div>
-                    </div>
-        <div>
-                    </div>
-        <div>
-                    </div>
-        <div>
-        </div>
-        <div>
-                    </div>
-        <div>
-                    </div>
+    </div>
     </form>
     </body>
 </html>

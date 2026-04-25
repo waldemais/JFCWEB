@@ -33,18 +33,20 @@
                     <h3 class="mb-0 text-white" style="font-variant: normal; text-transform: none;">Portal de Pedidos</h3>
                 </div>
                 <div class="card-body p-4">
-                    <div class="attention-box mb-4">
-                        &nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="TextBox4" runat="server" Font-Size="X-Small" Height="123px" TextMode="MultiLine" Width="422px">Nosso site passou por uma série de melhorias com o objetivo de oferecer uma experiência mais moderna, intuitiva e eficiente para todos os usuários.
-Entre as principais atualizações, destacam-se o novo design, mais limpo e organizado, a otimização da velocidade de carregamento das páginas e a melhoria na navegação, facilitando o acesso às informações mais importantes. Além disso, o site agora está mais responsivo, garantindo uma melhor visualização em dispositivos móveis, como smartphones e tablets.</asp:TextBox>
-                        <br />
-                        <br />
-                        <asp:Label ID="Label1" runat="server" BackColor="#99FF33" Font-Size="X-Small" Text="Na Terça-feira 21/04 será feriado, as lojas deverão passar pedidos até às 12:00 h."></asp:Label>
+                    <div class="alert alert-warning border-start border-4 border-warning shadow-sm mb-4 text-dark">
+                        <h6 class="alert-heading fw-bold"><i class="bi bi-info-circle-fill text-dark me-2"></i>Avisos e Melhorias</h6>
+                        <p class="small mb-2">Nosso site passou por melhorias para oferecer uma experiência mais moderna e eficiente. Novo design, maior velocidade e totalmente responsivo.</p>
+                        <hr class="my-2 border-dark opacity-25">
+                        <div class="d-flex align-items-center">
+              <%--       <i class="bi bi-calendar-event text-danger me-2"></i> --%>
+              <%--       <span class="small fw-bold text-danger">Aviso: Terça-feira 21/04 será feriado. Pedidos até às 12:00h.</span> --%>
+                        </div>
                     </div>
 
                     <div class="login-container">
                         <div class="mb-3">
-                            <label for="<%= TBox1.ClientID %>" class="form-label">CNPJ                        <asp:TextBox ID="TBox1" runat="server" CssClass="form-control" placeholder="00.000.000/0000-00"></asp:TextBox>
+                            <label for="<%= TBox1.ClientID %>" class="form-label">CNPJ</label>
+                            <asp:TextBox ID="TBox1" runat="server" CssClass="form-control" placeholder="00.000.000/0000-00"></asp:TextBox>
                             <ajaxToolkit:MaskedEditExtender ID="TBox1_MaskedEditExtender" runat="server" 
                                 BehaviorID="TBox1_MaskedEditExtender" Century="2000" Mask="99.999.999/9999-99" 
                                 TargetControlID="TBox1" InputDirection="RightToLeft">
@@ -68,12 +70,10 @@ Entre as principais atualizações, destacam-se o novo design, mais limpo e orga
                             <asp:Label ID="Lb1" runat="server" CssClass="text-danger fw-bold small"></asp:Label>
                         </div>
                         <div class="text-center mt-4 text-muted small border-top pt-2">
-                            Versão 1.231225.1000
-                        </div>
+                            Versão 2.0.1</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </label>
 </asp:Content>

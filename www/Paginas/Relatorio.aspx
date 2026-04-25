@@ -148,7 +148,7 @@
             <asp:TextBox ID="TextBx1" runat="server"></asp:TextBox>
             <asp:Label ID="Labe1" runat="server"></asp:Label>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" onload="GridView1_Load"></asp:GridView>
-            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" onload="GridView3_Load" Visible="False"></asp:GridView>
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" Visible="False"></asp:GridView>
         </div>
 
         <!-- DataSources -->
@@ -159,7 +159,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:jfcverdurasConnectionString %>" 
-            SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE <> 0) ORDER BY DESCRPROD">
+            SelectCommand="SELECT DISTINCT itemID, pedidoID, CODPROD, QTDE, DESCRPROD, PADRAO, TOTAL FROM VLISTPRO WHERE (pedidoID = @pedidoID) AND (QTDE <> 0) ORDER BY DESCRPROD" ProviderName="System.Data.SqlClient">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TextBx1" Name="pedidoID" PropertyName="Text" Type="Int32" />
             </SelectParameters>

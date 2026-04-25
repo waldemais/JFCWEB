@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="JFCWEB.SiteMaster" %>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="JFCWEB.SiteMaster" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,8 +51,46 @@
             </div>
         </footer>
 
+        <!-- Cookie Banner -->
+        <div id="cookieBanner" class="cookie-banner bg-dark text-white p-3 fixed-bottom shadow-lg" style="display: none; z-index: 1050;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-9 col-sm-12 mb-2 mb-md-0 text-center text-md-start">
+                        <i class="bi bi-info-circle-fill text-warning me-2"></i>
+                        <span>Utilizamos cookies para oferecer uma melhor experiência, melhorar o desempenho e analisar como você interage em nosso site. Ao utilizar este site, você concorda com o uso de cookies.</span>
+                    </div>
+                    <div class="col-md-3 col-sm-12 text-center text-md-end">
+                        <button type="button" class="btn btn-success btn-sm px-4 fw-bold" onclick="acceptCookies()">Aceitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="<%= ResolveUrl("~/Scripts/jquery-1.9.1.min.js") %>"></script>
         <script src="<%= ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+
+        <script>
+            function acceptCookies() {
+                try {
+                    localStorage.setItem('jfc_cookies_accepted', 'true');
+                } catch (e) {
+                }
+                document.getElementById('cookieBanner').style.display = 'none';
+            }
+
+            window.addEventListener('load', function () {
+                var accepted = false;
+                try {
+                    accepted = localStorage.getItem('jfc_cookies_accepted') === 'true';
+                } catch (e) {
+                    accepted = false;
+                }
+
+                if (!accepted) {
+                    document.getElementById('cookieBanner').style.display = 'block';
+                }
+            });
+        </script>
     </form>
 </body>
 </html>

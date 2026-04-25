@@ -64,7 +64,7 @@
                             <asp:BoundField DataField="pedidoID" HeaderText="PEDIDO" ReadOnly="True" SortExpression="pedidoID">
                                 <ItemStyle CssClass="fw-bold text-success" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy}" HeaderText="EMISSÃO" SortExpression="DTEMISSAO" />
+                            <asp:BoundField DataField="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy HH:mm}" HeaderText="EMISSÃO" SortExpression="DTEMISSAO" />
                             <asp:BoundField DataField="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" HeaderText="ENTREGA" SortExpression="DTENTREGA" />
                             <asp:TemplateField HeaderText="STATUS" SortExpression="STATUS">
                                 <ItemTemplate>

@@ -43,6 +43,26 @@
             font-weight: 700;
             color: #198754;
         }
+
+        .pedido-loader-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.75);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pedido-loader-card {
+            background: #fff;
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
     </style>
 </asp:Content>
 
@@ -146,7 +166,7 @@
                     </div>
                     <div class="col-md-6 text-end">
                         <asp:Button ID="Btt2" runat="server" CssClass="btn btn-outline-secondary btn-lg me-2" Text="Sair" PostBackUrl="~/Cliente/Menu4.aspx" />
-                        <asp:Button ID="Butt1" runat="server" CssClass="btn btn-success btn-lg px-5 shadow-sm" Text="Gravar Pedido" onclick="Butt1_Click" />
+                        <asp:Button ID="Butt1" runat="server" CssClass="btn btn-success btn-lg px-5 shadow-sm" Text="Gravar Pedido" onclick="Butt1_Click" OnClientClick="return jfcShowPedidoLoader();" />
                         <asp:Button ID="Butt2" runat="server" CssClass="btn btn-primary btn-lg ms-2" Text="Ver Pedido" PostBackUrl="~/Paginas/Relatorio.aspx" Visible="False" OnClick="Butt2_Click" />
                     </div>
                 </div>
@@ -195,7 +215,7 @@
                     </div>
                     <div class="col-md-6 text-end">
                         <asp:Button ID="Btt3" runat="server" CssClass="btn btn-outline-secondary btn-lg me-2" Text="Sair" PostBackUrl="~/Cliente/Menu4.aspx" />
-                        <asp:Button ID="Butt3" runat="server" CssClass="btn btn-secondary btn-lg px-5 shadow-sm" Text="Gravar Pedido" onclick="Butt3_Click" />
+                        <asp:Button ID="Butt3" runat="server" CssClass="btn btn-secondary btn-lg px-5 shadow-sm" Text="Gravar Pedido" onclick="Butt3_Click" OnClientClick="return jfcShowPedidoLoader();" />
                         <asp:Button ID="Butt4" runat="server" CssClass="btn btn-primary btn-lg ms-2" Text="Ver Pedido" PostBackUrl="~/Paginas/Relatorio.aspx" Visible="False" OnClick="Butt2_Click" />
                     </div>
                 </div>
@@ -257,4 +277,34 @@
             <SelectParameters><asp:ControlParameter ControlID="Lab10" Name="CODPARC" PropertyName="Text" /></SelectParameters>
         </asp:SqlDataSource>
     </div>
+
+    <div id="pedidoLoaderOverlay" class="pedido-loader-overlay" style="display: none;">
+        <div class="pedido-loader-card">
+            <div class="spinner-border text-success" role="status" aria-hidden="true"></div>
+            <div class="fw-semibold text-success">Gravando pedido...</div>
+        </div>
+    </div>
+
+    <script>
+        function jfcShowPedidoLoader() {
+            var overlay = document.getElementById('pedidoLoaderOverlay');
+            if (overlay) overlay.style.display = 'flex';
+            return true;
+        }
+
+        function jfcHidePedidoLoader() {
+            var overlay = document.getElementById('pedidoLoaderOverlay');
+            if (overlay) overlay.style.display = 'none';
+        }
+
+        (function () {
+            if (typeof Sys !== 'undefined' && Sys.WebForms && Sys.WebForms.PageRequestManager) {
+                var prm = Sys.WebForms.PageRequestManager.getInstance();
+                if (prm) {
+                    prm.add_beginRequest(function () { jfcShowPedidoLoader(); });
+                    prm.add_endRequest(function () { jfcHidePedidoLoader(); });
+                }
+            }
+        })();
+    </script>
 </asp:Content>

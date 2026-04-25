@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Administração de Pedidos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdmPedidos.aspx.cs" Inherits="JFCWEB.Usuario.AdmPedidos" %>
+<%@ Page Title="Administração de Pedidos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdmPedidos.aspx.cs" Inherits="JFCWEB.Usuario.AdmPedidos" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
@@ -126,7 +126,7 @@
                             <asp:BoundField DataField="pedidoID" HeaderText="PEDIDO" SortExpression="pedidoID" />
                             <asp:BoundField DataField="CODPARC" HeaderText="CÓD. CLIENTE" SortExpression="CODPARC" />
                             <asp:BoundField DataField="NOMEPARC" HeaderText="CLIENTE" SortExpression="NOMEPARC" />
-                            <asp:BoundField DataField="DTEMISSAO" HeaderText="EMISSÃO" SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy}" />
+                            <asp:BoundField DataField="DTEMISSAO" HeaderText="EMISSÃO" SortExpression="DTEMISSAO" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                             <asp:BoundField DataField="DTENTREGA" HeaderText="ENTREGA" SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
                             <asp:TemplateField HeaderText="SITUAÇÃO" SortExpression="STATUS">
                                 <ItemTemplate>
@@ -162,6 +162,7 @@
                                 <Columns>
                                     <asp:BoundField DataField="pedidoID" HeaderText="Pedido" SortExpression="pedidoID" />
                                     <asp:BoundField DataField="NOMEPARC" HeaderText="Nome" SortExpression="NOMEPARC" />
+                                    <asp:BoundField DataField="DTENTREGA" HeaderText="Entrega" SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
                                     <asp:TemplateField HeaderText="Status" SortExpression="STATUS">
                                         <ItemTemplate>
                                             <span class='<%# GetStatusClass(Eval("STATUS").ToString()) %>'>
@@ -194,6 +195,7 @@
                                 <Columns>
                                     <asp:BoundField DataField="pedidoID" HeaderText="Pedido" SortExpression="pedidoID" />
                                     <asp:BoundField DataField="NOMEPARC" HeaderText="Nome" SortExpression="NOMEPARC" />
+                                    <asp:BoundField DataField="DTENTREGA" HeaderText="Entrega" SortExpression="DTENTREGA" DataFormatString="{0:dd/MM/yyyy}" />
                                     <asp:TemplateField HeaderText="Status" SortExpression="STATUS">
                                         <ItemTemplate>
                                             <span class='<%# GetStatusClass(Eval("STATUS").ToString()) %>'>
